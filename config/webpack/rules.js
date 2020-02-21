@@ -2,7 +2,6 @@ var exclude = /node_modules/,
   MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = [
-  // all files with a `.ts` or `.tsx` extension will be handled by `ts-loader`
   {
     enforce: 'pre',
     test: /\.(js|tsx)$/,
@@ -23,7 +22,10 @@ module.exports = [
   },
   {
     test: /\.(woff|woff2)$/,
-    loader: 'file-loader'
+    loader: 'file-loader',
+    options: {
+      esModule: false
+    }
   },
   {
     test: /\.(p|)css$/,
@@ -57,7 +59,7 @@ module.exports = [
             require('autoprefixer')
           ]
         }
-      },
+      }
     ]
   }
 ];
