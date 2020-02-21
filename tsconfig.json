@@ -1,0 +1,61 @@
+{
+  "compilerOptions": {
+    "typeRoots": [
+      "config/customTypes",
+      "node_modules/@types"
+    ],
+    "baseUrl": "./",
+    "target": "es5",
+    "module": "ESNEXT",
+    "moduleResolution": "node",
+    "strict": true,
+    "esModuleInterop": true,
+    "alwaysStrict": true,
+    "noImplicitAny": true,
+    "removeComments": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "strictNullChecks": true,
+    "preserveConstEnums": true,
+    "traceResolution": false,
+    "allowJs": true,
+    "checkJs": true,
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "es5",
+      "es6",
+      "es7",
+      "es2018",
+      "webworker"
+    ],
+    // "rootDirs": [
+    //   "src"
+    // ],
+    "paths": {
+      "components/*": [
+        "src/components/*"
+      ],
+      "base/*": [
+        "src/components/base/*"
+      ],
+      "svg/*": [
+        "src/svg/*"
+      ]
+    },
+    "jsx": "react",
+    "sourceMap": true,
+  },
+  "compileOnSave": true,
+  "include": [
+    "**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules",
+    "build",
+    "postcss.config.js",
+    "config/webpack",
+    "webpack.config.js",
+    "webpack.resolve.js"
+  ],
+}
