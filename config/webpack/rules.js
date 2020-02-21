@@ -35,10 +35,10 @@ module.exports = [
       {
         loader: 'css-loader',
         options: {
-          importLoader: 1,
-          modules: true,
-          camelCase: true,
-          localIdentName: '[path]_[name]_[local]'
+          importLoader: 1
+          // modules: true,
+          // camelCase: true,
+          // localIdentName: '[path]_[name]_[local]'
         }
       },
       {

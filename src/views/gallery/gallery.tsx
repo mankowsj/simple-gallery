@@ -1,3 +1,13 @@
 import React from 'react';
 
-export const Gallery = () => <section>gallery</section>;
+type GalleryProps = {
+  className: string;
+};
+const Gallery = ({className}: GalleryProps) => (
+  <section className={className}>gallery</section>
+);
+Gallery.defaultProps = {
+  className: ''
+};
+
+export {Gallery};
