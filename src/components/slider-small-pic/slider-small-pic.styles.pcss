@@ -1,6 +1,17 @@
 .slider-small-pic {
   height: 64px;
   width: 64px;
-  border-radious: 4px;
+  border-radius: 4px;
   border: 2px solid white;
+  text-align: center;
+
+  img {
+    object-fit: contain;
+    max-height: 100%;
+    max-width: 100%;
+  }
+
+  &.empty {
+    visibility: hidden;
+  }
 }

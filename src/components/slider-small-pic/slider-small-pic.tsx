@@ -7,8 +7,10 @@ type SliderSmallPicProps = {
   image: ReduxImage;
 };
 
-const SliderSmallPic = ({onClick, className}: SliderSmallPicProps) => (
-  <div onClick={onClick} className={`${className} slider-small-pic`}></div>
+const SliderSmallPic = ({onClick, className, image}: SliderSmallPicProps) => (
+  <div onClick={onClick} className={`${className} slider-small-pic ${image.path ? '' : 'empty'}`}>
+    <img src={image.path} />
+  </div>
 );
 
 SliderSmallPic.defaultProps = {

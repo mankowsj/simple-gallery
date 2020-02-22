@@ -22,7 +22,7 @@ const Gallery = ({className, setBigPictureMode, imageList, setSelectedImage}: Ga
         key={name}
         className="grid-item"
         imageName={name}
-        imageSrc={`${path}${name}`}
+        imageSrc={path}
       />
     ))}
   </main>
