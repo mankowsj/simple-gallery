@@ -1,9 +1,11 @@
 import React from 'react';
 import './footer.styles.pcss';
 
-export const Footer = () => (
-  <footer>
-    <div className="narrow flex">
+type FooterProps = {className: string};
+
+const Footer = ({className}: FooterProps) => (
+  <footer className="secondary-dark">
+    <div className={`${className} narrow flex`}>
       <section>
         <h3>Tools</h3>
         <ul>
@@ -20,8 +22,18 @@ export const Footer = () => (
         </ul>
       </section>
       <section>
-        <h3>Coded and styled by Jerzy Mańkowski</h3>
+        <h3>Libraries</h3>
+        <ul>
+          <li>React 16</li>
+          <li>Redux / React-Redux</li>
+        </ul>
       </section>
     </div>
   </footer>
 );
+
+Footer.defaultProps = {
+  className: ''
+};
+
+export {Footer};

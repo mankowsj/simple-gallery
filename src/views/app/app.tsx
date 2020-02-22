@@ -8,7 +8,7 @@ import './app.styles.pcss';
 
 export const App = () => (
   <Provider store={store}>
-    <div className="app">
+    <div className="app theme-light">
       <Header />
       <Gallery className="grow" />
       <Footer />
