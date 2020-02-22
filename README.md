@@ -4,6 +4,7 @@ To run the app just execute `npm ci && npm start`
 
 ## TODO
 
+- change img to background + cover or so
 - master view / grid DONE
 - grid item / title
 - grid item selection => big pic mode + details / rename, delete
