@@ -19,3 +19,4 @@ To run the app just execute `npm ci && npm start`
 - keyboard support
 - media query pc/tab/phone
 - offline mode
+- touch support
