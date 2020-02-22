@@ -9,8 +9,9 @@ To run the app just execute `npm ci && npm start`
 - grid item selection => big pic mode + details / rename, delete
 - node with rest service images images/id : patch : rename
 
-# Nice to have
+## Nice to have
 
+- infi scroll
 - font-icons / svg-icons
 - alternative theme
 - alternative layouts
