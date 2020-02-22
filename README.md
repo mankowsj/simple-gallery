@@ -4,7 +4,7 @@ To run the app just execute `npm ci && npm start`
 
 ## TODO
 
-- master view / grid
+- master view / grid DONE
 - grid item / title
 - grid item selection => big pic mode + details / rename, delete
 - node with rest service images images/id : patch : rename
