@@ -5,11 +5,15 @@
   grid-gap: 16px;
   margin-bottom: -68px;
 
-  .grid-item:nth-child(3n + 1) {
-    transform-origin: left;
-  }
+  .grid-item {
+    max-height: 200px;
 
-  .grid-item:nth-child(3n) {
-    transform-origin: right;
+    &:nth-child(3n + 1) {
+      transform-origin: left;
+    }
+
+    &:nth-child(3n) {
+      transform-origin: right;
+    }
   }
 }
