@@ -12,7 +12,7 @@ const GridImage = ({className, imageName, imageSrc}: GridImageProps) => {
   return (
     <div className={`${className} grid-image vertical-fix`}>
       <img
-        className={hovered ? 'primary-light_border-color' : ''}
+        className={hovered ? 'zoom-in primary-light_shadow' : ''}
         src={imageSrc}
         onMouseOver={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
