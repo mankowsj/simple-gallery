@@ -1,4 +1,5 @@
 import {store} from './store';
-import {PositionActionType} from './types';
+import * as Actions from './actions';
+import {PositionActionType, AppModeAction, StoreType, AppModeActionType} from './types';
 
-export {store, PositionActionType};
+export {store, PositionActionType, AppModeAction, StoreType, AppModeActionType, Actions};

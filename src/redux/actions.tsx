@@ -1,4 +1,6 @@
-const PositionList = ['SET_POSITION', 'HOME_POSITION', 'END_POSITION'];
-const AppMode = ['GALLERY_MODE', 'BIG_PIC_MODE'];
+import {AppModeActionType} from './types';
 
-export {PositionList, AppMode};
+const setGalleryMode = (picId: string): AppModeActionType => ({type: 'GALLERY_MODE', value: picId});
+const setBigPictureMode = (picId: string): AppModeActionType => ({type: 'BIG_PIC_MODE', value: picId});
+
+export {setGalleryMode, setBigPictureMode};
