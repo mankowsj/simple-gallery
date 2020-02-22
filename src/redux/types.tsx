@@ -1,10 +1,16 @@
-import {PositionList} from './actions';
+import {PositionList, AppMode} from './actions';
 
-type PositionActionType = typeof PositionList[number];
-
-type GalleryReducerStore = {position: number};
-type StoreType = {
-  positionReducer: GalleryReducerStore;
+type ActionType<T, S = never> = {
+  type: T;
+  value?: S;
 };
 
-export {PositionActionType, StoreType};
+type PositionActionType = ActionType<typeof PositionList[number]>;
+type AppModeActionType = ActionType<typeof AppMode[number]>;
+
+type StoreType = {
+  positionReducer: number;
+  appModeReducer: typeof AppMode[number];
+};
+
+export {AppModeActionType, PositionActionType, StoreType};
