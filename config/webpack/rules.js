@@ -48,6 +48,7 @@ module.exports = [
           plugins: () => [
             require('postcss-mixins'),
             require('postcss-calc'),
+            require('postcss-import'),
             require('precss'),
             // require('postcss-modules'),
             require('postcss-preset-env')({
