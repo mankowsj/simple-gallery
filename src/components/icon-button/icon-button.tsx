@@ -11,9 +11,13 @@ type IconName = keyof typeof IconMap;
 
 type IconButtonProps = {
   name: IconName;
+  onClick?: React.MouseEventHandler;
 };
-const IconButton = ({name}: IconButtonProps) => (
-  <span dangerouslySetInnerHTML={{__html: `&#xe${IconMap[name]};`}} className="icon-button" />
+const IconButton = ({name, onClick}: IconButtonProps) => (
+  <span onClick={onClick} dangerouslySetInnerHTML={{__html: `&#xe${IconMap[name]};`}} className="icon-button" />
 );
+IconButton.defaultProps = {
+  onClick: () => {}
+};
 
 export {IconButton};
