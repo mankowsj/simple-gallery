@@ -1,11 +1,23 @@
 import React from 'react';
 import {IconButton} from '../../components/icon-button';
+// import {} from '../../components/slider-big-pic';
 
-export const BigPicture = () => {
+type BigPictureProps = {
+  className?: string;
+};
+const BigPicture = ({className}: BigPictureProps) => {
   return (
-    <div>
-      <IconButton name="close" />
-      testF
-    </div>
+    <main className={`${className} gallery`}>
+      <section className="big-picture">
+        <nav>
+          <IconButton name="close" />
+        </nav>
+      </section>
+    </main>
   );
 };
+BigPicture.defaultProps = {
+  className: ''
+};
+
+export {BigPicture};

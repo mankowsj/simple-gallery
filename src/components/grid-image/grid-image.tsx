@@ -11,7 +11,7 @@ const GridImage = ({className, imageName, imageSrc, onClick}: GridImageProps) =>
   const [hovered, setHover] = useState(false);
 
   return (
-    <div className={`${className} grid-image vertical-fix`}>
+    <div className={`${className} grid-image`}>
       <img
         onClick={onClick}
         className={hovered ? 'zoom-in' : ''}
@@ -19,6 +19,7 @@ const GridImage = ({className, imageName, imageSrc, onClick}: GridImageProps) =>
         onMouseOver={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
       />
+      <div>{imageName}</div>
     </div>
   );
 };
