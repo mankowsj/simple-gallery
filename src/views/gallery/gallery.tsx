@@ -1,26 +1,28 @@
 import React from 'react';
-import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import './gallery.styles.pcss';
 import {GridImage} from '../../components/grid-image';
-import {setBigPictureMode} from '../../redux/actions';
-
-const pathPrefix = 'src/assets/images/';
-const imageList = ['1', '2', '3', '4', '5', '6', '7', '8'].map(name => `${name}.jpg`);
+import {setBigPictureMode, setSelectedImage} from '../../redux/actions';
+import {StoreType} from '../../redux';
 
 type GalleryProps = {
-  className: string;
+  className?: string;
   setBigPictureMode: any;
+  setSelectedImage: any;
+  imageList: ReduxImage[];
 };
-const Gallery = ({className, setBigPictureMode}: GalleryProps) => (
+const Gallery = ({className, setBigPictureMode, imageList, setSelectedImage}: GalleryProps) => (
   <main className={`${className} gallery`}>
-    {imageList.map(imgName => (
+    {imageList.map(({path, name}, index) => (
       <GridImage
-        onClick={() => setBigPictureMode(imgName)}
-        key={imgName}
+        onClick={() => {
+          setSelectedImage(index);
+          setBigPictureMode();
+        }}
+        key={name}
         className="grid-item"
-        imageName={imgName}
-        imageSrc={`${pathPrefix}${imgName}`}
+        imageName={name}
+        imageSrc={`${path}${name}`}
       />
     ))}
   </main>
@@ -29,10 +31,9 @@ Gallery.defaultProps = {
   className: ''
 };
 
-const mapStateToDispatch = (dispatch: any) => ({});
 const ConnectedGallery = (connect(
-  null,
-  {setBigPictureMode}
-)(Gallery) as any) as React.ComponentClass<Omit<GalleryProps, 'setBigPictureMode'>>;
+  ({imageReducer}: StoreType) => ({imageList: imageReducer.imageList}),
+  {setBigPictureMode, setSelectedImage}
+)(Gallery) as any) as React.ComponentClass<Omit<GalleryProps, 'setBigPictureMode' | 'imageList' | 'setSelectedImage'>>;
 
 export {ConnectedGallery as Gallery};

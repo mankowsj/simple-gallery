@@ -8,6 +8,16 @@
   background: rgba(0, 0, 0, 0.9);
   transform: perspective(50px) translateZ(-13px);
   transition: 300ms ease-in-out opacity, 300ms ease-in-out transform;
+  display: flex;
+  flex-direction: column;
+
+  .bottom-slider {
+    padding: 20px;
+  }
+
+  .selected-image {
+    height: 100%;
+  }
 
   &.is-visible {
     opacity: 1;

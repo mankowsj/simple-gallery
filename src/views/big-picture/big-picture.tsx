@@ -3,11 +3,14 @@ import {connect} from 'react-redux';
 import './big-picture.styles.pcss';
 import {IconButton} from '../../components/icon-button';
 import {setGalleryMode} from '../../redux/actions';
-// import {} from '../../components/slider-big-pic';
+import {Slider} from '../../components/slider';
+import {StoreType} from '../../redux';
 
 type BigPictureProps = {
   className?: string;
   setGalleryMode: any;
+  imageList: ReduxImage[];
+  selectedIndex: number;
 };
 
 const VisiblityMap = {
@@ -29,7 +32,7 @@ const getVisibilityModifier = (state: number) => {
 };
 const isExiting = (status: number) => status === VisiblityMap.Exiting;
 
-const BigPicture = ({className, setGalleryMode}: BigPictureProps) => {
+const BigPicture = ({className, setGalleryMode, imageList, selectedIndex}: BigPictureProps) => {
   const [isVisible, setVisibility] = useState(0);
 
   useEffect(() => {
@@ -37,8 +40,8 @@ const BigPicture = ({className, setGalleryMode}: BigPictureProps) => {
   }, []);
 
   return (
-    <main className={`${className} gallery`}>
-      <section
+    <div className={`${className} big-pic-flex`}>
+      <main
         onTransitionEnd={() => {
           if (isExiting(isVisible)) {
             setGalleryMode();
@@ -53,16 +56,24 @@ const BigPicture = ({className, setGalleryMode}: BigPictureProps) => {
             name="close"
           />
         </nav>
-      </section>
-    </main>
+        <section className="selected-image">
+          <img />
+        </section>
+        <Slider className="bottom-slider" images={imageList} selectedIndex={selectedIndex} />
+      </main>
+    </div>
   );
 };
 BigPicture.defaultProps = {
   className: ''
 };
 
+const mapStateToProps = ({imageReducer}: StoreType) => ({
+  imageList: imageReducer.imageList,
+  selectedIndex: imageReducer.selectedIndex
+});
 const ConnectedBigPicture = connect(
-  null,
+  mapStateToProps,
   {setGalleryMode}
 )(BigPicture);
 

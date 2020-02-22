@@ -1,6 +1,8 @@
 import {AppModeActionType} from './types';
 
 const setGalleryMode = (): AppModeActionType => ({type: 'GALLERY_MODE'});
-const setBigPictureMode = (picId: string): AppModeActionType => ({type: 'BIG_PIC_MODE', value: picId});
+const setBigPictureMode = (): AppModeActionType => ({type: 'BIG_PIC_MODE'});
 
-export {setGalleryMode, setBigPictureMode};
+const setSelectedImage = (index: number) => ({type: 'SET_SELECTED_IMAGE', value: index});
+
+export {setGalleryMode, setBigPictureMode, setSelectedImage};
