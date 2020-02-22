@@ -28,6 +28,14 @@ const Footer = ({className}: FooterProps) => (
           <li>Redux / React-Redux</li>
         </ul>
       </section>
+      <section>
+        <h3>Supported browsers</h3>
+        <ul>
+          <li>Chrome</li>
+          <li>Firefox</li>
+          <li>Edge</li>
+        </ul>
+      </section>
     </div>
   </footer>
 );
