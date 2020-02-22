@@ -22,11 +22,12 @@ const getVisibilityModifier = (state: number) => {
       return 'is-visible';
     }
     case VisiblityMap.Exiting: {
-      return '';
+      return 'exiting';
     }
   }
   return '';
 };
+const isExiting = (status: number) => status === VisiblityMap.Exiting;
 
 const BigPicture = ({className, setGalleryMode}: BigPictureProps) => {
   const [isVisible, setVisibility] = useState(0);
@@ -37,12 +38,17 @@ const BigPicture = ({className, setGalleryMode}: BigPictureProps) => {
 
   return (
     <main className={`${className} gallery`}>
-      <section className={`big-picture ${getVisibilityModifier(isVisible)}`}>
+      <section
+        onTransitionEnd={() => {
+          if (isExiting(isVisible)) {
+            setGalleryMode();
+          }
+        }}
+        className={`big-picture ${getVisibilityModifier(isVisible)}`}>
         <nav>
           <IconButton
             onClick={() => {
-              console.warn('CLC');
-              setGalleryMode();
+              setVisibility(2);
             }}
             name="close"
           />
