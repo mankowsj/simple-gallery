@@ -1,6 +1,4 @@
-import {AppModeActionType, ThemeActionType, ThemeValues, ImageActionType} from './types';
-
-type AppModeType = 'GALLERY_MODE' | 'BIG_PIC_MODE';
+import {AppModeActionType, ThemeActionType, ThemeValues, ImageActionType, AppModeType} from './types';
 
 const setAppMode = (mode: AppModeType): AppModeActionType => ({type: 'SET_APP_MODE', value: mode});
 const setSelectedImage = (index: number): ImageActionType => ({

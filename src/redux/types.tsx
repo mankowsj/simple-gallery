@@ -1,5 +1,4 @@
 import {AppModeAction, PositionAction, ImageAction, ThemeAction} from './actions-names';
-import {AppModeType} from './actions';
 
 type ActionType<T, S> = {
   type: T;
@@ -8,7 +7,7 @@ type ActionType<T, S> = {
 type SimpleActionType<T> = {
   type: T;
 };
-
+type AppModeType = 'GALLERY_MODE' | 'BIG_PIC_MODE';
 type PositionActionType = SimpleActionType<PositionAction>;
 type AppModeActionType = ActionType<AppModeAction, String>;
 
@@ -27,4 +26,13 @@ type StoreType = {
   themeReducer: ThemeValues;
 };
 
-export {AppModeAction, AppModeActionType, PositionActionType, ImageActionType, StoreType, ThemeActionType, ThemeValues};
+export {
+  AppModeAction,
+  AppModeActionType,
+  PositionActionType,
+  ImageActionType,
+  StoreType,
+  ThemeActionType,
+  ThemeValues,
+  AppModeType
+};
