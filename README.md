@@ -8,7 +8,6 @@ To run the app just execute `npm ci && npm start`
 - restyle grid item
 - change img to background + cover or so
 - grid item selection => big pic mode + details / rename, delete
-- node with rest service images images/id : patch : rename
 - master view / grid DONE
 - grid item / title DONE
 - restyle background DONE
