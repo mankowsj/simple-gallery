@@ -11,6 +11,10 @@ const Footer = ({className}: FooterProps) => (
         <ul>
           <li>Webpack 4</li>
           <li>Visual Studio Code</li>
+          <li>FontForge</li>
+          <li>
+            <a href="https://www.svgbackgrounds.com/">svgbackgrounds.com</a>
+          </li>
         </ul>
       </section>
       <section>
