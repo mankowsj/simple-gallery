@@ -7,6 +7,7 @@
 
   label {
     display: inline-block;
+    z-index: 1;
     /* @include cubic(transform); */
     transform: perspective(50px);
     cursor: pointer;
@@ -16,11 +17,12 @@
     position: relative;
     display: inline-block;
     border: 1px solid;
+    border-color: inherit;
     border-right: 0;
     padding: 2px 16px;
-    color: black;
+    color: inherit;
     overflow: hidden;
-    border-color: rgba(235, 179, 90, 1);
+    /* border-color: rgba(235, 179, 90, 1); */
     /* &:hover label {
       transform: perspective(50px) translateZ(6px);
     } */
@@ -31,11 +33,11 @@
       height: 100%;
       width: 100%;
       @include cubic(opacity, 1000ms);
-      background: linear-gradient(180deg, rgba(235, 179, 90, 1) 0%, rgba(223, 70, 96, 1) 100%);
+      /* background: linear-gradient(180deg, rgba(235, 179, 90, 1) 0%, rgba(223, 70, 96, 1) 100%); */
       opacity: 0;
       left: 0;
       top: 0;
-      z-index: -1;
+      z-index: 0;
     }
 
     &:first-child {
@@ -45,7 +47,8 @@
 
     &:last-child {
       border-right: 1px solid;
-      border-color: rgba(235, 179, 90, 1);
+      border-color: inherit;
+      /* border-color: rgba(235, 179, 90, 1); */
       border-top-right-radius: 6px;
       border-bottom-right-radius: 6px;
     }
