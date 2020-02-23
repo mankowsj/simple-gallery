@@ -9,6 +9,5 @@ export const imageReducer = (
   state: StoreType['imageReducer'] = defaultValue,
   action: ImageActionType
 ): StoreType['imageReducer'] => {
-  console.warn('imADSSADAS', action);
   return state;
 };

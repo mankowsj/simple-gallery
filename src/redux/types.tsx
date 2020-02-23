@@ -21,4 +21,4 @@ type StoreType = {
   themeReducer: ThemeValues;
 };
 
-export {AppModeAction, AppModeActionType, PositionActionType, ImageActionType, StoreType, ThemeActionType};
+export {AppModeAction, AppModeActionType, PositionActionType, ImageActionType, StoreType, ThemeActionType, ThemeValues};

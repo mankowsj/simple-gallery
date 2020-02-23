@@ -13,7 +13,6 @@ type AppProps = {
 };
 
 const App = ({appMode, theme}: AppProps) => {
-  console.warn('App', appMode, theme);
   const Body = appMode === 'GALLERY_MODE' ? Gallery : BigPicture;
 
   return (

@@ -1,15 +1,28 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {StoreType} from '@redux';
+import {setTheme} from '@redux/actions';
+import {ThemeValues} from '@redux/types';
 import './header.styles.pcss';
 import {Switch} from '../../components/switch';
-import '../../redux/actions';
 
 type HeaderProps = {
   className: string;
+  setTheme: any;
 };
 
-const Header = ({className}: HeaderProps) => (
+const themeList: {label: string; value: ThemeValues}[] = [
+  {
+    label: 'Light mode',
+    value: 'theme-light'
+  },
+  {
+    label: 'Dark mode',
+    value: 'theme-dark'
+  }
+];
+
+const Header = ({className, setTheme}: HeaderProps) => (
   <header className="secondary-light">
     <div className="whitening">
       <section className="narrow header-content">
@@ -19,7 +32,7 @@ const Header = ({className}: HeaderProps) => (
         </div>
 
         <div className="controls vertical-fix">
-          <Switch labels={['Light mode', 'Dark mode']} />
+          <Switch onChange={(value: string) => setTheme(value)} labels={themeList} />
         </div>
       </section>
     </div>
@@ -30,7 +43,10 @@ Header.defaultProps = {
   className: ''
 };
 
-const mapStateToProps = (state: StoreType) => ({});
-const ConnectedHeader = connect(mapStateToProps)(Header);
+const mapStateToProps = (state: StoreType) => ({selectedTheme: state.themeReducer});
+const ConnectedHeader = connect(
+  mapStateToProps,
+  {setTheme}
+)(Header);
 
 export {ConnectedHeader as Header};

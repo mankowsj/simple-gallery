@@ -1,24 +1,45 @@
 import React, {useState} from 'react';
+import {ThemeValues} from '@redux/types';
 import './switch.styles.pcss';
 
-type SwitchProps = {
+type LabelObj = {label: string; value: string};
+
+type SwitchBaseProps = {
   className?: string;
-  labels: [string, string];
-  onChange: (value: number) => void;
+  onChange: (value: string) => void;
+  initialValue?: string;
 };
-const Switch = ({labels, onChange, className}: SwitchProps) => {
-  const [value, setValue] = useState(0);
+type SwitchSimpleProps = {
+  labels: Array<string>;
+};
+type SwitchExtendedProps = {
+  labels: Array<LabelObj>;
+};
+
+type SwitchProps = SwitchBaseProps & (SwitchSimpleProps | SwitchExtendedProps);
+
+const fixSimpleList = (list: any[]) => {
+  if (typeof list[0] === 'string') {
+    return list.map((label, index) => ({label, value: index}));
+  }
+  return list;
+};
+
+const Switch = ({labels, onChange, className, initialValue}: SwitchProps) => {
+  const [selectedIndex, setSelectedIndex] = useState(initialValue || '0');
+
+  const fixedLabels = fixSimpleList(labels);
 
   return (
     <div className={`${className} switch`}>
-      {labels.map((label, index) => (
+      {fixedLabels.map<any>(({label, value}: LabelObj, index: number) => (
         <span
-          key={label}
+          key={value}
           onClick={() => {
-            setValue(index);
-            onChange(index);
+            setSelectedIndex(String(index));
+            onChange(value);
           }}
-          className={`switch-button ${index === value ? 'on' : ''}`}>
+          className={`switch-button ${String(index) === selectedIndex ? 'on' : ''}`}>
           <label>{label}</label>
         </span>
       ))}
