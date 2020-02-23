@@ -63,7 +63,6 @@ const BigPicture = ({className, setAppMode, imageList, selectedIndex, removeImag
           <img src={selectedImage.filepath} />
           <ImageDetails
             onRemoval={index => {
-              console.warn('REMOVAL', index);
               removeImage(index);
               setVisibility(2);
             }}

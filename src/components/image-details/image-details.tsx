@@ -3,13 +3,14 @@ import './image-details.styles.pcss';
 import {ActionButton} from '@components/action-button';
 import {ActionInput} from '@components/action-input';
 import {connect} from 'react-redux';
-import {removeImage, setAppMode} from '@redux/actions';
+import {removeImage, setAppMode, setImageName} from '@redux/actions';
 
 type ImageDetails = {
   className?: string;
   image: ReduxImage;
   removeImage: typeof removeImage;
   setAppMode: typeof setAppMode;
+  setImageName: typeof setImageName;
   onRemoval: (index: number) => void;
 };
 
@@ -55,7 +56,7 @@ const getEditButtonStyle = (isVisible: boolean): React.CSSProperties =>
         opacity: 0
       };
 
-const ImageDetails = ({className, image, onRemoval}: ImageDetails) => {
+const ImageDetails = ({className, image, onRemoval, setImageName}: ImageDetails) => {
   const [imageData, setImageData] = useState(getDefaultImageData());
   const [editMode, setEditMode] = useState(false);
 
@@ -69,7 +70,7 @@ const ImageDetails = ({className, image, onRemoval}: ImageDetails) => {
         extension: image.extension
       })
     );
-  }, [image]);
+  }, [image, editMode]);
   const isImageOk = !isNaN(Number(imageData.width));
 
   return (
@@ -84,10 +85,15 @@ const ImageDetails = ({className, image, onRemoval}: ImageDetails) => {
                 style={getInputStyle(editMode)}
                 className="filename-input"
                 focus={editMode}
+                placeholder={image.filename}
+                onSubmit={(name: string) => {
+                  setImageName(image.index, name);
+                  setEditMode(false);
+                }}
                 onCancel={() => setEditMode(false)}
               />
               <span style={getInputStyle(!editMode)} className="filename">
-                {editMode ? false : imageData.filename}
+                {editMode ? false : image.filename}
               </span>
             </React.Fragment>,
             <ActionButton
@@ -121,6 +127,6 @@ ImageDetails.defaultProps = {
   onRemoval: () => {}
 };
 
-const ConnectedImageDetails = connect(null, {removeImage, setAppMode})(ImageDetails);
+const ConnectedImageDetails = connect(null, {removeImage, setAppMode, setImageName})(ImageDetails);
 
 export {ConnectedImageDetails as ImageDetails};
