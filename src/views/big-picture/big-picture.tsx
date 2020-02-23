@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import './big-picture.styles.pcss';
 import {setAppMode, removeImage} from '@redux/actions';
 import {StoreType} from '@redux';
-import {IconButton} from '@components/icon-button';
+import {ActionButton} from '@components/action-button';
 import {ImageDetails} from '@components/image-details';
 
 type BigPictureProps = {
@@ -51,7 +51,7 @@ const BigPicture = ({className, setAppMode, imageList, selectedIndex, removeImag
         }}
         className={`big-picture ${getVisibilityModifier(isVisible)}`}>
         <nav>
-          <IconButton
+          <ActionButton
             size={40}
             onClick={() => {
               setVisibility(2);
