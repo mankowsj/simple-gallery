@@ -14,6 +14,8 @@ To run the app just execute `npm ci && npm start`
 
 ## Nice to have
 
+- local storage
+- welcome page with transition of background
 - infi scroll
 - keyboard support
 - media query pc/tab/phone
@@ -26,6 +28,5 @@ To run the app just execute `npm ci && npm start`
 ## Nice to have later
 
 - css-modules
-- local storage
 - alternative theme
 - alternative layouts
