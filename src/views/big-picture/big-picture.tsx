@@ -62,7 +62,7 @@ const BigPicture = ({className, setAppMode, imageList, selectedIndex}: BigPictur
           <img src={selectedImage.filepath} />
           <ImageDetails image={selectedImage} className="selected-image-details" />
         </section>
-        <Slider className="bottom-slider" images={imageList} selectedIndex={selectedIndex} />
+        {/* <Slider className="bottom-slider" images={imageList} selectedIndex={selectedIndex} /> */}
       </main>
     </div>
   );
