@@ -22,8 +22,8 @@
     //   "src"
     // ],
     "paths": {
-      "components/*": ["src/components/*"],
-      "base/*": ["src/components/base/*"],
+      "@components/*": ["src/components/*"],
+      "@redux/*": ["src/redux/*"],
       "svg/*": ["src/svg/*"]
     },
     "jsx": "react",
