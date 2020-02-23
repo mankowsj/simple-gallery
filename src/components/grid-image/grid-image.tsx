@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import './grid-image.styles.pcss';
+import {Pic} from '@components/pic';
 
 type GridImageProps = {
   className: string;
@@ -9,12 +10,13 @@ type GridImageProps = {
 };
 const GridImage = ({className, imageName, imageSrc, onClick}: GridImageProps) => {
   const [hovered, setHover] = useState(false);
+  const [error, setError] = useState(false);
 
   return (
-    <div className={`${className} grid-image`}>
-      <img
+    <div className={`${className} grid-image ${error ? 'no-image' : ''}`}>
+      <Pic
+        className="grid-image_pic"
         onClick={onClick}
-        // className={hovered ? 'zoom-in' : ''}
         src={imageSrc}
         onMouseOver={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
