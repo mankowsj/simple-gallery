@@ -5,6 +5,7 @@ To run the app just execute `npm ci && npm start`
 ## TODO
 
 - details mode: rename, delete
+- fix dialog scroll mode
 - fix redux types
 - fix border on switch for webkit
 - change img to background + cover or so
