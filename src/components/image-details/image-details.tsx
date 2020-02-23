@@ -15,19 +15,19 @@ type ImageDetails = {
 };
 
 const getImageData = (image: ReduxImage) =>
-  new Promise((resolve, reject) => {
+  new Promise<HTMLImageElement>((resolve, reject) => {
     const imageObj = new Image();
-    imageObj.onload = data => resolve(data.target);
+    imageObj.onload = data => resolve(imageObj);
     imageObj.onerror = reject;
     imageObj.src = image.filepath;
-  }).catch(err => ({error: err}));
+  }).catch(err => ({inError: err}));
 
-const getDefaultImageData = (): ImageObj => ({
-  height: 'loading',
-  filename: 'loading',
-  width: 'loading',
-  location: 'loading',
-  extension: 'loading'
+const getDefaultImageData = (str = 'loading'): ImageObj => ({
+  height: str,
+  filename: str,
+  width: str,
+  location: str,
+  extension: str
 });
 
 type ImageObj = {
@@ -61,15 +61,19 @@ const ImageDetails = ({className, image, onRemoval, setImageName}: ImageDetails)
   const [editMode, setEditMode] = useState(false);
 
   useLayoutEffect(() => {
-    const imageData = getImageData(image).then((imageObj: any) =>
-      setImageData({
-        width: imageObj.width,
-        height: imageObj.height,
-        filename: image.filename,
-        location: image.location,
-        extension: image.extension
-      })
-    );
+    const imageData = getImageData(image).then(imageObj => {
+      if (imageObj instanceof HTMLImageElement) {
+        setImageData({
+          width: String(imageObj.width),
+          height: String(imageObj.height),
+          filename: image.filename,
+          location: image.location,
+          extension: image.extension
+        });
+      } else {
+        setImageData(getDefaultImageData('in error'));
+      }
+    });
   }, [image, editMode]);
   const isImageOk = !isNaN(Number(imageData.width));
 

@@ -10,19 +10,20 @@ type SwitchBaseProps = {
   initialValue?: string;
 };
 type SwitchSimpleProps = {
-  labels: Array<string>;
+  labels: string[];
 };
 type SwitchExtendedProps = {
-  labels: Array<LabelObj>;
+  labels: LabelObj[];
 };
 
 type SwitchProps = SwitchBaseProps & (SwitchSimpleProps | SwitchExtendedProps);
+type LL = SwitchProps['labels'];
 
-const fixSimpleList = (list: any[]) => {
+const fixSimpleList = (list: LL): LabelObj[] => {
   if (typeof list[0] === 'string') {
-    return list.map((label, index) => ({label, value: index}));
+    return (list as string[]).map((label: string, index: number) => ({label, value: String(index)}));
   }
-  return list;
+  return list as LabelObj[];
 };
 
 const Switch = ({labels, onChange, className, initialValue}: SwitchProps) => {
@@ -32,7 +33,7 @@ const Switch = ({labels, onChange, className, initialValue}: SwitchProps) => {
 
   return (
     <div className={`${className} switch`}>
-      {fixedLabels.map<any>(({label, value}: LabelObj, index: number) => (
+      {fixedLabels.map(({label, value}: LabelObj, index: number) => (
         <span
           key={value}
           onClick={() => {

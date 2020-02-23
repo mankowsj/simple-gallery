@@ -8,7 +8,7 @@ import {StoreType} from '../../redux';
 type GalleryProps = {
   className?: string;
   setAppMode: typeof setAppMode;
-  setSelectedImage: any;
+  setSelectedImage: typeof setSelectedImage;
   imageList: ReduxImage[];
 };
 const Gallery = ({className, setAppMode, imageList, setSelectedImage}: GalleryProps) => (
