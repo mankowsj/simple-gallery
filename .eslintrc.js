@@ -6,14 +6,7 @@ module.exports = {
     'plugin:import/errors',
     'plugin:import/warnings'
   ],
-  plugins: [
-    '@typescript-eslint',
-    'prettier',
-    'import',
-    'react',
-    'typescript',
-    'react-hooks'
-  ],
+  plugins: ['@typescript-eslint', 'prettier', 'import', 'react', 'typescript', 'react-hooks'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     project: './tsconfig.json',
@@ -33,38 +26,32 @@ module.exports = {
         config: './webpack.resolve.js'
       }
     },
-    'import/ignore': [
-      'node_modules'
-    ],
+    'import/ignore': ['node_modules'],
     'import/parsers': {
       '@typescript-eslint/parser': ['.ts', '.tsx']
     },
-    'import/extensions': [
-      '.js',
-      '.jsx',
-      '.ts',
-      '.tsx'
-    ],
-    'react': {
-      'version': 'detect'
+    'import/extensions': ['.js', '.jsx', '.ts', '.tsx'],
+    react: {
+      version: 'detect'
     }
   },
   rules: {
     'no-unused-vars': 0,
     'no-undef': 0,
+    'no-debugger': 1,
 
     'prettier/prettier': 'error',
-    quotes: [
-      'error',
-      'single'
-    ],
+    quotes: ['error', 'single'],
     'react/no-unescaped-entities': 0,
-    'react/jsx-tag-spacing': [2, {
-      closingSlash: 'never',
-      beforeSelfClosing: 'always',
-      afterOpening: 'never',
-      beforeClosing: 'allow'
-    }],
+    'react/jsx-tag-spacing': [
+      2,
+      {
+        closingSlash: 'never',
+        beforeSelfClosing: 'always',
+        afterOpening: 'never',
+        beforeClosing: 'allow'
+      }
+    ],
 
     'typescript/no-unused-vars': 2,
     // 'typescript/no-undef': 2,
