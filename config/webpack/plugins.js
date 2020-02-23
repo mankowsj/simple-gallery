@@ -4,7 +4,8 @@ var Utils = require('./utils'),
 
 module.exports = [
     new HtmlWebpackPlugin({
-        template: Utils.fromRoot('config/htmlTemplates/index.ejs')
+        template: Utils.fromRoot('config/htmlTemplates/index.ejs'),
+        inject: true
     }),
     new MiniCssExtractPlugin({
         filename: '[name].st.css',
