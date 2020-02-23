@@ -19,7 +19,7 @@ const GridImage = ({className, imageName, imageSrc, onClick}: GridImageProps) =>
         onMouseOver={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
       />
-      <div className="image-name">File name: {imageName}</div>
+      <label>Filename: {imageName}</label>
     </div>
   );
 };
