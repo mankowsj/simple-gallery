@@ -16,7 +16,7 @@ const App = ({appMode}: AppProps) => {
   const Body = appMode === 'GALLERY_MODE' ? Gallery : BigPicture;
 
   return (
-    <div className="app theme-light">
+    <div className="app theme-light background">
       <Header />
       <Body className="grow narrow" />
       <Footer />
