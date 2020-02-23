@@ -1,0 +1,18 @@
+$transition-base: cubic-bezier(0.26, 1.71, 0.77, 1.26);
+$default-time: 250ms;
+
+@mixin cubic($prop) {
+  transition: $default-time $transition-base $prop;
+}
+
+@mixin duo-cubic-base($p1, $p2, $time) {
+  transition: $time $transition-base $p1, $time $transition-base $p2;
+}
+
+@mixin duo-cubic-time($p1, $p2, $time) {
+  @include duo-cubic-base($p1, $p2, $time);
+}
+
+@mixin duo-cubic($p1, $p2) {
+  @include duo-cubic-base($p1, $p2, $default-time);
+}

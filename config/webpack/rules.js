@@ -1,4 +1,5 @@
 var exclude = /node_modules/,
+  {fromRoot} = require('./utils'),
   MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = [
@@ -46,18 +47,29 @@ module.exports = [
         options: {
           ident: 'postcss',
           plugins: () => [
-            require('postcss-mixins'),
-            require('postcss-calc'),
-            require('postcss-import'),
-            require('precss'),
-            // require('postcss-modules'),
+            require('postcss-mixins')({
+              mixinsDir: fromRoot('src/global-styles/mixins')
+            }),
             require('postcss-preset-env')({
               stage: 3,
               features: {
+                preserve: false,
                 'nesting-rules': true
               }
             }),
-            require('autoprefixer')
+            require('postcss-custom-properties')({
+              preserve: false
+            }),
+            // require('postcss-simple-vars'),
+
+            // require('postcss-calc'),
+            require('postcss-import')(),
+            require('postcss-advanced-variables')({}),
+            require('precss'),
+            // require('postcss-modules'),
+            require('autoprefixer')({
+              flexbox: true
+            })
           ]
         }
       }

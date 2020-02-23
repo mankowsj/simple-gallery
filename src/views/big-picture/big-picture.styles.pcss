@@ -1,3 +1,5 @@
+@import '../../global-styles/mixins/animations.pcss';
+
 .big-picture {
   position: fixed;
   height: 100vh;
@@ -7,7 +9,8 @@
   opacity: 0;
   background: rgba(0, 0, 0, 0.9);
   transform: perspective(50px) translateZ(-13px);
-  transition: 300ms ease-in-out opacity, 300ms ease-in-out transform;
+  @include duo-cubic-time(opacity, transform, 350ms);
+  /* transition: 250ms $transition-base transform */
   display: flex;
   flex-direction: column;
 
