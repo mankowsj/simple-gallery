@@ -12,9 +12,6 @@ const Footer = ({className}: FooterProps) => (
           <li>Webpack 4</li>
           <li>Visual Studio Code</li>
           <li>FontForge</li>
-          <li>
-            <a href="https://www.svgbackgrounds.com/">svgbackgrounds.com</a>
-          </li>
         </ul>
       </section>
       <section>
@@ -38,6 +35,17 @@ const Footer = ({className}: FooterProps) => (
           <li>Chrome</li>
           <li>Firefox</li>
           <li>Edge</li>
+        </ul>
+      </section>
+      <section>
+        <h3>Attributions</h3>
+        <ul>
+          <li>
+            <a href="https://www.freeiconspng.com/img/23480">Pictures No Icon</a>
+          </li>
+          <li>
+            <a href="https://www.svgbackgrounds.com/">svgbackgrounds.com</a>
+          </li>
         </ul>
       </section>
     </div>
