@@ -13,7 +13,7 @@ declare module '*.svg' {
   export default content;
 }
 
-type ReduxImage = {filepath: string; filename: string; extension: string; location: string};
+type ReduxImage = {filepath: string; filename: string; extension: string; location: string; index: number};
 
 type Extract2<T, U extends T> = T extends U ? T : never;
 //

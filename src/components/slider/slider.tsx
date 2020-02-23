@@ -12,7 +12,7 @@ type SliderProps = {
 const getEmptyImageList = (length: number): ReduxImage[] =>
   Array(length)
     .fill(1)
-    .map((v, idx) => ({filename: String(idx), filepath: '', location: '', extension: ''}));
+    .map((v, idx) => ({filename: String(idx), filepath: '', location: '', extension: '', index: -1}));
 const reduceImages = (list: ReduxImage[], selectedIndex: number): ReduxImage[] => {
   let start = selectedIndex - 2;
   let end = selectedIndex + 2;
