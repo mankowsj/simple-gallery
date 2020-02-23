@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {connect} from 'react-redux';
 import './big-picture.styles.pcss';
-import {setGalleryMode} from '@redux/actions';
+import {setAppMode} from '@redux/actions';
 import {StoreType} from '@redux';
 import {IconButton} from '@components/icon-button';
 import {Slider} from '@components/slider';
@@ -9,7 +9,7 @@ import {ImageDetails} from '@components/image-details';
 
 type BigPictureProps = {
   className?: string;
-  setGalleryMode: any;
+  setAppMode: typeof setAppMode;
   imageList: ReduxImage[];
   selectedIndex: number;
 };
@@ -33,7 +33,7 @@ const getVisibilityModifier = (state: number) => {
 };
 const isExiting = (status: number) => status === VisiblityMap.Exiting;
 
-const BigPicture = ({className, setGalleryMode, imageList, selectedIndex}: BigPictureProps) => {
+const BigPicture = ({className, setAppMode, imageList, selectedIndex}: BigPictureProps) => {
   const [isVisible, setVisibility] = useState(0);
   const selectedImage = imageList[selectedIndex];
 
@@ -46,7 +46,7 @@ const BigPicture = ({className, setGalleryMode, imageList, selectedIndex}: BigPi
       <main
         onTransitionEnd={() => {
           if (isExiting(isVisible)) {
-            setGalleryMode();
+            setAppMode('GALLERY_MODE');
           }
         }}
         className={`big-picture ${getVisibilityModifier(isVisible)}`}>
@@ -77,7 +77,7 @@ const mapStateToProps = ({imageReducer}: StoreType) => ({
 });
 const ConnectedBigPicture = connect(
   mapStateToProps,
-  {setGalleryMode}
+  {setAppMode}
 )(BigPicture);
 
 export {ConnectedBigPicture as BigPicture};

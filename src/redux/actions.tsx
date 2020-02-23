@@ -1,10 +1,13 @@
-import {AppModeActionType, ThemeActionType, ThemeValues} from './types';
+import {AppModeActionType, ThemeActionType, ThemeValues, ImageActionType} from './types';
 
-const setGalleryMode = (): AppModeActionType => ({type: 'GALLERY_MODE'});
-const setBigPictureMode = (): AppModeActionType => ({type: 'BIG_PIC_MODE'});
+type AppModeType = 'GALLERY_MODE' | 'BIG_PIC_MODE';
 
-const setSelectedImage = (index: number) => ({type: 'SET_SELECTED_IMAGE', value: index});
+const setAppMode = (mode: AppModeType): AppModeActionType => ({type: 'SET_APP_MODE', value: mode});
+const setSelectedImage = (index: number): ImageActionType => ({
+  type: 'SET_SELECTED_IMAGE_ID',
+  value: index
+});
 
 const setTheme = (value: ThemeValues): ThemeActionType => ({type: 'SET_THEME', value});
 
-export {setGalleryMode, setBigPictureMode, setSelectedImage, setTheme};
+export {setAppMode, setSelectedImage, setTheme, AppModeType};

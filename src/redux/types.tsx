@@ -1,22 +1,28 @@
 import {AppModeAction, PositionAction, ImageAction, ThemeAction} from './actions-names';
+import {AppModeType} from './actions';
 
-type ActionType<T, S = never> = {
+type ActionType<T, S> = {
   type: T;
-  value?: S;
+  value: S;
+};
+type SimpleActionType<T> = {
+  type: T;
 };
 
-type PositionActionType = ActionType<PositionAction>;
+type PositionActionType = SimpleActionType<PositionAction>;
 type AppModeActionType = ActionType<AppModeAction, String>;
 
 type ImageStore = {imageList: ReduxImage[]; selectedIndex: number};
-type ImageActionType = ActionType<ImageAction, ImageStore>;
+type ImageSelectedAction = ActionType<Extract2<ImageAction, 'SET_SELECTED_IMAGE_ID'>, ImageStore['selectedIndex']>;
+type ImageListAction = ActionType<Extract2<ImageAction, 'SET_IMAGE_LIST'>, ImageStore['imageList']>;
+type ImageActionType = ImageSelectedAction | ImageListAction;
 
 type ThemeValues = 'theme-light' | 'theme-dark';
 type ThemeActionType = ActionType<ThemeAction, ThemeValues>;
 
 type StoreType = {
   positionReducer: number;
-  appModeReducer: AppModeAction;
+  appModeReducer: AppModeType;
   imageReducer: ImageStore;
   themeReducer: ThemeValues;
 };

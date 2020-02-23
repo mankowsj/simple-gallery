@@ -15,5 +15,9 @@ export const imageReducer = (
   state: StoreType['imageReducer'] = defaultValue,
   action: ImageActionType
 ): StoreType['imageReducer'] => {
+  console.warn('imageReducer', action);
+  if (action.type === 'SET_SELECTED_IMAGE_ID') {
+    return {...state, selectedIndex: action.value};
+  }
   return state;
 };
