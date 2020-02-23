@@ -1,22 +1,42 @@
 import React from 'react';
 import './icon-button.styles.pcss';
 
+/** icons v1 **/
+
+// const IconMap = {
+//   grid: 'e800',
+//   list: 'e801',
+//   close: 'e802',
+//   download: 'e803'
+// };
 const IconMap = {
-  grid: '800',
-  list: '801',
-  close: '802',
-  download: '803'
+  download: 'e804',
+  delete: 'e800',
+  list: 'e0ca',
+  grid: 'e803',
+  edit: 'e801',
+  close: 'e802',
+  zoom: 'f07e'
 };
 type IconName = keyof typeof IconMap;
 
 type IconButtonProps = {
+  className?: string;
   name: IconName;
+  size?: number;
   onClick?: React.MouseEventHandler;
 };
-const IconButton = ({name, onClick}: IconButtonProps) => (
-  <span onClick={onClick} dangerouslySetInnerHTML={{__html: `&#xe${IconMap[name]};`}} className="icon-button" />
+const getStyle = (size: number | undefined) => (size ? {width: `${size}px`, height: `${size}px`} : {});
+const IconButton = ({name, onClick, size}: IconButtonProps) => (
+  <span
+    style={getStyle(size)}
+    onClick={onClick}
+    dangerouslySetInnerHTML={{__html: `&#x${IconMap[name]};`}}
+    className="icon-button"
+  />
 );
 IconButton.defaultProps = {
+  className: '',
   onClick: () => {}
 };
 
