@@ -15,18 +15,6 @@ module.exports = {
     pathinfo: true,
     path: path.join(__dirname, './build')
   },
-  // optimization: {
-  //     splitChunks: {
-  //         cacheGroups: {
-  //             styles: {
-  //                 name: 'styles',
-  //                 test: /\.css$/,
-  //                 chunks: 'all',
-  //                 enforce: true
-  //             }
-  //         }
-  //     }
-  // },
   devServer,
   resolve,
   plugins,
