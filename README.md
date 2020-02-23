@@ -15,6 +15,7 @@ To run the app just execute `npm ci && npm start`
 ## Nice to have
 
 - local storage
+- tooltips ?
 - welcome page with transition of background
 - infi scroll
 - keyboard support

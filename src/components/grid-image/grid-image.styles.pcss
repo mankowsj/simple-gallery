@@ -4,24 +4,29 @@
   text-align: center;
   display: flex;
   flex-direction: column;
+  transform-origin: inherit;
+  @include cubic(transform);
+  position: relative;
   /* box-shadow: 1px 1px 8px 2px rgba(0, 0, 0, 0.7); */
 
   img {
     border: 1px solid rgba(0, 0, 0, 0.5);
     border-style: dotted;
     cursor: pointer;
-    @include cubic(transform);
     display: inline-block;
     max-width: 100%;
-    max-height: calc(100% - 32px);
-    transform-origin: inherit;
+    max-height: 100%;
     object-fit: contain;
   }
 
-  .grid-title {
+  .image-name {
+    transform: translateY(-100%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 4px;
   }
 
-  .zoom-in {
+  &:hover {
     z-index: 1;
     transform: perspective(100px) translateZ(10px);
   }
