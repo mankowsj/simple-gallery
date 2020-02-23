@@ -4,10 +4,11 @@ To run the app just execute `npm ci && npm start`
 
 ## TODO
 
-- fix redux types
-- restyle grid item
-- change img to background + cover or so
 - grid item selection => big pic mode + details / rename, delete
+- fix redux types
+- fix border on switch for webkit
+- change img to background + cover or so
+- restyle grid item DONE?
 - master view / grid DONE
 - grid item / title DONE
 - restyle background DONE
