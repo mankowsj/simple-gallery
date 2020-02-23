@@ -22,10 +22,12 @@
     padding: 2px 16px;
     color: inherit;
     overflow: hidden;
-    /* border-color: rgba(235, 179, 90, 1); */
-    /* &:hover label {
-      transform: perspective(50px) translateZ(6px);
-    } */
+    @include cubic(background, 1000ms);
+
+    &:hover:after {
+      @include cubic(background);
+      opacity: 0.3;
+    }
 
     &:after {
       content: '';
