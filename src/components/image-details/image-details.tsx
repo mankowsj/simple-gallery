@@ -45,6 +45,16 @@ const getTableRow = (desc: string, value: string | JSX.Element, button?: JSX.Ele
   </tr>
 );
 
+const getInputStyle = (editMode: boolean): React.CSSProperties =>
+  editMode ? {} : {visibility: 'hidden', maxWidth: '1px'};
+const getEditButtonStyle = (isVisible: boolean): React.CSSProperties =>
+  isVisible
+    ? {}
+    : {
+        pointerEvents: 'none',
+        opacity: 0
+      };
+
 const ImageDetails = ({className, image, onRemoval}: ImageDetails) => {
   const [imageData, setImageData] = useState(getDefaultImageData());
   const [editMode, setEditMode] = useState(false);
@@ -69,16 +79,23 @@ const ImageDetails = ({className, image, onRemoval}: ImageDetails) => {
         <tbody>
           {getTableRow(
             'Filename:',
-            editMode ? (
-              <ActionInput className="filename-input" focus onCancel={() => setEditMode(false)} />
-            ) : (
-              imageData.filename
-            ),
-            !editMode && isImageOk ? (
-              <ActionButton colors={['black', 'white']} name="edit" onClick={() => setEditMode(true)} />
-            ) : (
-              false
-            )
+            <React.Fragment>
+              <ActionInput
+                style={getInputStyle(editMode)}
+                className="filename-input"
+                focus={editMode}
+                onCancel={() => setEditMode(false)}
+              />
+              <span style={getInputStyle(!editMode)} className="filename">
+                {editMode ? false : imageData.filename}
+              </span>
+            </React.Fragment>,
+            <ActionButton
+              style={getEditButtonStyle(!editMode && isImageOk)}
+              colors={['black', 'white']}
+              name="edit"
+              onClick={() => setEditMode(true)}
+            />
           )}
           {getTableRow('Extension:', imageData.extension)}
           {getTableRow('Location:', imageData.location)}
