@@ -2,13 +2,13 @@
 
 .action-button {
   cursor: pointer;
-  padding: 3px 16px;
+  padding: 5px 16px;
   color: white;
+  border-radius: 4px;
+  transform: perspective(50px) translateZ(0);
+  display: inline-block;
   @include cubic(all);
-
-  &.black-style {
-    border: 2px solid;
-    border-color: currentColor;
-    border-radius: 4px;
+  &:hover {
+    transform: perspective(50px) translateZ(5px);
   }
 }

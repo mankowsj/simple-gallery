@@ -58,14 +58,18 @@ const ImageDetails = ({className, image}: ImageDetails) => {
       <h3>Image data:</h3>
       <table cellPadding={6}>
         <tbody>
-          {getTableRow('Filename:', imageData.filename, <ActionButton onBlack name="edit" onClick={() => {}} />)}
+          {getTableRow(
+            'Filename:',
+            imageData.filename,
+            <ActionButton colors={['black', 'white']} name="edit" onClick={() => {}} />
+          )}
           {getTableRow('Extension:', imageData.extension)}
           {getTableRow('Location:', imageData.location)}
           {getTableRow('Width:', imageData.width)}
           {getTableRow('Height:', imageData.height)}
         </tbody>
       </table>
-      <ActionButton className="remove" color="#ff4343" onBlack name="delete" onClick={() => {}} />
+      <ActionButton className="remove" colors={['white', '#ff4343']} name="delete" onClick={() => {}} />
     </section>
   );
 };

@@ -3,17 +3,13 @@ import {IconButton} from '@components/icon-button';
 import './action-button.styles.pcss';
 
 type ActionButtonProps = React.ComponentProps<typeof IconButton> & {
-  onBlack?: boolean;
-  color?: string;
+  colors?: [string, string];
 };
 
-const getColorStyle = (color: string | undefined) => (color ? {color} : {});
+const getColorStyle = (colors: string[] | undefined) => (colors ? {color: colors[0], background: colors[1]} : {});
 
-const ActionButton = ({onBlack, color, onClick, className, ...rest}: ActionButtonProps) => (
-  <span
-    onClick={onClick}
-    style={getColorStyle(color)}
-    className={`${className} ${onBlack ? 'black-style' : ''} action-button`}>
+const ActionButton = ({colors, onClick, className, ...rest}: ActionButtonProps) => (
+  <span onClick={onClick} style={getColorStyle(colors)} className={`${className} action-button`}>
     <IconButton {...rest} />
   </span>
 );
