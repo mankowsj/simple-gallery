@@ -1,10 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import {connect} from 'react-redux';
 import './big-picture.styles.pcss';
-import {setAppMode} from '@redux/actions';
+import {setAppMode, removeImage} from '@redux/actions';
 import {StoreType} from '@redux';
 import {IconButton} from '@components/icon-button';
-import {Slider} from '@components/slider';
 import {ImageDetails} from '@components/image-details';
 
 type BigPictureProps = {
@@ -12,6 +11,7 @@ type BigPictureProps = {
   setAppMode: typeof setAppMode;
   imageList: ReduxImage[];
   selectedIndex: number;
+  removeImage: typeof removeImage;
 };
 
 const VisiblityMap = {
@@ -33,7 +33,7 @@ const getVisibilityModifier = (state: number) => {
 };
 const isExiting = (status: number) => status === VisiblityMap.Exiting;
 
-const BigPicture = ({className, setAppMode, imageList, selectedIndex}: BigPictureProps) => {
+const BigPicture = ({className, setAppMode, imageList, selectedIndex, removeImage}: BigPictureProps) => {
   const [isVisible, setVisibility] = useState(0);
   const selectedImage = imageList[selectedIndex];
 
@@ -44,7 +44,7 @@ const BigPicture = ({className, setAppMode, imageList, selectedIndex}: BigPictur
   return (
     <div className={`${className} big-pic-flex`}>
       <main
-        onTransitionEnd={() => {
+        onTransitionEnd={ev => {
           if (isExiting(isVisible)) {
             setAppMode('GALLERY_MODE');
           }
@@ -61,7 +61,15 @@ const BigPicture = ({className, setAppMode, imageList, selectedIndex}: BigPictur
         </nav>
         <section className="selected-image-container">
           <img src={selectedImage.filepath} />
-          <ImageDetails image={selectedImage} className="selected-image-details" />
+          <ImageDetails
+            onRemoval={index => {
+              console.warn('REMOVAL', index);
+              removeImage(index);
+              setVisibility(2);
+            }}
+            image={selectedImage}
+            className="selected-image-details"
+          />
         </section>
         {/* <Slider className="bottom-slider" images={imageList} selectedIndex={selectedIndex} /> */}
       </main>
@@ -76,6 +84,6 @@ const mapStateToProps = ({imageReducer}: StoreType) => ({
   imageList: imageReducer.imageList,
   selectedIndex: imageReducer.selectedIndex
 });
-const ConnectedBigPicture = connect(mapStateToProps, {setAppMode})(BigPicture);
+const ConnectedBigPicture = connect(mapStateToProps, {setAppMode, removeImage})(BigPicture);
 
 export {ConnectedBigPicture as BigPicture};

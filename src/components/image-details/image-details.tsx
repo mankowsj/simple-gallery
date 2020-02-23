@@ -2,12 +2,14 @@ import React, {useEffect, useState} from 'react';
 import './image-details.styles.pcss';
 import {ActionButton} from '@components/action-button';
 import {connect} from 'react-redux';
-import {removeImage} from '@redux/actions';
+import {removeImage, setAppMode} from '@redux/actions';
 
 type ImageDetails = {
   className?: string;
   image: ReduxImage;
   removeImage: typeof removeImage;
+  setAppMode: typeof setAppMode;
+  onRemoval: (index: number) => void;
 };
 
 const getImageData = (image: ReduxImage) =>
@@ -42,7 +44,7 @@ const getTableRow = (desc: string, value: string, button?: JSX.Element | boolean
   </tr>
 );
 
-const ImageDetails = ({className, image, removeImage}: ImageDetails) => {
+const ImageDetails = ({className, image, onRemoval}: ImageDetails) => {
   const [imageData, setImageData] = useState(getDefaultImageData());
   useEffect(() => {
     const imageData = getImageData(image).then((imageObj: any) =>
@@ -78,7 +80,7 @@ const ImageDetails = ({className, image, removeImage}: ImageDetails) => {
           className="remove"
           colors={['white', '#ff4343']}
           name="delete"
-          onClick={() => removeImage(image.index)}
+          onClick={() => onRemoval(image.index)}
         />
       ) : (
         false
@@ -87,9 +89,10 @@ const ImageDetails = ({className, image, removeImage}: ImageDetails) => {
   );
 };
 ImageDetails.defaultProps = {
-  className: ''
+  className: '',
+  onRemoval: () => {}
 };
 
-const ConnectedImageDetails = connect(null, {removeImage})(ImageDetails);
+const ConnectedImageDetails = connect(null, {removeImage, setAppMode})(ImageDetails);
 
 export {ConnectedImageDetails as ImageDetails};

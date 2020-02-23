@@ -18,9 +18,10 @@ export const imageReducer = (
 ): StoreType['imageReducer'] => {
   switch (action.type) {
     case 'REMOVE_IMAGE': {
+      const imageList = state.imageList.filter((image: ReduxImage) => image.index !== action.value);
       return {
         ...state,
-        imageList: state.imageList.filter((image: ReduxImage, index: number) => index === action.value)
+        imageList
       };
     }
     case 'SET_SELECTED_IMAGE_ID': {
