@@ -7,7 +7,7 @@ import './header.styles.pcss';
 import {Switch} from '../../components/switch';
 
 type HeaderProps = {
-  className: string;
+  className?: string;
   setTheme: any;
 };
 
@@ -44,9 +44,8 @@ Header.defaultProps = {
 };
 
 const mapStateToProps = (state: StoreType) => ({selectedTheme: state.themeReducer});
-const ConnectedHeader = connect(
-  mapStateToProps,
-  {setTheme}
-)(Header);
+const ConnectedHeader = (connect(mapStateToProps, {setTheme})(Header) as any) as React.ComponentClass<
+  Omit<HeaderProps, 'setTheme'>
+>;
 
 export {ConnectedHeader as Header};
