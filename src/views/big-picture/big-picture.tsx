@@ -1,10 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import {connect} from 'react-redux';
 import './big-picture.styles.pcss';
-import {IconButton} from '../../components/icon-button';
-import {setGalleryMode} from '../../redux/actions';
-import {Slider} from '../../components/slider';
-import {StoreType} from '../../redux';
+import {setGalleryMode} from '@redux/actions';
+import {StoreType} from '@redux';
+import {IconButton} from '@components/icon-button';
+import {Slider} from '@components/slider';
+import {ImageDetails} from '@components/image-details';
 
 type BigPictureProps = {
   className?: string;
@@ -34,6 +35,7 @@ const isExiting = (status: number) => status === VisiblityMap.Exiting;
 
 const BigPicture = ({className, setGalleryMode, imageList, selectedIndex}: BigPictureProps) => {
   const [isVisible, setVisibility] = useState(0);
+  const selectedImage = imageList[selectedIndex];
 
   useEffect(() => {
     setVisibility(1);
@@ -56,8 +58,9 @@ const BigPicture = ({className, setGalleryMode, imageList, selectedIndex}: BigPi
             name="close"
           />
         </nav>
-        <section className="selected-image">
-          <img />
+        <section className="selected-image-container">
+          <img src={selectedImage.path} />
+          <ImageDetails image={selectedImage} className="selected-image-details" />
         </section>
         <Slider className="bottom-slider" images={imageList} selectedIndex={selectedIndex} />
       </main>

@@ -1,5 +1,8 @@
 @import '../../global-styles/mixins/animations.pcss';
 
+$nav-height: 64px;
+$perspective: perspective(50px);
+
 .big-picture {
   z-index: 1;
   position: fixed;
@@ -9,11 +12,11 @@
   top: 0;
   opacity: 0;
   background: rgba(0, 0, 0, 0.9);
-  transform: perspective(50px) translateZ(-13px);
+  transform: $perspective translateZ(-13px);
   @include duo-cubic(opacity, transform, 350ms);
-  /* transition: 250ms $transition-base transform */
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  /* grid-template-rows: 64px auto 124px; */
+  grid-template-rows: $nav-height calc(100vh - $nav-height) 0;
 
   .bottom-slider {
     padding: 20px;
@@ -25,20 +28,38 @@
 
   &.is-visible {
     opacity: 1;
-    transform: perspective(50px) translateZ(0px);
+    transform: $perspective translateZ(0px);
   }
 
   &.exiting {
     opacity: 0;
-    transform: perspective(50px) translateZ(13px);
+    transform: $perspective translateZ(13px);
   }
 
   nav {
-    padding: 0 48px;
+    margin: 0 48px;
     display: flex;
     flex-direction: row-reverse;
     color: white;
     border-bottom: 1px solid white;
     font-size: 48px;
+  }
+
+  .selected-image-container {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-grow: 1;
+    color: white;
+    padding: 16px;
+
+    img,
+    .selected-image-details {
+      width: 50%;
+    }
+
+    img {
+      object-fit: contain;
+      max-height: 100%;
+    }
   }
 }
