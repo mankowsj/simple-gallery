@@ -16,12 +16,12 @@ module.exports = [
     exclude,
     loader: 'ts-loader'
   },
+  // {
+  //   test: /\.svg$/,
+  //   loader: 'svg-inline-loader'
+  // },
   {
-    test: /\.svg$/,
-    loader: 'svg-inline-loader'
-  },
-  {
-    test: /\.(woff|woff2)$/,
+    test: /\.(woff|woff2|svg)$/,
     loader: 'file-loader',
     options: {
       esModule: false
