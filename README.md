@@ -12,6 +12,8 @@ To run the app just execute `npm ci && npm start`
 
 ## Nice to have
 
+- change transition to cubic bezier
+- extract transitions into mix ?
 - infi scroll
 - keyboard support
 - media query pc/tab/phone
