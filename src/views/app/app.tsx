@@ -13,12 +13,13 @@ type AppProps = {
 };
 
 const App = ({appMode, theme}: AppProps) => {
-  const Body = appMode === 'GALLERY_MODE' ? Gallery : BigPicture;
+  // const Body = appMode === 'GALLERY_MODE' ? Gallery : BigPicture;
 
   return (
     <div className={`app ${theme} background`}>
       <Header />
-      <Body className="grow narrow" />
+      <Gallery className="grow narrow" />
+      {appMode !== 'GALLERY_MODE' ? <BigPicture /> : false}
       <Footer />
     </div>
   );
