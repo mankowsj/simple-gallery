@@ -1,6 +1,9 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import {StoreType} from '@redux';
 import './header.styles.pcss';
 import {Switch} from '../../components/switch';
+import '../../redux/actions';
 
 type HeaderProps = {
   className: string;
@@ -27,4 +30,7 @@ Header.defaultProps = {
   className: ''
 };
 
-export {Header};
+const mapStateToProps = (state: StoreType) => ({});
+const ConnectedHeader = connect(mapStateToProps)(Header);
+
+export {ConnectedHeader as Header};

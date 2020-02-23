@@ -4,12 +4,14 @@ To run the app just execute `npm ci && npm start`
 
 ## TODO
 
-- restyle background
+- fix redux types
+- restyle grid item
 - change img to background + cover or so
-- master view / grid DONE
-- grid item / title DONE
 - grid item selection => big pic mode + details / rename, delete
 - node with rest service images images/id : patch : rename
+- master view / grid DONE
+- grid item / title DONE
+- restyle background DONE
 
 ## Nice to have
 

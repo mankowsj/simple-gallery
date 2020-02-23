@@ -24,6 +24,7 @@
     "paths": {
       "@components/*": ["src/components/*"],
       "@redux/*": ["src/redux/*"],
+      "@redux": ["src/redux"],
       "svg/*": ["src/svg/*"]
     },
     "jsx": "react",

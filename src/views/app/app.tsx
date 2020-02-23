@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {AppModeAction, StoreType} from '../../redux';
+import {StoreType} from '../../redux';
 import {Header} from '../header';
 import {Gallery} from '../gallery';
 import {BigPicture} from '../big-picture';
@@ -8,15 +8,16 @@ import {Footer} from '../footer';
 import './app.styles.pcss';
 
 type AppProps = {
-  appMode: AppModeAction;
+  appMode: StoreType['appModeReducer'];
+  theme: StoreType['themeReducer'];
 };
 
-const App = ({appMode}: AppProps) => {
-  console.warn('App', appMode);
+const App = ({appMode, theme}: AppProps) => {
+  console.warn('App', appMode, theme);
   const Body = appMode === 'GALLERY_MODE' ? Gallery : BigPicture;
 
   return (
-    <div className="app theme-light background">
+    <div className={`app ${theme} background`}>
       <Header />
       <Body className="grow narrow" />
       <Footer />
@@ -24,8 +25,8 @@ const App = ({appMode}: AppProps) => {
   );
 };
 
-const mapStateToProps = (state: StoreType) => ({appMode: state.appModeReducer});
+const mapStateToProps = (state: StoreType) => ({appMode: state.appModeReducer, theme: state.themeReducer});
 
-type ConnectedAppProps = Omit<AppProps, 'appMode'>;
+type ConnectedAppProps = Omit<AppProps, 'appMode' | 'theme'>;
 const ConnectedApp = (connect(mapStateToProps)(App) as any) as React.ComponentClass<ConnectedAppProps>;
 export {ConnectedApp as App};
