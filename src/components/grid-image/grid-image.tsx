@@ -13,14 +13,12 @@ const GridImage = ({className, imageName, imageSrc, onClick}: GridImageProps) =>
   const [error, setError] = useState(false);
 
   return (
-    <div className={`${className} grid-image ${error ? 'no-image' : ''}`}>
-      <Pic
-        className="grid-image_pic"
-        onClick={onClick}
-        src={imageSrc}
-        onMouseOver={() => setHover(true)}
-        onMouseLeave={() => setHover(false)}
-      />
+    <div
+      onClick={onClick}
+      onMouseOver={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
+      className={`${className} grid-image ${error ? 'no-image' : ''}`}>
+      <Pic className="grid-image_pic" src={imageSrc} />
       <label>Filename: {imageName}</label>
     </div>
   );
