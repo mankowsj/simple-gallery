@@ -4,6 +4,7 @@ To run the app just execute `npm ci && npm start`
 
 ## TODO
 
+- restyle background
 - change img to background + cover or so
 - master view / grid DONE
 - grid item / title DONE
@@ -12,14 +13,14 @@ To run the app just execute `npm ci && npm start`
 
 ## Nice to have
 
-- change transition to cubic bezier
-- extract transitions into mix ?
 - infi scroll
 - keyboard support
 - media query pc/tab/phone
 - offline mode
 - touch support // REACT ?
 - font-icons / svg-icons DONE
+- change transition to cubic bezier DONE
+- extract transitions into mix DONE
 
 ## Nice to have later
 
