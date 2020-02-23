@@ -31,6 +31,14 @@ type ImageObj = {
   extension: string;
 };
 
+const getTableRow = (desc: string, value: string, button?: JSX.Element | boolean) => (
+  <tr>
+    <td>{desc}</td>
+    <td>{value}</td>
+    <td>{button ?? false}</td>
+  </tr>
+);
+
 const ImageDetails = ({className, image}: ImageDetails) => {
   const [imageData, setImageData] = useState(getDefaultImageData());
   useEffect(() => {
@@ -44,14 +52,7 @@ const ImageDetails = ({className, image}: ImageDetails) => {
       })
     );
   }, [image]);
-
-  const getTableRow = (desc: string, value: string, button?: JSX.Element) => (
-    <tr>
-      <td>{desc}</td>
-      <td>{value}</td>
-      <td>{button ?? false}</td>
-    </tr>
-  );
+  const isImageOk = !isNaN(Number(imageData.width));
 
   return (
     <section className={`${className} image-details`}>
@@ -61,7 +62,7 @@ const ImageDetails = ({className, image}: ImageDetails) => {
           {getTableRow(
             'Filename:',
             imageData.filename,
-            <ActionButton colors={['black', 'white']} name="edit" onClick={() => {}} />
+            isImageOk ? <ActionButton colors={['black', 'white']} name="edit" onClick={() => {}} /> : false
           )}
           {getTableRow('Extension:', imageData.extension)}
           {getTableRow('Location:', imageData.location)}
@@ -69,7 +70,11 @@ const ImageDetails = ({className, image}: ImageDetails) => {
           {getTableRow('Height:', imageData.height)}
         </tbody>
       </table>
-      <ActionButton className="remove" colors={['white', '#ff4343']} name="delete" onClick={() => {}} />
+      {isImageOk ? (
+        <ActionButton className="remove" colors={['white', '#ff4343']} name="delete" onClick={() => {}} />
+      ) : (
+        false
+      )}
     </section>
   );
 };
