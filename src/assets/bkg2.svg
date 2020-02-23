@@ -1,0 +1,71 @@
+﻿<svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%' viewBox='0 0 100 60'>
+<!-- <rect fill='#df4660' width='100' height='60'/> -->
+<g opacity="0.85" style="clip-path: url(#clip-path);" >
+<rect fill='#df4660' width='11' height='11'/>
+<rect fill='#df4860' x='10' width='11' height='11'/>
+<rect fill='#df4a60' y='10' width='11' height='11'/>
+<rect fill='#e04c60' x='20' width='11' height='11'/>
+<rect fill='#e04d60' x='10' y='10' width='11' height='11'/>
+<rect fill='#e04f5f' y='20' width='11' height='11'/>
+<rect fill='#e0515f' x='30' width='11' height='11'/>
+<rect fill='#e0535f' x='20' y='10' width='11' height='11'/>
+<rect fill='#e1555f' x='10' y='20' width='11' height='11'/>
+<rect fill='#e1575f' y='30' width='11' height='11'/>
+<rect fill='#e1585f' x='40' width='11' height='11'/>
+<rect fill='#e15a5f' x='30' y='10' width='11' height='11'/>
+<rect fill='#e15c5f' x='20' y='20' width='11' height='11'/>
+<rect fill='#e25e5f' x='10' y='30' width='11' height='11'/>
+<rect fill='#e2605f' y='40' width='11' height='11'/>
+<rect fill='#e2625e' x='50' width='11' height='11'/>
+<rect fill='#e2645e' x='40' y='10' width='11' height='11'/>
+<rect fill='#e2655e' x='30' y='20' width='11' height='11'/>
+<rect fill='#e3675e' x='20' y='30' width='11' height='11'/>
+<rect fill='#e3695e' x='10' y='40' width='11' height='11'/>
+<rect fill='#e36b5e' y='50' width='11' height='11'/>
+<rect fill='#e36d5e' x='60' width='11' height='11'/>
+<rect fill='#e36f5e' x='50' y='10' width='11' height='11'/>
+<rect fill='#e4705e' x='40' y='20' width='11' height='11'/>
+<rect fill='#e4725e' x='30' y='30' width='11' height='11'/>
+<rect fill='#e4745d' x='20' y='40' width='11' height='11'/>
+<rect fill='#e4765d' x='10' y='50' width='11' height='11'/>
+<rect fill='#e4785d' x='70' width='11' height='11'/>
+<rect fill='#e57a5d' x='60' y='10' width='11' height='11'/>
+<rect fill='#e57c5d' x='50' y='20' width='11' height='11'/>
+<rect fill='#e57d5d' x='40' y='30' width='11' height='11'/>
+<rect fill='#e57f5d' x='30' y='40' width='11' height='11'/>
+<rect fill='#e6815d' x='20' y='50' width='11' height='11'/>
+<rect fill='#e6835d' x='80' width='11' height='11'/>
+<rect fill='#e6855d' x='70' y='10' width='11' height='11'/>
+<rect fill='#e6875c' x='60' y='20' width='11' height='11'/>
+<rect fill='#e6895c' x='50' y='30' width='11' height='11'/>
+<rect fill='#e78a5c' x='40' y='40' width='11' height='11'/>
+<rect fill='#e78c5c' x='30' y='50' width='11' height='11'/>
+<rect fill='#e78e5c' x='90' width='11' height='11'/>
+<rect fill='#e7905c' x='80' y='10' width='11' height='11'/>
+<rect fill='#e7925c' x='70' y='20' width='11' height='11'/>
+<rect fill='#e8945c' x='60' y='30' width='11' height='11'/>
+<rect fill='#e8955c' x='50' y='40' width='11' height='11'/>
+<rect fill='#e8975c' x='40' y='50' width='11' height='11'/>
+<rect fill='#e8995b' x='90' y='10' width='11' height='11'/>
+<rect fill='#e89b5b' x='80' y='20' width='11' height='11'/>
+<rect fill='#e99d5b' x='70' y='30' width='11' height='11'/>
+<rect fill='#e99f5b' x='60' y='40' width='11' height='11'/>
+<rect fill='#e9a15b' x='50' y='50' width='11' height='11'/>
+<rect fill='#e9a25b' x='90' y='20' width='11' height='11'/>
+<rect fill='#e9a45b' x='80' y='30' width='11' height='11'/>
+<rect fill='#eaa65b' x='70' y='40' width='11' height='11'/>
+<rect fill='#eaa85b' x='60' y='50' width='11' height='11'/>
+<rect fill='#eaaa5b' x='90' y='30' width='11' height='11'/>
+<rect fill='#eaac5a' x='80' y='40' width='11' height='11'/>
+<rect fill='#eaad5a' x='70' y='50' width='11' height='11'/>
+<rect fill='#ebaf5a' x='90' y='40' width='11' height='11'/>
+<rect fill='#ebb15a' x='80' y='50' width='11' height='11'/>
+<rect fill='#ebb35a' x='90' y='50' width='11' height='11'/>
+</g>
+<clipPath id="clip-path">
+		<!--<circle cx="40" cy="35" r="35" /> -->
+		<!--<path d="m0,40 h00,0 q30,-30 100,0 l0,0 0,100 -100,0" />-->
+		<path d="m0,40 l0,0 s-20,15 5,-20 5,20 100,10 l0,0 0,100 -110,0" />
+	</clipPath>
+
+</svg>

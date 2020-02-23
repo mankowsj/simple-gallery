@@ -1,6 +1,6 @@
 ﻿<svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%' viewBox='0 0 100 60'>
 	<!--<rect fill='#cc5577' width='100' height='60'/>-->
-	<g opacity="0.65" id="shape" style="clip-path: url(#myClip);" >
+	<g opacity="0.85" id="shape" style="clip-path: url(#clip-path);" >
 		<rect fill='#cc5577' width='11' height='11'/>
 		<rect fill='#cd5776' x='10' width='11' height='11'/>
 		<rect fill='#cd5875' y='10' width='11' height='11'/>
@@ -63,7 +63,7 @@
 		<rect fill='#EEB' x='90' y='50' width='11' height='11'/>
 	</g>
 	
-	<clipPath id="myClip">
+	<clipPath id="clip-path">
 		<!--<circle cx="40" cy="35" r="35" /> -->
 		<!--<path d="m0,40 h00,0 q30,-30 100,0 l0,0 0,100 -100,0" />-->
 		<path d="m0,40 l0,0 s-20,15 5,-20 5,20 100,10 l0,0 0,100 -110,0" />
