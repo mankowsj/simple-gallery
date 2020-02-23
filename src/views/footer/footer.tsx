@@ -46,6 +46,9 @@ const Footer = ({className}: FooterProps) => (
           <li>
             <a href="https://www.svgbackgrounds.com/">svgbackgrounds.com</a>
           </li>
+          <li>
+            <a href="src/assets/LICENSE.txt">Fontello icon fonts Licence</a>
+          </li>
         </ul>
       </section>
     </div>
