@@ -1,6 +1,7 @@
-import React, {useEffect, useState} from 'react';
+import React, {useLayoutEffect, useState} from 'react';
 import './image-details.styles.pcss';
 import {ActionButton} from '@components/action-button';
+import {ActionInput} from '@components/action-input';
 import {connect} from 'react-redux';
 import {removeImage, setAppMode} from '@redux/actions';
 
@@ -36,7 +37,7 @@ type ImageObj = {
   extension: string;
 };
 
-const getTableRow = (desc: string, value: string, button?: JSX.Element | boolean) => (
+const getTableRow = (desc: string, value: string | JSX.Element, button?: JSX.Element | boolean) => (
   <tr>
     <td>{desc}</td>
     <td>{value}</td>
@@ -46,7 +47,9 @@ const getTableRow = (desc: string, value: string, button?: JSX.Element | boolean
 
 const ImageDetails = ({className, image, onRemoval}: ImageDetails) => {
   const [imageData, setImageData] = useState(getDefaultImageData());
-  useEffect(() => {
+  const [editMode, setEditMode] = useState(false);
+
+  useLayoutEffect(() => {
     const imageData = getImageData(image).then((imageObj: any) =>
       setImageData({
         width: imageObj.width,
@@ -66,8 +69,16 @@ const ImageDetails = ({className, image, onRemoval}: ImageDetails) => {
         <tbody>
           {getTableRow(
             'Filename:',
-            imageData.filename,
-            isImageOk ? <ActionButton colors={['black', 'white']} name="edit" onClick={() => {}} /> : false
+            editMode ? (
+              <ActionInput className="filename-input" focus onCancel={() => setEditMode(false)} />
+            ) : (
+              imageData.filename
+            ),
+            !editMode && isImageOk ? (
+              <ActionButton colors={['black', 'white']} name="edit" onClick={() => setEditMode(true)} />
+            ) : (
+              false
+            )
           )}
           {getTableRow('Extension:', imageData.extension)}
           {getTableRow('Location:', imageData.location)}
