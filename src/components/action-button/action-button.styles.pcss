@@ -1,0 +1,14 @@
+@import '../../global-styles/mixins/animations.pcss';
+
+.action-button {
+  cursor: pointer;
+  padding: 3px 16px;
+  color: white;
+  @include cubic(all);
+
+  &.black-style {
+    border: 2px solid;
+    border-color: currentColor;
+    border-radius: 4px;
+  }
+}
