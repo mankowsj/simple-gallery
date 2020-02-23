@@ -15,6 +15,7 @@ declare module '*.svg' {
 
 type ReduxImage = {filepath: string; filename: string; extension: string; location: string};
 
+type Extract2<T, U extends T> = T extends U ? T : never;
 //
 // declare module '*.css' {
 //     const content: any;
