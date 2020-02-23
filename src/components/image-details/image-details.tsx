@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import './image-details.styles.pcss';
+import {ActionButton} from '@components/action-button';
 
 type ImageDetails = {
   className?: string;
@@ -44,16 +45,27 @@ const ImageDetails = ({className, image}: ImageDetails) => {
     );
   }, [image]);
 
+  const getTableRow = (desc: string, value: string, button?: JSX.Element) => (
+    <tr>
+      <td>{desc}</td>
+      <td>{value}</td>
+      <td>{button ?? false}</td>
+    </tr>
+  );
+
   return (
     <section className={`${className} image-details`}>
       <h3>Image data:</h3>
-      <ul>
-        <li>Filename: {imageData.filename}</li>
-        <li>Extension: {imageData.extension}</li>
-        <li>Location: {imageData.location}</li>
-        <li>Width: {imageData.width}</li>
-        <li>Height: {imageData.height}</li>
-      </ul>
+      <table cellPadding={6}>
+        <tbody>
+          {getTableRow('Filename:', imageData.filename, <ActionButton onBlack name="edit" onClick={() => {}} />)}
+          {getTableRow('Extension:', imageData.extension)}
+          {getTableRow('Location:', imageData.location)}
+          {getTableRow('Width:', imageData.width)}
+          {getTableRow('Height:', imageData.height)}
+        </tbody>
+      </table>
+      <ActionButton className="remove" color="#ff4343" onBlack name="delete" onClick={() => {}} />
     </section>
   );
 };

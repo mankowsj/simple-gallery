@@ -52,6 +52,7 @@ const BigPicture = ({className, setAppMode, imageList, selectedIndex}: BigPictur
         className={`big-picture ${getVisibilityModifier(isVisible)}`}>
         <nav>
           <IconButton
+            size={40}
             onClick={() => {
               setVisibility(2);
             }}
@@ -75,9 +76,6 @@ const mapStateToProps = ({imageReducer}: StoreType) => ({
   imageList: imageReducer.imageList,
   selectedIndex: imageReducer.selectedIndex
 });
-const ConnectedBigPicture = connect(
-  mapStateToProps,
-  {setAppMode}
-)(BigPicture);
+const ConnectedBigPicture = connect(mapStateToProps, {setAppMode})(BigPicture);
 
 export {ConnectedBigPicture as BigPicture};
