@@ -12,7 +12,7 @@ type SliderProps = {
 const getEmptyImageList = (length: number): ReduxImage[] =>
   Array(length)
     .fill(1)
-    .map((v, idx) => ({name: String(idx), path: ''}));
+    .map((v, idx) => ({filename: String(idx), filepath: '', location: '', extension: ''}));
 const reduceImages = (list: ReduxImage[], selectedIndex: number): ReduxImage[] => {
   let start = selectedIndex - 2;
   let end = selectedIndex + 2;
@@ -35,7 +35,7 @@ const reduceImages = (list: ReduxImage[], selectedIndex: number): ReduxImage[] =
 const Slider = ({className, images, selectedIndex}: SliderProps) => (
   <div className={`${className} slider`}>
     {reduceImages(images, selectedIndex).map(image => (
-      <SliderSmallPic className="slider-item" image={image} key={image.name} />
+      <SliderSmallPic className="slider-item" image={image} key={image.filename} />
     ))}
   </div>
 );

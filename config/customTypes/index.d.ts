@@ -13,7 +13,7 @@ declare module '*.svg' {
   export default content;
 }
 
-type ReduxImage = {path: string; name: string};
+type ReduxImage = {filepath: string; filename: string; extension: string; location: string};
 
 //
 // declare module '*.css' {

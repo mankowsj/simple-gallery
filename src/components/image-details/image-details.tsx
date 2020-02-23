@@ -11,21 +11,23 @@ const getImageData = (image: ReduxImage) =>
     const imageObj = new Image();
     imageObj.onload = data => resolve(data.target);
     imageObj.onerror = reject;
-    imageObj.src = image.path;
+    imageObj.src = image.filepath;
   }).catch(err => ({error: err}));
 
 const getDefaultImageData = (): ImageObj => ({
   height: 'loading',
   filename: 'loading',
   width: 'loading',
-  path: 'loading'
+  location: 'loading',
+  extension: 'loading'
 });
 
 type ImageObj = {
   filename: string;
   width: string;
   height: string;
-  path: string;
+  location: string;
+  extension: string;
 };
 
 const ImageDetails = ({className, image}: ImageDetails) => {
@@ -35,8 +37,9 @@ const ImageDetails = ({className, image}: ImageDetails) => {
       setImageData({
         width: imageObj.width,
         height: imageObj.height,
-        filename: image.name,
-        path: image.path
+        filename: image.filename,
+        location: image.location,
+        extension: image.extension
       })
     );
   }, [image]);
@@ -46,7 +49,8 @@ const ImageDetails = ({className, image}: ImageDetails) => {
       <h3>Image data:</h3>
       <ul>
         <li>Filename: {imageData.filename}</li>
-        <li>Location: {imageData.path}</li>
+        <li>Extension: {imageData.extension}</li>
+        <li>Location: {imageData.location}</li>
         <li>Width: {imageData.width}</li>
         <li>Height: {imageData.height}</li>
       </ul>

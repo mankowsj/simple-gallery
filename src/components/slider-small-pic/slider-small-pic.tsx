@@ -8,8 +8,8 @@ type SliderSmallPicProps = {
 };
 
 const SliderSmallPic = ({onClick, className, image}: SliderSmallPicProps) => (
-  <div onClick={onClick} className={`${className} slider-small-pic ${image.path ? '' : 'empty'}`}>
-    <img src={image.path} />
+  <div onClick={onClick} className={`${className} slider-small-pic ${image.filepath ? '' : 'empty'}`}>
+    <img src={image.filepath} />
   </div>
 );
 

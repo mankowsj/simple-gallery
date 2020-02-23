@@ -59,7 +59,7 @@ const BigPicture = ({className, setGalleryMode, imageList, selectedIndex}: BigPi
           />
         </nav>
         <section className="selected-image-container">
-          <img src={selectedImage.path} />
+          <img src={selectedImage.filepath} />
           <ImageDetails image={selectedImage} className="selected-image-details" />
         </section>
         <Slider className="bottom-slider" images={imageList} selectedIndex={selectedIndex} />

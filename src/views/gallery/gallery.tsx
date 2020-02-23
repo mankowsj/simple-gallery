@@ -13,16 +13,16 @@ type GalleryProps = {
 };
 const Gallery = ({className, setBigPictureMode, imageList, setSelectedImage}: GalleryProps) => (
   <main className={`${className} gallery`}>
-    {imageList.map(({path, name}, index) => (
+    {imageList.map(({filepath, filename}, index) => (
       <GridImage
         onClick={() => {
           setSelectedImage(index);
           setBigPictureMode();
         }}
-        key={name}
+        key={filename}
         className="grid-item"
-        imageName={name}
-        imageSrc={path}
+        imageName={filename}
+        imageSrc={filepath}
       />
     ))}
   </main>
