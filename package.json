@@ -4,14 +4,15 @@
   "description": "",
   "main": "build/app.js",
   "sideEffects": [
-    "*.css",
+    "**/*.css",
+    "**/*.pcss",
     "**/picturefill/**/*"
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server --mode=development --progress --open",
     "build:prod": "webpack --mode=production --progress",
-    "build:debug": "webpack --mode=production --verbose --mode=production"
+    "build:dev": "webpack --mode=production --verbose --mode=production"
   },
   "author": "JM",
   "license": "ISC",
