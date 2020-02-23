@@ -2,6 +2,7 @@
 
 .switch {
   display: inline-block;
+  vertical-align: middle;
   cursor: pointer;
 
   label {
@@ -29,7 +30,7 @@
       position: absolute;
       height: 100%;
       width: 100%;
-      @include cubic(opacity);
+      @include cubic(opacity, 1000ms);
       background: linear-gradient(180deg, rgba(235, 179, 90, 1) 0%, rgba(223, 70, 96, 1) 100%);
       opacity: 0;
       left: 0;
