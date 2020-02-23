@@ -9,9 +9,19 @@ type ActionInputProps = {
   initialValue?: string;
   placeholder?: string;
   focus?: boolean;
+  style?: React.CSSProperties;
 };
 
-const ActionInput = ({className, label, initialValue, placeholder, onCancel, onSubmit, focus}: ActionInputProps) => {
+const ActionInput = ({
+  className,
+  label,
+  initialValue,
+  placeholder,
+  onCancel,
+  onSubmit,
+  focus,
+  style
+}: ActionInputProps) => {
   const [value, setValue] = useState(initialValue);
   const inputRef = useRef<HTMLInputElement>(null);
   useEffect(() => {
@@ -19,7 +29,7 @@ const ActionInput = ({className, label, initialValue, placeholder, onCancel, onS
   }, [inputRef, focus]);
 
   return (
-    <div className={`${className} action-input`}>
+    <div style={style} className={`${className} action-input`}>
       {label ? <label>{label}</label> : false}
       <input
         ref={inputRef}
@@ -38,6 +48,7 @@ const ActionInput = ({className, label, initialValue, placeholder, onCancel, onS
   );
 };
 ActionInput.defaultProps = {
+  style: {},
   className: '',
   onSubmit: () => {},
   onCancel: () => {},
