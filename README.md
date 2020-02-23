@@ -4,6 +4,7 @@ To run the app just execute `npm ci && npm start`
 
 ## TODO
 
+- changed main grid to flex (elements not wrapping properly)
 - check project for any types
 - details mode: rename, delete
 - fix dialog scroll mode
