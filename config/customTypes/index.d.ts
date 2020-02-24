@@ -13,9 +13,13 @@ declare module '*.svg' {
   export default content;
 }
 
+interface Element {
+  scrollIntoViewIfNeeded: (() => void) | null;
+}
+
 type ReduxImage = {filepath: string; filename: string; extension: string; location: string; index: number};
 
-type Extract2<T, U extends T> = T extends U ? T : never;
+type ExtractFromType<T, U extends T> = T extends U ? T : never;
 //
 // declare module '*.css' {
 //     const content: any;

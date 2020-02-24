@@ -15,8 +15,18 @@ type GalleryProps = {
   imageList: ReduxImage[];
 };
 
-const scrollToGridItem = (parent: HTMLElement, id: number) =>
-  parent.querySelector(`[data-id="${id}"]`)?.scrollIntoView();
+const scrollToGridItem = (parent: HTMLElement, id: number) => {
+  const element = parent.querySelector(`[data-id="${id}"]`);
+  if (element) {
+    // @ts-ignore
+    if (element.scrollIntoViewIfNeeded) {
+      // @ts-ignore
+      element.scrollIntoViewIfNeeded();
+    } else {
+      element?.scrollIntoView({block: 'center'});
+    }
+  }
+};
 
 const Gallery = ({className, setAppMode, imageList, setSelectedImage, style, appMode, selectedIndex}: GalleryProps) => {
   const ref = useRef<HTMLDivElement>(null);

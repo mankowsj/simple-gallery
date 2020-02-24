@@ -12,13 +12,16 @@ type PositionActionType = SimpleActionType<PositionAction>;
 type AppModeActionType = ActionType<AppModeAction, AppModeType>;
 
 type ImageStore = {imageList: ReduxImage[]; selectedIndex: number};
-type ImageSelectedAction = ActionType<Extract2<ImageAction, 'SET_SELECTED_IMAGE_ID'>, ImageStore['selectedIndex']>;
-type ImageRemoveAction = ActionType<Extract2<ImageAction, 'REMOVE_IMAGE'>, ImageStore['selectedIndex']>;
+type ImageSelectedAction = ActionType<
+  ExtractFromType<ImageAction, 'SET_SELECTED_IMAGE_ID'>,
+  ImageStore['selectedIndex']
+>;
+type ImageRemoveAction = ActionType<ExtractFromType<ImageAction, 'REMOVE_IMAGE'>, ImageStore['selectedIndex']>;
 type ImageRenameAction = ActionType<
-  Extract2<ImageAction, 'SET_IMAGE_NAME'>,
+  ExtractFromType<ImageAction, 'SET_IMAGE_NAME'>,
   {index: ImageStore['selectedIndex']; value: string}
 >;
-type ImageListAction = ActionType<Extract2<ImageAction, 'SET_IMAGE_LIST'>, ImageStore['imageList']>;
+type ImageListAction = ActionType<ExtractFromType<ImageAction, 'SET_IMAGE_LIST'>, ImageStore['imageList']>;
 type ImageActionType = ImageSelectedAction | ImageListAction | ImageRemoveAction | ImageRenameAction;
 
 type ThemeValues = 'theme-light' | 'theme-dark';
