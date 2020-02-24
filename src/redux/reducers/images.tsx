@@ -16,7 +16,10 @@ export const imageReducer = (
       };
     }
     case 'SET_SELECTED_IMAGE_ID': {
-      return {...state, selectedIndex: action.value};
+      if (action.value > -1 && action.value < state.imageList.length) {
+        return {...state, selectedIndex: action.value};
+      }
+      break;
     }
     case 'SET_IMAGE_NAME': {
       const imageToChange = state.imageList.find((image: ReduxImage) => image.index === action.value.index);

@@ -1,7 +1,7 @@
 import React, {useEffect, useState, useRef} from 'react';
 import {connect} from 'react-redux';
 import './big-picture.styles.pcss';
-import {setAppMode, removeImage} from '@redux/actions';
+import {setAppMode, removeImage, setSelectedImage} from '@redux/actions';
 import {StoreType} from '@redux';
 import {ActionButton} from '@components/action-button';
 import {ImageDetails} from '@components/image-details';
@@ -12,6 +12,7 @@ type BigPictureProps = {
   imageList: ReduxImage[];
   selectedIndex: number;
   removeImage: typeof removeImage;
+  setSelectedImage: typeof setSelectedImage;
 };
 
 const VisiblityMap = {
@@ -33,7 +34,14 @@ const getVisibilityModifier = (state: number) => {
 };
 const isExiting = (status: number) => status === VisiblityMap.Exiting;
 
-const BigPicture = ({className, setAppMode, imageList, selectedIndex, removeImage}: BigPictureProps) => {
+const BigPicture = ({
+  className,
+  setAppMode,
+  imageList,
+  selectedIndex,
+  removeImage,
+  setSelectedImage
+}: BigPictureProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const focusRef = () => ref.current?.focus();
   const [isVisible, setVisibility] = useState(0);
@@ -48,8 +56,13 @@ const BigPicture = ({className, setAppMode, imageList, selectedIndex, removeImag
     <div
       tabIndex={0}
       onKeyUp={({key}) => {
-        if (key === 'Escape') {
-          setVisibility(2);
+        switch (key) {
+          case 'Escape':
+            return setVisibility(2);
+          case 'ArrowRight':
+            return setSelectedImage(selectedIndex + 1);
+          case 'ArrowLeft':
+            return setSelectedImage(selectedIndex - 1);
         }
       }}
       ref={ref}
@@ -89,6 +102,6 @@ const mapStateToProps = ({imageReducer}: StoreType) => ({
   imageList: imageReducer.imageList,
   selectedIndex: imageReducer.selectedIndex
 });
-const ConnectedBigPicture = connect(mapStateToProps, {setAppMode, removeImage})(BigPicture);
+const ConnectedBigPicture = connect(mapStateToProps, {setAppMode, removeImage, setSelectedImage})(BigPicture);
 
 export {ConnectedBigPicture as BigPicture};
