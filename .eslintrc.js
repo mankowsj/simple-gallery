@@ -28,7 +28,7 @@ module.exports = {
     },
     'import/ignore': ['node_modules'],
     'import/parsers': {
-      '@typescript-eslint/parser': ['.ts', '.tsx']
+      '@typescript-eslint/parser': ['.js', '.jsx', '.ts', '.tsx']
     },
     'import/extensions': ['.js', '.jsx', '.ts', '.tsx'],
     react: {
@@ -36,7 +36,7 @@ module.exports = {
     }
   },
   rules: {
-    'no-unused-vars': 0,
+    'no-unused-vars': 2,
     'no-undef': 0,
     'no-debugger': 1,
 

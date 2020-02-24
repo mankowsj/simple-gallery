@@ -4,6 +4,7 @@ import {ActionButton} from '@components/action-button';
 import {ActionInput} from '@components/action-input';
 import {connect} from 'react-redux';
 import {removeImage, setAppMode, setImageName} from '@redux/actions';
+import {getInputStyle, getEditButtonStyle, getTableRow, getDefaultImageData} from './helpers';
 
 type ImageDetails = {
   className?: string;
@@ -18,44 +19,10 @@ type ImageDetails = {
 const getImageData = (image: ReduxImage) =>
   new Promise<HTMLImageElement>((resolve, reject) => {
     const imageObj = new Image();
-    imageObj.onload = data => resolve(imageObj);
+    imageObj.onload = () => resolve(imageObj);
     imageObj.onerror = reject;
     imageObj.src = image.filepath;
   }).catch(err => ({inError: err}));
-
-const getDefaultImageData = (str = 'loading'): ImageObj => ({
-  height: str,
-  filename: str,
-  width: str,
-  location: str,
-  extension: str
-});
-
-type ImageObj = {
-  filename: string;
-  width: string;
-  height: string;
-  location: string;
-  extension: string;
-};
-
-const getTableRow = (desc: string, value: string | JSX.Element, button?: JSX.Element | boolean) => (
-  <tr>
-    <td>{desc}</td>
-    <td>{value}</td>
-    <td>{button ?? false}</td>
-  </tr>
-);
-
-const getInputStyle = (editMode: boolean): React.CSSProperties =>
-  editMode ? {} : {visibility: 'hidden', maxWidth: '1px'};
-const getEditButtonStyle = (isVisible: boolean): React.CSSProperties =>
-  isVisible
-    ? {}
-    : {
-        pointerEvents: 'none',
-        opacity: 0
-      };
 
 const ImageDetails = ({className, image, onRemoval, setImageName, onEditModeChange}: ImageDetails) => {
   const [imageData, setImageData] = useState(getDefaultImageData());

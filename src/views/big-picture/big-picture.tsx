@@ -1,4 +1,4 @@
-import React, {useEffect, useState, useRef} from 'react';
+import React, {useEffect, useRef} from 'react';
 import {connect} from 'react-redux';
 import './big-picture.styles.pcss';
 import {setAppMode, removeImage, setSelectedImage} from '@redux/actions';
@@ -16,12 +16,6 @@ type BigPictureProps = {
   setSelectedImage: typeof setSelectedImage;
 };
 
-const VisiblityMap = {
-  NotVisible: 0,
-  Visible: 1,
-  Exiting: 2
-};
-
 const getVisibilityModifier = (appMode: StoreType['appModeReducer']) => {
   switch (appMode) {
     case 'BIG_PIC_MODE': {
@@ -33,7 +27,6 @@ const getVisibilityModifier = (appMode: StoreType['appModeReducer']) => {
   }
   return '';
 };
-const isExiting = (status: number) => status === VisiblityMap.Exiting;
 
 const BigPicture = ({
   className,

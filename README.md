@@ -7,7 +7,7 @@ To run the app just execute `npm ci && npm start`
 - react-router
 - add w x h on top of gallery ?
 - offline mode
-- fix dpi/px
+- fix dpi/px DONE
 - scroll to elemnt after exit DONE
 - fix border on switch for webkit / NO GO
 - fix redux types on components / no errors now ???
@@ -26,8 +26,8 @@ To run the app just execute `npm ci && npm start`
 
 - fix dark mode
 - tooltips ?
-- welcome page with transition of background
 - infi scroll
+- welcome page with transition of background
 - keyboard support DONE
 - touch support // REACT ?
 - local storage DONE
