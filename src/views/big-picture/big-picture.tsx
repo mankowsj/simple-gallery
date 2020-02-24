@@ -47,8 +47,6 @@ const BigPicture = ({
   const [isVisible, setVisibility] = useState(0);
   const selectedImage = imageList.find(({index}) => index === selectedIndex);
 
-  console.warn('selectedIndex', selectedIndex, imageList);
-
   useEffect(focusRef, [ref]);
   useEffect(() => {
     setVisibility(1);
