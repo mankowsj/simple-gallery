@@ -6,6 +6,7 @@ To run the app just execute `npm ci && npm start`
 
 - media query pc/tab/phone
 - offline mode
+- scroll to elemnt after exit
 - changed main grid to flex (elements not wrapping properly) // media?
 - fix border on switch for webkit / NO GO
 - fix redux types on components / no errors now ???
