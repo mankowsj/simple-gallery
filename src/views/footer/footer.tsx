@@ -1,6 +1,6 @@
 import React, {useContext, useRef, useEffect, useState} from 'react';
 import './footer.styles.pcss';
-import {FooterContext} from '../../footer-context';
+import {FooterContext} from '../../utils';
 
 type FooterProps = {className: string};
 const Footer = ({className}: FooterProps) => {

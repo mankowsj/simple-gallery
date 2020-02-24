@@ -4,7 +4,7 @@ import {StoreType} from '@redux';
 import {setImageList} from '@redux/actions';
 import './header.styles.pcss';
 import {ActionButton} from '@components/action-button';
-import {FooterContext} from '../../footer-context';
+import {FooterContext} from '../../utils';
 import {getDefaultImageList} from '../../image-storage';
 
 type HeaderProps = {

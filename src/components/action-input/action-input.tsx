@@ -1,5 +1,7 @@
 import React, {useRef, useEffect} from 'react';
 import './action-input.styles.pcss';
+import {ActionButton} from '@components/action-button';
+import {redButtonBackground} from '../../utils';
 
 type ActionInputProps = {
   className?: string;
@@ -26,6 +28,7 @@ const ActionInput = ({
   style
 }: ActionInputProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
+  const showCancelButton = Boolean(onCancel);
   useEffect(() => {
     focus && inputRef.current?.focus();
   }, [inputRef, focus]);
@@ -41,7 +44,7 @@ const ActionInput = ({
           ev.stopPropagation();
           ev.preventDefault();
           if (key === 'Escape') {
-            onCancel!(value!);
+            onCancel && onCancel(value!);
           } else if (key === 'Enter') {
             onSubmit!(value!);
           }
@@ -49,6 +52,16 @@ const ActionInput = ({
         placeholder={placeholder}
         value={value}
       />
+      {showCancelButton ? (
+        <ActionButton
+          onClick={() => onCancel!(value!)}
+          name="close"
+          className="cancel-button"
+          colors={['white', redButtonBackground]}
+        />
+      ) : (
+        false
+      )}
     </div>
   );
 };
@@ -56,7 +69,6 @@ ActionInput.defaultProps = {
   style: {},
   className: '',
   onSubmit: () => {},
-  onCancel: () => {},
   placeholder: '',
   initialValue: ''
 };

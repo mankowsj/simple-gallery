@@ -6,7 +6,7 @@ import {Gallery} from '../gallery';
 import {BigPicture} from '../big-picture';
 import {Footer} from '../footer';
 import './app.styles.pcss';
-import {FooterContext} from '../../footer-context';
+import {FooterContext} from '../../utils';
 
 type AppProps = {
   appMode: StoreType['appModeReducer'];
