@@ -78,16 +78,22 @@ const BigPicture = ({
           <ActionButton size={40} onClick={() => setVisibility(2)} name="close" />
         </nav>
         <section className="selected-image-container">
-          <img src={selectedImage.filepath} />
-          <ImageDetails
-            onEditModeChange={(editMode: boolean) => !editMode && focusRef()}
-            onRemoval={index => {
-              removeImage(index);
-              setVisibility(2);
-            }}
-            image={selectedImage}
-            className="selected-image-details"
-          />
+          {selectedImage ? (
+            <React.Fragment>
+              <img src={selectedImage.filepath} />
+              <ImageDetails
+                onEditModeChange={(editMode: boolean) => !editMode && focusRef()}
+                onRemoval={index => {
+                  removeImage(index);
+                  // setVisibility(2);
+                }}
+                image={selectedImage}
+                className="selected-image-details"
+              />
+            </React.Fragment>
+          ) : (
+            false
+          )}
         </section>
         {/* <Slider className="bottom-slider" images={imageList} selectedIndex={selectedIndex} /> */}
       </main>

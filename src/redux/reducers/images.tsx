@@ -3,6 +3,17 @@ import {getImageList} from '../../image-storage';
 
 const defaultValue = {imageList: getImageList(), selectedIndex: 0};
 
+const findNextIndex = <T extends []>(index: number, list: T): number => {
+  if (list[index]) {
+    return index;
+  }
+  if (list[index - 1]) {
+    return index - 1;
+  }
+
+  return 0;
+};
+
 export const imageReducer = (
   state: StoreType['imageReducer'] = defaultValue,
   action: ImageActionType
@@ -10,9 +21,11 @@ export const imageReducer = (
   switch (action.type) {
     case 'REMOVE_IMAGE': {
       const imageList = state.imageList.filter((image: ReduxImage) => image.index !== action.value);
+      const selectedIndex = findNextIndex<any>(action.value, imageList);
       return {
         ...state,
-        imageList
+        imageList,
+        selectedIndex
       };
     }
     case 'SET_SELECTED_IMAGE_ID': {
