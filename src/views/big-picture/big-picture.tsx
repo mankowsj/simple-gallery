@@ -45,7 +45,15 @@ const BigPicture = ({className, setAppMode, imageList, selectedIndex, removeImag
   }, []);
 
   return (
-    <div tabIndex={0} onKeyUp={() => setVisibility(2)} ref={ref} className={`${className} big-pic-flex`}>
+    <div
+      tabIndex={0}
+      onKeyUp={({key}) => {
+        if (key === 'Escape') {
+          setVisibility(2);
+        }
+      }}
+      ref={ref}
+      className={`${className} big-pic-flex`}>
       <main
         onTransitionEnd={ev => {
           if (isExiting(isVisible)) {
