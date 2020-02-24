@@ -12,6 +12,7 @@ type ImageDetails = {
   setAppMode: typeof setAppMode;
   setImageName: typeof setImageName;
   onRemoval: (index: number) => void;
+  onEditModeCancel?: () => void;
 };
 
 const getImageData = (image: ReduxImage) =>
@@ -56,7 +57,7 @@ const getEditButtonStyle = (isVisible: boolean): React.CSSProperties =>
         opacity: 0
       };
 
-const ImageDetails = ({className, image, onRemoval, setImageName}: ImageDetails) => {
+const ImageDetails = ({className, image, onRemoval, setImageName, onEditModeCancel}: ImageDetails) => {
   const [imageData, setImageData] = useState(getDefaultImageData());
   const [editMode, setEditMode] = useState(false);
 
@@ -94,11 +95,12 @@ const ImageDetails = ({className, image, onRemoval, setImageName}: ImageDetails)
                   setImageName(image.index, name);
                   setEditMode(false);
                 }}
-                onCancel={() => setEditMode(false)}
+                onCancel={() => {
+                  setEditMode(false);
+                  onEditModeCancel!();
+                }}
               />
-              <span style={getInputStyle(!editMode)} className="filename">
-                {editMode ? false : image.filename}
-              </span>
+              {!editMode ? <span className="filename">{image.filename}</span> : false}
             </React.Fragment>,
             <ActionButton
               style={getEditButtonStyle(!editMode && isImageOk)}
@@ -128,7 +130,8 @@ const ImageDetails = ({className, image, onRemoval, setImageName}: ImageDetails)
 };
 ImageDetails.defaultProps = {
   className: '',
-  onRemoval: () => {}
+  onRemoval: () => {},
+  onEditModeCancel: () => {}
 };
 
 const ConnectedImageDetails = connect(null, {removeImage, setAppMode, setImageName})(ImageDetails);

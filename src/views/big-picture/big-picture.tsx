@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useRef} from 'react';
 import {connect} from 'react-redux';
 import './big-picture.styles.pcss';
 import {setAppMode, removeImage} from '@redux/actions';
@@ -34,15 +34,18 @@ const getVisibilityModifier = (state: number) => {
 const isExiting = (status: number) => status === VisiblityMap.Exiting;
 
 const BigPicture = ({className, setAppMode, imageList, selectedIndex, removeImage}: BigPictureProps) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const focusRef = () => ref.current?.focus();
   const [isVisible, setVisibility] = useState(0);
   const selectedImage = imageList[selectedIndex];
 
+  useEffect(focusRef, [ref]);
   useEffect(() => {
     setVisibility(1);
   }, []);
 
   return (
-    <div className={`${className} big-pic-flex`}>
+    <div tabIndex={0} onKeyUp={() => setVisibility(2)} ref={ref} className={`${className} big-pic-flex`}>
       <main
         onTransitionEnd={ev => {
           if (isExiting(isVisible)) {
@@ -51,17 +54,12 @@ const BigPicture = ({className, setAppMode, imageList, selectedIndex, removeImag
         }}
         className={`big-picture ${getVisibilityModifier(isVisible)}`}>
         <nav>
-          <ActionButton
-            size={40}
-            onClick={() => {
-              setVisibility(2);
-            }}
-            name="close"
-          />
+          <ActionButton size={40} onClick={() => setVisibility(2)} name="close" />
         </nav>
         <section className="selected-image-container">
           <img src={selectedImage.filepath} />
           <ImageDetails
+            onEditModeCancel={() => focusRef()}
             onRemoval={index => {
               removeImage(index);
               setVisibility(2);

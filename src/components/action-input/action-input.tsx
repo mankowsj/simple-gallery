@@ -34,7 +34,10 @@ const ActionInput = ({
       <input
         ref={inputRef}
         onChange={({currentTarget}) => setValue(currentTarget.value)}
-        onKeyUp={({key}) => {
+        onKeyUp={ev => {
+          const {key} = ev;
+          ev.stopPropagation();
+          ev.preventDefault();
           if (key === 'Escape') {
             onCancel!(value!);
           } else if (key === 'Enter') {
