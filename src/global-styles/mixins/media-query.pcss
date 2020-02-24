@@ -3,19 +3,19 @@ $pc-min: 961px;
 $mobile: 640px;
 
 @mixin tablet {
-  @media (max-width: $tablet) {
+  @media all and (max-width: $tablet) {
     @content;
   }
 }
 
 @mixin mobile {
-  @media (max-width: $mobile) {
+  @media all and (max-width: $mobile) {
     @content;
   }
 }
 
 @mixin pc-only {
-  @media (min-width: $pc-min) {
+  @media all and (max-width: $pc-min) {
     @content;
   }
 }
