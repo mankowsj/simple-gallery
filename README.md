@@ -6,11 +6,11 @@ To run the app just execute `npm ci && npm start`
 
 - react-router
 - add w x h on top of gallery ?
-- add title to big pic mode ?
 - offline mode
 - scroll to elemnt after exit
 - fix border on switch for webkit / NO GO
 - fix redux types on components / no errors now ???
+- add title to big pic mode DONE
 - media query pc/tab/phone DONE
 - fix dialog scroll mode DONE
 - check project for any types DONE
