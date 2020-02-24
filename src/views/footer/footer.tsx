@@ -36,6 +36,7 @@ const Footer = ({className}: FooterProps) => {
           <ul>
             <li>React 16</li>
             <li>Redux / React-Redux</li>
+            <li>normalize.css</li>
           </ul>
         </section>
         <section>
