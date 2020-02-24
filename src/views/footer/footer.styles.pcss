@@ -5,12 +5,17 @@ footer {
   padding-bottom: 27px;
 
   .flex {
+    @include ease(transform);
     display: flex;
     padding: 8px 32px;
 
     @include mobile {
       flex-direction: column;
     }
+  }
+
+  &.is-alive .flex {
+    transform: scale(1.25);
   }
 
   section {

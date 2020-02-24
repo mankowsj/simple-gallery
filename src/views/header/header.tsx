@@ -40,7 +40,7 @@ const Header = ({className, setTheme, setImageList}: HeaderProps) => {
           <nav className="controls vertical-fix">
             {/* <Switch onChange={(value: string) => setTheme(value as ThemeValues)} labels={themeList} /> */}
             <ActionButton
-              onClick={() => ctx?.scrollIntoView({behavior: 'smooth'})}
+              onClick={() => (ctx as any)()}
               label="About page "
               name="help"
               className="control"

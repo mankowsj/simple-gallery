@@ -1,2 +1,2 @@
 import {createContext} from 'react';
-export const FooterContext = createContext(null) as any;
+export const FooterContext = createContext([{}, () => {}]);

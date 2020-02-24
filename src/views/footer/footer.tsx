@@ -1,19 +1,27 @@
-import React, {useContext, useRef, useEffect} from 'react';
+import React, {useContext, useRef, useEffect, useState} from 'react';
 import './footer.styles.pcss';
 import {FooterContext} from '../../footer-context';
 
-type FooterProps = {className: string};
+const footerAliveClass = 'footer-alive';
 
+type FooterProps = {className: string};
 const Footer = ({className}: FooterProps) => {
-  const ref = useRef(null);
+  const ref = useRef<HTMLElement>(null);
+  const [alive, setAlive] = useState(false);
   const [ctx, setContext] = useContext(FooterContext);
 
+  const scrollAndAnimate = () => {
+    setAlive(true);
+    ref.current?.scrollIntoView({behavior: 'smooth'});
+  };
+
   useEffect(() => {
-    setContext(ref.current);
-  }, [ref, setContext]);
+    // @ts-ignore
+    setContext((st: any) => scrollAndAnimate);
+  }, [setAlive, ref]);
 
   return (
-    <footer ref={ref} className="secondary-dark">
+    <footer onTransitionEnd={() => setAlive(false)} ref={ref} className={`secondary-dark ${alive ? 'is-alive' : ''}`}>
       <div className={`${className} narrow flex`}>
         <section>
           <h3>Tools</h3>

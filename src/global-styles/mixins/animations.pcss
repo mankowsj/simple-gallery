@@ -8,3 +8,7 @@ $default-time: 300ms;
 @mixin duo-cubic($p1, $p2, $time: $default-time) {
   transition: $time $transition-base $p1, $time $transition-base $p2;
 }
+
+@mixin ease($p1, $time: $default-time) {
+  transition: $time ease-in-out $p1;
+}
