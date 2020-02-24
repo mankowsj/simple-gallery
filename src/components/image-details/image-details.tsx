@@ -12,7 +12,7 @@ type ImageDetails = {
   setAppMode: typeof setAppMode;
   setImageName: typeof setImageName;
   onRemoval: (index: number) => void;
-  onEditModeCancel?: () => void;
+  onEditModeChange?: (editMode: boolean) => void;
 };
 
 const getImageData = (image: ReduxImage) =>
@@ -57,7 +57,7 @@ const getEditButtonStyle = (isVisible: boolean): React.CSSProperties =>
         opacity: 0
       };
 
-const ImageDetails = ({className, image, onRemoval, setImageName, onEditModeCancel}: ImageDetails) => {
+const ImageDetails = ({className, image, onRemoval, setImageName, onEditModeChange}: ImageDetails) => {
   const [imageData, setImageData] = useState(getDefaultImageData());
   const [editMode, setEditMode] = useState(false);
 
@@ -94,10 +94,11 @@ const ImageDetails = ({className, image, onRemoval, setImageName, onEditModeCanc
                 onSubmit={(name: string) => {
                   setImageName(image.index, name);
                   setEditMode(false);
+                  onEditModeChange!(false);
                 }}
                 onCancel={() => {
                   setEditMode(false);
-                  onEditModeCancel!();
+                  onEditModeChange!(false);
                 }}
               />
               {!editMode ? <span className="filename">{image.filename}</span> : false}
@@ -106,7 +107,10 @@ const ImageDetails = ({className, image, onRemoval, setImageName, onEditModeCanc
               style={getEditButtonStyle(!editMode && isImageOk)}
               colors={['black', 'white']}
               name="edit"
-              onClick={() => setEditMode(true)}
+              onClick={() => {
+                setEditMode(true);
+                onEditModeChange!(true);
+              }}
             />
           )}
           {getTableRow('Extension:', imageData.extension)}
@@ -131,7 +135,7 @@ const ImageDetails = ({className, image, onRemoval, setImageName, onEditModeCanc
 ImageDetails.defaultProps = {
   className: '',
   onRemoval: () => {},
-  onEditModeCancel: () => {}
+  onEditModeChange: () => {}
 };
 
 const ConnectedImageDetails = connect(null, {removeImage, setAppMode, setImageName})(ImageDetails);

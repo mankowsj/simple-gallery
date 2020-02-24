@@ -80,7 +80,7 @@ const BigPicture = ({
         <section className="selected-image-container">
           <img src={selectedImage.filepath} />
           <ImageDetails
-            onEditModeCancel={() => focusRef()}
+            onEditModeChange={(editMode: boolean) => !editMode && focusRef()}
             onRemoval={index => {
               removeImage(index);
               setVisibility(2);
