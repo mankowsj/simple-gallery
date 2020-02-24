@@ -9,7 +9,9 @@ const findNextIndex = (selectedId: number, list: ReduxImage[]): number => {
     if (list[currentIndex + 1]) {
       return list[currentIndex + 1].index;
     }
-    return list[currentIndex - 1].index;
+    if (list[currentIndex - 1]) {
+      return list[currentIndex - 1].index;
+    }
   }
 
   return currentIndex;
