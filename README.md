@@ -5,6 +5,8 @@ To run the app just execute `npm ci && npm start`
 ## TODO
 
 - react-router
+- add w x h on top of gallery ?
+- add title to big pic mode ?
 - media query pc/tab/phone
 - offline mode
 - scroll to elemnt after exit
