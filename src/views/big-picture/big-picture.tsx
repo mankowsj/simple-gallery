@@ -77,7 +77,7 @@ const BigPicture = ({
         }}
         className={`big-picture ${getVisibilityModifier(appMode)}`}>
         <nav>
-          <span className="pic-title">Filename: {selectedImage?.filename ?? false}</span>
+          <span className="pic-title nowrap">Filename: {selectedImage?.filename ?? false}</span>
           <ActionButton size={40} onClick={() => setAppMode('BIG_PIC_CLOSING')} name="close" />
         </nav>
         <section className="selected-image-container">
