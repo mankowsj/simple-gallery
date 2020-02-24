@@ -18,9 +18,7 @@ type GalleryProps = {
 const scrollToGridItem = (parent: HTMLElement, id: number) => {
   const element = parent.querySelector(`[data-id="${id}"]`);
   if (element) {
-    // @ts-ignore
     if (element.scrollIntoViewIfNeeded) {
-      // @ts-ignore
       element.scrollIntoViewIfNeeded();
     } else {
       element?.scrollIntoView({block: 'center'});
