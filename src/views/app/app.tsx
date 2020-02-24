@@ -28,5 +28,5 @@ const App = ({appMode, theme}: AppProps) => {
 const mapStateToProps = (state: StoreType) => ({appMode: state.appModeReducer, theme: state.themeReducer});
 
 type ConnectedAppProps = Omit<AppProps, 'appMode' | 'theme'>;
-const ConnectedApp = (connect(mapStateToProps)(App) as any) as React.ComponentClass<ConnectedAppProps>;
+const ConnectedApp = connect(mapStateToProps)(App);
 export {ConnectedApp as App};

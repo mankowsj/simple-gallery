@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import {ThemeValues} from '@redux/types';
 import './switch.styles.pcss';
 
 type LabelObj = {label: string; value: string};
@@ -17,9 +16,8 @@ type SwitchExtendedProps = {
 };
 
 type SwitchProps = SwitchBaseProps & (SwitchSimpleProps | SwitchExtendedProps);
-type LL = SwitchProps['labels'];
 
-const fixSimpleList = (list: LL): LabelObj[] => {
+const fixSimpleList = (list: SwitchProps['labels']): LabelObj[] => {
   if (typeof list[0] === 'string') {
     return (list as string[]).map((label: string, index: number) => ({label, value: String(index)}));
   }

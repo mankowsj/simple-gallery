@@ -8,7 +8,7 @@ import {Switch} from '../../components/switch';
 
 type HeaderProps = {
   className?: string;
-  setTheme: any;
+  setTheme: typeof setTheme;
 };
 
 const themeList: {label: string; value: ThemeValues}[] = [
@@ -32,7 +32,7 @@ const Header = ({className, setTheme}: HeaderProps) => (
         </div>
 
         <div className="controls vertical-fix">
-          <Switch onChange={(value: string) => setTheme(value)} labels={themeList} />
+          <Switch onChange={(value: string) => setTheme(value as ThemeValues)} labels={themeList} />
         </div>
       </section>
     </div>
@@ -44,8 +44,6 @@ Header.defaultProps = {
 };
 
 const mapStateToProps = (state: StoreType) => ({selectedTheme: state.themeReducer});
-const ConnectedHeader = (connect(mapStateToProps, {setTheme})(Header) as any) as React.ComponentClass<
-  Omit<HeaderProps, 'setTheme'>
->;
+const ConnectedHeader = connect(mapStateToProps, {setTheme})(Header);
 
 export {ConnectedHeader as Header};

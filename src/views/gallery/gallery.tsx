@@ -31,9 +31,9 @@ Gallery.defaultProps = {
   className: ''
 };
 
-const ConnectedGallery = (connect(({imageReducer}: StoreType) => ({imageList: imageReducer.imageList}), {
+const ConnectedGallery = connect(({imageReducer}: StoreType) => ({imageList: imageReducer.imageList}), {
   setAppMode,
   setSelectedImage
-})(Gallery) as any) as React.ComponentClass<Omit<GalleryProps, 'setAppMode' | 'imageList' | 'setSelectedImage'>>;
+})(Gallery);
 
 export {ConnectedGallery as Gallery};
