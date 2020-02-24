@@ -22,7 +22,10 @@ const Pic = ({src, className, style, ...rest}: PicProps) => {
         onLoad={() => setReady(true)}
         src={error ? altImageFilepath : src}
         {...rest}
-        onError={() => setError(true)}
+        onError={() => {
+          setReady(true);
+          setError(true);
+        }}
       />
       {ready ? false : <span className="preloader" />}
     </React.Fragment>
