@@ -8,13 +8,15 @@ type GridImageProps = {
   imageName: string;
   imageSrc: string;
   onClick?: React.MouseEventHandler;
+  dataId?: string;
 };
-const GridImage = ({className, imageName, imageSrc, onClick}: GridImageProps) => {
+const GridImage = ({className, imageName, imageSrc, onClick, dataId}: GridImageProps) => {
   const [hovered, setHover] = useState(false);
   const [error, setError] = useState(false);
 
   return (
     <div
+      data-id={dataId}
       onClick={onClick}
       onMouseOver={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
@@ -27,6 +29,7 @@ const GridImage = ({className, imageName, imageSrc, onClick}: GridImageProps) =>
 };
 GridImage.defaultProps = {
   className: '',
+  dataId: '',
   onClick: () => {}
 };
 
