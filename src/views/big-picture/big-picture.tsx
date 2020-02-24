@@ -70,7 +70,7 @@ const BigPicture = ({
       ref={ref}
       className={`${className} big-pic-flex`}>
       <main
-        onTransitionEnd={ev => {
+        onTransitionEnd={() => {
           if (appMode === 'BIG_PIC_CLOSING') {
             setAppMode('GALLERY_MODE');
           }

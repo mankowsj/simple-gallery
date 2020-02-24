@@ -20,6 +20,7 @@ const ActionButton = ({colors, onClick, style, className, label, ...rest}: Actio
     <IconButton {...rest} />
   </span>
 );
+
 ActionButton.defaultProps = {
   ...IconButton.defaultProps,
   style: {}
