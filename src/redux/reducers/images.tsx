@@ -1,16 +1,7 @@
 import {StoreType, ImageActionType} from '../types';
+import {getImageList} from '../../image-storage';
 
-const pathPrefix = 'src/assets/images/';
-const extension = '.jpg';
-
-const imageList = ['1', '2', '3', '4', '5', '6', '7', '8'].map((filename, index) => ({
-  filename,
-  filepath: `${pathPrefix}${filename}${extension}`,
-  location: pathPrefix,
-  extension,
-  index
-}));
-const defaultValue = {imageList, selectedIndex: 0};
+const defaultValue = {imageList: getImageList(), selectedIndex: 0};
 
 export const imageReducer = (
   state: StoreType['imageReducer'] = defaultValue,
@@ -32,7 +23,6 @@ export const imageReducer = (
       if (imageToChange?.filename) {
         imageToChange.filename = action.value.value;
       }
-
       return {...state, imageList: [...state.imageList]};
     }
   }
