@@ -25,7 +25,7 @@ const Pic = ({src, className, style, ...rest}: PicProps) => {
         {...rest}
         onError={() => setError(true)}
       />
-      {null ?? <span className="preloader" />}
+      {ready ? false : <span className="preloader" />}
     </React.Fragment>
   );
 };
