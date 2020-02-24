@@ -36,7 +36,7 @@ const Gallery = ({className, setAppMode, imageList, setSelectedImage, style, app
           }}
           dataId={String(index)}
           key={index}
-          className="grid-item"
+          className="grid-item vertical-fix"
           imageName={filename}
           imageSrc={filepath}
         />

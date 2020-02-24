@@ -19,8 +19,10 @@
   .grid-item {
     /* z-index: 1; */
     height: 200px;
+    max-height: 200px;
     @include mobile {
       height: auto;
+      margin-bottom: 16px;
     }
 
     @include pc-only {

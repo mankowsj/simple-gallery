@@ -21,9 +21,11 @@ const GridImage = ({className, imageName, imageSrc, onClick, dataId}: GridImageP
       onMouseOver={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
       className={`${className} grid-image ${error ? 'no-image' : ''}`}>
-      <Pic className="grid-image_pic" src={imageSrc} />
-      <ActionButton size={16} colors={['white', 'rgba(0, 0, 0, 0.5)']} name="zoom" className="zoom-icon" />
-      <label>Filename: {imageName}</label>
+      <div style={{display: 'inline-block', verticalAlign: 'middle', position: 'relative', maxHeight: 'inherit'}}>
+        <Pic className="grid-image_pic" src={imageSrc} />
+        <ActionButton size={16} colors={['white', 'rgba(0, 0, 0, 0.5)']} name="zoom" className="zoom-icon" />
+        <label>Filename: {imageName}</label>
+      </div>
     </div>
   );
 };
