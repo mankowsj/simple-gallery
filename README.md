@@ -4,6 +4,7 @@ To run the app just execute `npm ci && npm start`
 
 ## TODO
 
+- react-router
 - media query pc/tab/phone
 - offline mode
 - scroll to elemnt after exit
