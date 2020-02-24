@@ -79,7 +79,7 @@ const ImageDetails = ({className, image, onRemoval, setImageName}: ImageDetails)
 
   return (
     <section className={`${className} image-details`}>
-      <h3>Image data:</h3>
+      <h4>Image data:</h4>
       <table cellPadding={6}>
         <tbody>
           {getTableRow(
