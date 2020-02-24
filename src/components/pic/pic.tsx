@@ -7,10 +7,11 @@ type PicProps = {
   src: string;
   className: string;
   onClick?: React.MouseEventHandler;
+  onLoad?: () => void;
   onMouseOver?: React.MouseEventHandler;
   onMouseLeave?: React.MouseEventHandler;
 };
-const Pic = ({src, className, style, ...rest}: PicProps) => {
+const Pic = ({src, className, style, onLoad, ...rest}: PicProps) => {
   const [error, setError] = useState(false);
   const [ready, setReady] = useState(false);
 
@@ -19,7 +20,10 @@ const Pic = ({src, className, style, ...rest}: PicProps) => {
       <img
         style={{minHeight: '100px', ...style}}
         className={className}
-        onLoad={() => setReady(true)}
+        onLoad={() => {
+          setReady(true);
+          onLoad!();
+        }}
         src={error ? altImageFilepath : src}
         {...rest}
         onError={() => {
@@ -36,6 +40,7 @@ Pic.defaultProps = {
   onClick: () => {},
   onMouseOver: () => {},
   onMouseLeave: () => {},
+  onLoad: () => {},
   className: ''
 };
 

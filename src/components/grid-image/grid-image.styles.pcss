@@ -7,17 +7,14 @@
   position: relative;
   cursor: pointer;
   /* box-shadow: 1px 1px 8px 2px rgba(0, 0, 0, 0.7); */
-
   .img-height-wrapper {
     display: inline-block;
     vertical-align: middle;
     position: relative;
     max-height: inherit;
-    width: 100%;
   }
 
   .grid-image_pic {
-    min-width: 100%;
     max-width: 100%;
     display: inline-block;
     vertical-align: middle;
@@ -46,5 +43,17 @@
     position: absolute;
     right: 0;
     top: 0;
+  }
+
+  label,
+  .zoom-icon {
+    visibility: hidden;
+  }
+
+  &.ready {
+    label,
+    .zoom-icon {
+      visibility: visible;
+    }
   }
 }
