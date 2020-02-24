@@ -30,6 +30,7 @@
     "@typescript-eslint/parser": "^2.20.0",
     "autoprefixer": "^8.5.2",
     "colorguard": "^1.2.1",
+    "copy-webpack-plugin": "^5.1.1",
     "css-loader": "^0.28.11",
     "cssnano": "^3.10.0",
     "eslint": "^6.8.0",
