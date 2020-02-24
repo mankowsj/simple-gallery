@@ -11,14 +11,14 @@ const Footer = ({className}: FooterProps) => {
   const [ctx, setContext] = useContext(FooterContext);
 
   const scrollAndAnimate = () => {
-    setAlive(true);
+    setAlive(!alive);
     ref.current?.scrollIntoView({behavior: 'smooth'});
   };
 
   useEffect(() => {
     // @ts-ignore
     setContext((st: any) => scrollAndAnimate);
-  }, [setAlive, ref]);
+  }, [setAlive, ref, alive]);
 
   return (
     <footer onTransitionEnd={() => setAlive(false)} ref={ref} className={`secondary-dark ${alive ? 'is-alive' : ''}`}>
