@@ -4,7 +4,7 @@ To run the app just execute `npm ci && npm start`
 
 ## TODO
 
-- changed main grid to flex (elements not wrapping properly)
+- changed main grid to flex (elements not wrapping properly) / /media?
 - fix border on switch for webkit
 
 - fix redux types on components / no errors now ???
@@ -36,6 +36,6 @@ To run the app just execute `npm ci && npm start`
 ## Nice to have later
 
 - css-modules
-- alternative theme DONE
 - alternative layouts
 - change img to background + cover or so
+- alternative theme DONE

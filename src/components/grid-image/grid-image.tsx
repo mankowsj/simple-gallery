@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import './grid-image.styles.pcss';
 import {Pic} from '@components/pic';
+import {ActionButton} from '@components/action-button';
 
 type GridImageProps = {
   className: string;
@@ -19,6 +20,7 @@ const GridImage = ({className, imageName, imageSrc, onClick}: GridImageProps) =>
       onMouseLeave={() => setHover(false)}
       className={`${className} grid-image ${error ? 'no-image' : ''}`}>
       <Pic className="grid-image_pic" src={imageSrc} />
+      <ActionButton size={16} colors={['white', 'rgba(0, 0, 0, 0.5)']} name="zoom" className="zoom-icon" />
       <label>Filename: {imageName}</label>
     </div>
   );
