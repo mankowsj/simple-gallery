@@ -1,6 +1,12 @@
+@import './mixins/index.pcss';
+
 .narrow {
   margin-left: 16%;
   margin-right: 16%;
+  @include tablet {
+    margin-left: 8%;
+    margin-right: 8%;
+  }
 }
 
 .vertical-fix:before {

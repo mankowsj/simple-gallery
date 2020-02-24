@@ -1,4 +1,4 @@
-@import '../../global-styles/mixins/animations.pcss';
+@import '../../global-styles/mixins/index.pcss';
 
 .action-button {
   cursor: pointer;
@@ -9,6 +9,17 @@
   display: inline-block;
   position: relative;
   @include cubic(transform);
+
+  @include mobile {
+    label {
+      display: none;
+    }
+  }
+  @include tablet {
+    label {
+      display: none;
+    }
+  }
   label {
     cursor: pointer;
   }

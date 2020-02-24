@@ -1,3 +1,5 @@
+@import '../../global-styles/mixins/index.pcss';
+
 .gallery {
   padding: 16px;
   display: grid;
@@ -5,9 +7,21 @@
   grid-gap: 16px;
   margin-bottom: -68px;
 
+  @include mobile {
+    display: flex;
+    flex-direction: column;
+  }
+
+  @include tablet {
+    grid-template-columns: 50% 50%;
+  }
+
   .grid-item {
     /* z-index: 1; */
     height: 200px;
+    @include mobile {
+      height: auto;
+    }
 
     &:nth-child(3n + 1) {
       transform-origin: left;
