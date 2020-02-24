@@ -4,7 +4,9 @@ To run the app just execute `npm ci && npm start`
 
 ## TODO
 
-- changed main grid to flex (elements not wrapping properly) / /media?
+- media query pc/tab/phone
+- offline mode
+- changed main grid to flex (elements not wrapping properly) // media?
 - fix border on switch for webkit / NO GO
 - fix redux types on components / no errors now ???
 - fix dialog scroll mode DONE
@@ -22,9 +24,7 @@ To run the app just execute `npm ci && npm start`
 - tooltips ?
 - welcome page with transition of background
 - infi scroll
-- keyboard support
-- media query pc/tab/phone
-- offline mode
+- keyboard support DONE
 - touch support // REACT ?
 - local storage DONE
 - font-icons / svg-icons DONE
