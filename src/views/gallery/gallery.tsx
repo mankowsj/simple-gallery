@@ -13,7 +13,7 @@ type GalleryProps = {
 };
 const Gallery = ({className, setAppMode, imageList, setSelectedImage}: GalleryProps) => (
   <main className={`${className} gallery`}>
-    {imageList.map(({filepath, filename}, index) => (
+    {imageList.map(({filepath, filename, index}) => (
       <GridImage
         onClick={() => {
           setSelectedImage(index);

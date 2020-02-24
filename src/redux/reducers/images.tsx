@@ -3,15 +3,16 @@ import {getImageList} from '../../image-storage';
 
 const defaultValue = {imageList: getImageList(), selectedIndex: 0};
 
-const findNextIndex = <T extends []>(index: number, list: T): number => {
-  if (list[index]) {
-    return index;
-  }
-  if (list[index - 1]) {
-    return index - 1;
+const findNextIndex = (selectedId: number, list: ReduxImage[]): number => {
+  const currentIndex = list.findIndex(({index}) => index === selectedId);
+  if (currentIndex > -1) {
+    if (list[currentIndex + 1]) {
+      return list[currentIndex + 1].index;
+    }
+    return list[currentIndex - 1].index;
   }
 
-  return 0;
+  return currentIndex;
 };
 
 export const imageReducer = (
@@ -21,7 +22,7 @@ export const imageReducer = (
   switch (action.type) {
     case 'REMOVE_IMAGE': {
       const imageList = state.imageList.filter((image: ReduxImage) => image.index !== action.value);
-      const selectedIndex = findNextIndex<any>(action.value, imageList);
+      const selectedIndex = findNextIndex(action.value, state.imageList);
       return {
         ...state,
         imageList,
@@ -29,7 +30,7 @@ export const imageReducer = (
       };
     }
     case 'SET_SELECTED_IMAGE_ID': {
-      if (action.value > -1 && action.value < state.imageList.length) {
+      if (state.imageList.find(({index}) => action.value === index)) {
         return {...state, selectedIndex: action.value};
       }
       break;
