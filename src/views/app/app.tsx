@@ -13,18 +13,19 @@ type AppProps = {
   theme: StoreType['themeReducer'];
 };
 
-const getBigPictureStyle = (isBigPictureMode: boolean) => (isBigPictureMode ? {maxHeight: '100vh'} : {});
+const getBigPictureStyle = (isBigPictureMode: boolean) =>
+  isBigPictureMode ? {maxHeight: '100vh', overflow: 'hidden'} : {};
 
 const App = ({appMode, theme}: AppProps) => {
-  const isBigPictureMode = appMode === 'BIG_PIC_MODE';
+  const shouldRenderBigPictureComonent = appMode !== 'GALLERY_MODE';
   const ctx = useState(FooterContext);
 
   return (
     <FooterContext.Provider value={ctx}>
-      <div className={`app ${theme} background`} style={getBigPictureStyle(isBigPictureMode)}>
+      <div className={`app ${theme} background`} style={getBigPictureStyle(appMode === 'BIG_PIC_MODE')}>
         <Header />
         <Gallery className="grow narrow" />
-        {isBigPictureMode ? <BigPicture /> : false}
+        {shouldRenderBigPictureComonent ? <BigPicture /> : false}
         <Footer />
       </div>
     </FooterContext.Provider>

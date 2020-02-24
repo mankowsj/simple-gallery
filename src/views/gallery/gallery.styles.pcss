@@ -23,12 +23,14 @@
       height: auto;
     }
 
-    &:nth-child(3n + 1) {
-      transform-origin: left;
-    }
+    @include pc-only {
+      &:nth-child(3n + 1) {
+        transform-origin: left;
+      }
 
-    &:nth-child(3n) {
-      transform-origin: right;
+      &:nth-child(3n) {
+        transform-origin: right;
+      }
     }
   }
 }

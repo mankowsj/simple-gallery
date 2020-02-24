@@ -7,9 +7,9 @@ type ActionType<T, S> = {
 type SimpleActionType<T> = {
   type: T;
 };
-type AppModeType = 'GALLERY_MODE' | 'BIG_PIC_MODE';
+type AppModeType = 'GALLERY_MODE' | 'BIG_PIC_MODE' | 'BIG_PIC_CLOSING' | 'BIG_PIC_OPENING';
 type PositionActionType = SimpleActionType<PositionAction>;
-type AppModeActionType = ActionType<AppModeAction, String>;
+type AppModeActionType = ActionType<AppModeAction, AppModeType>;
 
 type ImageStore = {imageList: ReduxImage[]; selectedIndex: number};
 type ImageSelectedAction = ActionType<Extract2<ImageAction, 'SET_SELECTED_IMAGE_ID'>, ImageStore['selectedIndex']>;
