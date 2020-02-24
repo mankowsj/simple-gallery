@@ -1,11 +1,11 @@
 @import '../../global-styles/mixins/index.pcss';
 
 .gallery {
-  padding: 16px;
+  padding: var(--common-padding);
   display: grid;
   grid-template-columns: 33% 33% 33%;
-  grid-gap: 16px;
-  margin-bottom: -68px;
+  grid-gap: var(--common-padding);
+  margin-bottom: calc(var(--padding_big) * -1.5);
 
   @include mobile {
     display: flex;
@@ -18,11 +18,11 @@
 
   .grid-item {
     /* z-index: 1; */
-    height: 200px;
-    max-height: 200px;
+    height: var(--grid_item_height);
+    max-height: var(--grid_item_height);
     @include mobile {
       height: auto;
-      margin-bottom: 16px;
+      margin-bottom: var(--common-padding);
     }
 
     @include pc-only {

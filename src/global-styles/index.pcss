@@ -2,7 +2,6 @@
 @import './mixins/index.pcss';
 @import './utils.pcss';
 @import './light-theme.pcss';
-@import './dark-theme.pcss';
 
 @font-face {
   font-family: 'Exo2';
@@ -42,5 +41,5 @@ a:visited {
   color: #df4860;
 }
 a:active {
-  transform: scale(1.25);
+  transform: scale(var(--active_scale));
 }

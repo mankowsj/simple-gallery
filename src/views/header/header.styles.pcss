@@ -1,6 +1,8 @@
+@import '../../global-styles/mixins/index.pcss';
+
 header {
-  font-size: 19px;
-  height: 60px;
+  font-size: var(--font_big);
+  height: var(--padding_huge);
   white-space: nowrap;
   .header-icon {
     display: inline-block;
@@ -19,16 +21,10 @@ header {
   }
 
   .control {
-    margin-right: 16px;
+    margin-right: var(--common-padding);
   }
 
   .whitening {
     min-height: 100%;
-    /* background: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 50%, rgba(0, 0, 0, 0.65) 100%); */
-    /* background: linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.1) 26%,
-      rgba(255, 255, 255, 1) 80%
-    ); */
   }
 }

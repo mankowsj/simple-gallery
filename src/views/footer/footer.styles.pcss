@@ -1,13 +1,13 @@
 @import '../../global-styles/mixins/index.pcss';
 
 footer {
-  padding-top: 54px;
-  padding-bottom: 27px;
+  padding-top: var(--padding_big);
+  padding-bottom: var(--padding_medium);
 
   .flex {
     @include ease(transform);
     display: flex;
-    padding: 8px 32px;
+    padding: var(--padding_small) var(--padding_medium);
 
     @include mobile {
       flex-direction: column;

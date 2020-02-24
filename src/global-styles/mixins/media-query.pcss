@@ -15,16 +15,7 @@ $mobile: 640px;
 }
 
 @mixin pc-only {
-  @media all and (max-width: $pc-min) {
+  @media all and (min-width: $pc-min) {
     @content;
   }
 }
-/* 
-@mixin mobile-tablet {
-  /* @include mobile() {
-    @content;
-  }
-  @include tablet() {
-    /* @content; 
-  }
-} */

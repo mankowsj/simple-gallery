@@ -50,25 +50,33 @@ module.exports = [
             require('postcss-mixins')({
               mixinsDir: fromRoot('src/global-styles/mixins')
             }),
-            require('postcss-preset-env')({
-              stage: 3,
-              features: {
-                preserve: false,
-                'nesting-rules': true
-              }
-            }),
-            require('postcss-custom-properties')({
-              preserve: false
-            }),
-            // require('postcss-simple-vars'),
-
-            // require('postcss-calc'),
             require('postcss-import')(),
             require('postcss-advanced-variables')({}),
-            require('precss'),
+            require('precss')({
+              preserve: false
+            }),
+            require('postcss-cssnext')({}),
+
+            // require('postcss-preset-env')({
+            //   stage: 3,
+            //   features: {
+            //     preserve: false,
+            //     'nesting-rules': true
+            //   }
+            // }),
+            // require('postcss-custom-properties')({
+            //   preserve: false
+            // }),
+            require('postcss-calc')({
+              warnWhenCannotResolve: true
+            }),
             // require('postcss-modules'),
             require('autoprefixer')({
               flexbox: true
+            }),
+            require('cssnano')({
+              preset: 'default',
+              discardUnused: false
             })
           ]
         }

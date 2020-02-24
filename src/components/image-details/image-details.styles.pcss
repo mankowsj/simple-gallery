@@ -1,21 +1,20 @@
-.image-details {
-  $padding-val: 12px;
-  $font-size: 20px;
+@import '../../global-styles/mixins/index.pcss';
 
-  background: rgba(0, 0, 0, 0.7);
+.image-details {
+  background: var(--background_half-transparent);
   border-radius: 10px;
   color: white;
-  font-size: $font-size;
+  font-size: var(--font_big);
 
   table {
-    font-size: $font-size;
+    font-size: var(--font_big);
     width: 100%;
     color: inherit;
-    padding: $padding-val;
+    padding: var(--padding_regular);
   }
 
   .remove {
-    margin: $padding-val;
+    margin: var(--padding_regular);
   }
 
   .filename {
@@ -25,7 +24,7 @@
 
   .filename-input {
     height: 100%;
-    font-size: $font-size;
+    font-size: var(--font_big);
     max-width: 160px;
   }
 }

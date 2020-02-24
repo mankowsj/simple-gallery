@@ -2,7 +2,7 @@
 
 .action-button {
   cursor: pointer;
-  padding: 5px 16px;
+  padding: var(--padding_mini) var(--common-padding);
   color: white;
   border-radius: 4px;
   transform: scale(1);
@@ -31,7 +31,7 @@
 
   &:active {
     z-index: 1;
-    transform: scale(1.2);
+    transform: scale(var(----active_scale));
   }
 
   &:focus {
