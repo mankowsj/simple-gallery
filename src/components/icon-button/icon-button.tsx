@@ -16,7 +16,8 @@ const IconMap = {
   grid: 'e803',
   edit: 'e801',
   close: 'e802',
-  zoom: 'f07e'
+  zoom: 'f07e',
+  help: 'e805'
 };
 type IconName = keyof typeof IconMap;
 
