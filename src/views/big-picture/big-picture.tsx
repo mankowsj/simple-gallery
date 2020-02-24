@@ -5,6 +5,7 @@ import {setAppMode, removeImage, setSelectedImage} from '@redux/actions';
 import {StoreType} from '@redux';
 import {ActionButton} from '@components/action-button';
 import {ImageDetails} from '@components/image-details';
+import {Pic} from '@components/pic';
 
 type BigPictureProps = {
   className?: string;
@@ -61,7 +62,7 @@ const BigPicture = ({
         return;
       }}
       ref={ref}
-      className={`${className} big-pic-flex`}>
+      className={`${className} big-pic-flex white-preloader`}>
       <main
         onTransitionEnd={() => {
           if (appMode === 'BIG_PIC_CLOSING') {
@@ -76,7 +77,9 @@ const BigPicture = ({
         <section className="selected-image-container">
           {selectedImage ? (
             <React.Fragment>
-              <img src={selectedImage.filepath} />
+              <div className="pic-container">
+                <Pic src={selectedImage.filepath} />
+              </div>
               <ImageDetails
                 onEditModeChange={(editMode: boolean) => !editMode && focusRef()}
                 onRemoval={index => {

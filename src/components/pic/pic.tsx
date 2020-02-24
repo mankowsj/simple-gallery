@@ -17,7 +17,7 @@ const Pic = ({src, className, style, ...rest}: PicProps) => {
   return (
     <React.Fragment>
       <img
-        style={style}
+        style={{minHeight: '100px', ...style}}
         className={className}
         onLoad={() => setReady(true)}
         src={error ? altImageFilepath : src}

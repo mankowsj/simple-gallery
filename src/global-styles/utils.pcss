@@ -40,6 +40,14 @@
   left: calc(50% - calc(var(--preloader_size) / 2));
 }
 
+.white-preloader {
+  &.preloader:after,
+  .preloader:after {
+    border-top-color: white;
+    border-bottom-color: white;
+  }
+}
+
 @keyframes loader-rotation {
   from {
     transform: rotateZ(0);
