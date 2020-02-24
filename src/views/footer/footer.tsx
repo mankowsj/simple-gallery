@@ -2,23 +2,20 @@ import React, {useContext, useRef, useEffect, useState} from 'react';
 import './footer.styles.pcss';
 import {FooterContext} from '../../footer-context';
 
-const footerAliveClass = 'footer-alive';
-
 type FooterProps = {className: string};
 const Footer = ({className}: FooterProps) => {
   const ref = useRef<HTMLElement>(null);
   const [alive, setAlive] = useState(false);
-  const [ctx, setContext] = useContext(FooterContext);
-
-  const scrollAndAnimate = () => {
-    setAlive(!alive);
-    ref.current?.scrollIntoView({behavior: 'smooth'});
-  };
+  const [, setContext] = useContext(FooterContext);
 
   useEffect(() => {
+    const scrollAndAnimate = () => {
+      setAlive(!alive);
+      ref.current?.scrollIntoView({behavior: 'smooth'});
+    };
     // @ts-ignore
-    setContext((st: any) => scrollAndAnimate);
-  }, [setAlive, ref, alive]);
+    setContext(() => scrollAndAnimate);
+  }, [setAlive, ref, alive, setContext]);
 
   return (
     <footer onTransitionEnd={() => setAlive(false)} ref={ref} className={`secondary-dark ${alive ? 'is-alive' : ''}`}>

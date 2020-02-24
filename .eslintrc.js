@@ -36,7 +36,7 @@ module.exports = {
     }
   },
   rules: {
-    'no-unused-vars': 2,
+    'no-unused-vars': 0,
     'no-undef': 0,
     'no-debugger': 1,
 
@@ -53,7 +53,7 @@ module.exports = {
       }
     ],
 
-    'typescript/no-unused-vars': 2,
+    '@typescript-eslint/no-unused-vars': 2,
     // 'typescript/no-undef': 2,
     'import/no-unused-modules': 0,
     'import/group-exports': 2,

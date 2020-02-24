@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import {data} from '../../../mock/page-data';
 
 const altImageFilepath = 'src/assets/no-image.jpg';
 
