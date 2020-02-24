@@ -12,14 +12,17 @@ type AppProps = {
   theme: StoreType['themeReducer'];
 };
 
+const getBigPictureStyle = (isBigPictureMode: boolean) => ({maxHeight: '100vh'});
+
 const App = ({appMode, theme}: AppProps) => {
+  const isBigPictureMode = appMode === 'BIG_PIC_MODE';
   // const Body = appMode === 'GALLERY_MODE' ? Gallery : BigPicture;
 
   return (
-    <div className={`app ${theme} background`}>
+    <div className={`app ${theme} background`} style={getBigPictureStyle(isBigPictureMode)}>
       <Header />
       <Gallery className="grow narrow" />
-      {appMode !== 'GALLERY_MODE' ? <BigPicture /> : false}
+      {isBigPictureMode ? <BigPicture /> : false}
       <Footer />
     </div>
   );

@@ -5,9 +5,10 @@ To run the app just execute `npm ci && npm start`
 ## TODO
 
 - changed main grid to flex (elements not wrapping properly)
-- fix dialog scroll mode
-- fix redux types on components / no errors now ???
 - fix border on switch for webkit
+
+- fix redux types on components / no errors now ???
+- fix dialog scroll mode DONE
 - check project for any types DONE
 - details mode: rename, delete DONE
 - restyle grid item DONE?
