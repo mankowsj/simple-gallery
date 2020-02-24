@@ -4,7 +4,8 @@ import {StoreType} from '@redux';
 import {setTheme} from '@redux/actions';
 import {ThemeValues} from '@redux/types';
 import './header.styles.pcss';
-import {Switch} from '../../components/switch';
+// import {Switch} from '@components/switch';
+import {ActionButton} from '@components/action-button';
 
 type HeaderProps = {
   className?: string;
@@ -21,6 +22,7 @@ const themeList: {label: string; value: ThemeValues}[] = [
     value: 'theme-dark'
   }
 ];
+const gradient = 'linear-gradient(180deg, rgba(235, 179, 90, 1) 0%, rgba(223, 70, 96, 1) 100%)';
 
 const Header = ({className, setTheme}: HeaderProps) => (
   <header className="secondary-light">
@@ -32,7 +34,8 @@ const Header = ({className, setTheme}: HeaderProps) => (
         </div>
 
         <div className="controls vertical-fix">
-          <Switch onChange={(value: string) => setTheme(value as ThemeValues)} labels={themeList} />
+          {/* <Switch onChange={(value: string) => setTheme(value as ThemeValues)} labels={themeList} /> */}
+          <ActionButton label="About " name="help" colors={['white', gradient]} />
         </div>
       </section>
     </div>
