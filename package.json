@@ -1,6 +1,6 @@
 {
-  "name": "stock-stuff",
-  "version": "0.2.0",
+  "name": "simple-gallery",
+  "version": "1.0.0",
   "description": "",
   "main": "build/app.js",
   "sideEffects": [
