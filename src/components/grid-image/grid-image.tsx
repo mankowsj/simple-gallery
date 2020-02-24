@@ -11,7 +11,7 @@ type GridImageProps = {
   dataId?: string;
 };
 const GridImage = ({className, imageName, imageSrc, onClick, dataId}: GridImageProps) => (
-  <div data-id={dataId} onClick={onClick} className={`${className} grid-image ${error ? 'no-image' : ''}`}>
+  <div data-id={dataId} onClick={onClick} className={`${className} grid-image`}>
     <div className="img-height-wrapper">
       <Pic className="grid-image_pic" src={imageSrc} />
       <ActionButton size={16} colors={['white', 'rgba(0, 0, 0, 0.5)']} name="zoom" className="zoom-icon" />
