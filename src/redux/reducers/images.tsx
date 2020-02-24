@@ -25,6 +25,9 @@ export const imageReducer = (
       }
       return {...state, imageList: [...state.imageList]};
     }
+    case 'SET_IMAGE_LIST': {
+      return {...state, imageList: action.value};
+    }
   }
   return state;
 };

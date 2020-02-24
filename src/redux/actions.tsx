@@ -13,7 +13,11 @@ const setImageName = (index: number, name: string): ImageActionType => ({
   type: 'SET_IMAGE_NAME',
   value: {index, value: name}
 });
+const setImageList = (list: ReduxImage[]): ImageActionType => ({
+  type: 'SET_IMAGE_LIST',
+  value: list
+});
 
 const setTheme = (value: ThemeValues): ThemeActionType => ({type: 'SET_THEME', value});
 
-export {setAppMode, setSelectedImage, setTheme, removeImage, setImageName};
+export {setAppMode, setSelectedImage, setTheme, removeImage, setImageName, setImageList};

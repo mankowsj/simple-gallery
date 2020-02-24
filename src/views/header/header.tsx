@@ -1,15 +1,17 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {connect} from 'react-redux';
 import {StoreType} from '@redux';
-import {setTheme} from '@redux/actions';
+import {setTheme, setImageList} from '@redux/actions';
 import {ThemeValues} from '@redux/types';
 import './header.styles.pcss';
-// import {Switch} from '@components/switch';
 import {ActionButton} from '@components/action-button';
+import {FooterContext} from '../../footer-context';
+import {getDefaultImageList} from '../../image-storage';
 
 type HeaderProps = {
   className?: string;
   setTheme: typeof setTheme;
+  setImageList: typeof setImageList;
 };
 
 const themeList: {label: string; value: ThemeValues}[] = [
@@ -24,29 +26,46 @@ const themeList: {label: string; value: ThemeValues}[] = [
 ];
 const gradient = 'linear-gradient(180deg, rgba(235, 179, 90, 1) 0%, rgba(223, 70, 96, 1) 100%)';
 
-const Header = ({className, setTheme}: HeaderProps) => (
-  <header className="secondary-light">
-    <div className="whitening">
-      <section className="narrow header-content">
-        <div className="left vertical-fix">
-          {/* <span className={`${className} header-icon`} /> */}
-          <span>Simple Gallery</span>
-        </div>
+const Header = ({className, setTheme, setImageList}: HeaderProps) => {
+  const [ctx] = useContext(FooterContext);
+  return (
+    <header className={`${className} secondary-light`}>
+      <div className="whitening">
+        <section className="narrow header-content">
+          <div className="left vertical-fix">
+            {/* <span className={`${className} header-icon`} /> */}
+            <span>Simple Gallery</span>
+          </div>
 
-        <div className="controls vertical-fix">
-          {/* <Switch onChange={(value: string) => setTheme(value as ThemeValues)} labels={themeList} /> */}
-          <ActionButton label="About " name="help" colors={['white', gradient]} />
-        </div>
-      </section>
-    </div>
-  </header>
-);
+          <div className="controls vertical-fix">
+            {/* <Switch onChange={(value: string) => setTheme(value as ThemeValues)} labels={themeList} /> */}
+            <ActionButton
+              onClick={() => ctx?.scrollIntoView({behavior: 'smooth'})}
+              label="About page "
+              name="help"
+              className="control"
+              colors={['white', gradient]}
+            />
+
+            <ActionButton
+              className="control"
+              onClick={() => setImageList(getDefaultImageList())}
+              label="Revert storage "
+              name="undo"
+              colors={['white', gradient]}
+            />
+          </div>
+        </section>
+      </div>
+    </header>
+  );
+};
 
 Header.defaultProps = {
   className: ''
 };
 
 const mapStateToProps = (state: StoreType) => ({selectedTheme: state.themeReducer});
-const ConnectedHeader = connect(mapStateToProps, {setTheme})(Header);
+const ConnectedHeader = connect(mapStateToProps, {setTheme, setImageList})(Header);
 
 export {ConnectedHeader as Header};
