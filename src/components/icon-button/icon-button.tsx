@@ -1,14 +1,6 @@
 import React from 'react';
 import './icon-button.styles.pcss';
 
-/** icons v1 **/
-
-// const IconMap = {
-//   grid: 'e800',
-//   list: 'e801',
-//   close: 'e802',
-//   download: 'e803'
-// };
 const IconMap = {
   download: 'e804',
   delete: 'e800',
@@ -17,7 +9,8 @@ const IconMap = {
   edit: 'e801',
   close: 'e802',
   zoom: 'f07e',
-  help: 'e805'
+  help: 'e805',
+  undo: 'e806'
 };
 type IconName = keyof typeof IconMap;
 
