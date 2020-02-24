@@ -16,27 +16,7 @@ $perspective: perspective(50px);
   @include duo-cubic(opacity, transform, 350ms);
   display: grid;
   overflow: auto;
-  /* grid-template-rows: 64px auto 124px; */
   grid-template-rows: var(--nav_height) auto 0;
-
-  .pic-title {
-    flex-grow: 1;
-    font-size: 30px;
-  }
-
-  .selected-image {
-    height: 100%;
-  }
-
-  &.is-visible {
-    opacity: 1;
-    transform: $perspective translateZ(0px);
-  }
-
-  &.exiting {
-    opacity: 0;
-    transform: $perspective translateZ(13px);
-  }
 
   nav {
     padding: 0 var(--padding_big);
@@ -53,7 +33,22 @@ $perspective: perspective(50px);
     }
   }
 
-  .selected-image-container {
+  .nav-title {
+    flex-grow: 1;
+    font-size: 30px;
+  }
+
+  &.is-visible {
+    opacity: 1;
+    transform: $perspective translateZ(0px);
+  }
+
+  &.exiting {
+    opacity: 0;
+    transform: $perspective translateZ(13px);
+  }
+
+  .main-content {
     display: flex;
     align-items: center;
     flex-wrap: nowrap;
@@ -72,14 +67,14 @@ $perspective: perspective(50px);
     }
 
     .pic-container,
-    .selected-image-details {
+    .image-data {
       width: 50%;
       @include tablet {
         width: 100%;
       }
     }
 
-    .selected-image-details {
+    .image-data {
       padding: var(--common-padding);
       @include tablet {
         margin-top: var(--common-padding);

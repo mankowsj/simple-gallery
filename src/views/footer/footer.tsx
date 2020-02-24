@@ -18,7 +18,7 @@ const Footer = ({className}: FooterProps) => {
   }, [setAlive, ref, alive, setContext]);
 
   return (
-    <footer onTransitionEnd={() => setAlive(false)} ref={ref} className={`secondary-dark ${alive ? 'is-alive' : ''}`}>
+    <footer onTransitionEnd={() => setAlive(false)} ref={ref} className={`secondary-dark ${alive ? 'pulse' : ''}`}>
       <div className={`${className} narrow flex`}>
         <section>
           <h3>Tools</h3>

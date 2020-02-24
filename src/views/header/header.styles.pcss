@@ -2,14 +2,14 @@
 
 header {
   font-size: var(--font_big);
-  height: var(--padding_huge);
+  min-height: var(--padding_huge);
   white-space: nowrap;
-  .header-icon {
-    display: inline-block;
-    background: blue;
+
+  .background-whitening {
+    height: 100%;
   }
 
-  .header-content {
+  .content {
     display: flex;
     flex-wrap: nowrap;
     height: 100%;
@@ -22,9 +22,5 @@ header {
 
   .control {
     margin-right: var(--common-padding);
-  }
-
-  .whitening {
-    min-height: 100%;
   }
 }

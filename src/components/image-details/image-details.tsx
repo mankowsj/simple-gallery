@@ -75,7 +75,7 @@ const ImageDetails = ({className, image, onRemoval, setImageName, onEditModeChan
                   onEditModeChange!(false);
                 }}
               />
-              <span className="filename">{editMode ? '' : image.filename}</span>
+              <span className="filename-value">{editMode ? '' : image.filename}</span>
             </React.Fragment>,
             <ActionButton
               style={getEditButtonStyle(!editMode && isImageOk)}
@@ -95,7 +95,7 @@ const ImageDetails = ({className, image, onRemoval, setImageName, onEditModeChan
       </table>
       {isImageOk ? (
         <ActionButton
-          className="remove"
+          className="remove-button"
           colors={['white', '#ff4343']}
           name="delete"
           onClick={() => {

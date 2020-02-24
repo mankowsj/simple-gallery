@@ -18,15 +18,13 @@ const Header = ({className, setImageList}: HeaderProps) => {
   const [ctx] = useContext(FooterContext);
   return (
     <header className={`${className} secondary-light`}>
-      <div className="whitening">
-        <section className="narrow header-content">
+      <div className="background-whitening">
+        <section className="narrow content">
           <div className="left vertical-fix">
-            {/* <span className={`${className} header-icon`} /> */}
             <span>Simple Gallery</span>
           </div>
 
           <nav className="controls vertical-fix">
-            {/* <Switch onChange={(value: string) => setTheme(value as ThemeValues)} labels={themeList} /> */}
             <ActionButton
               onClick={() => (ctx as any)()}
               label="About page "

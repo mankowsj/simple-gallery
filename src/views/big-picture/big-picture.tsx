@@ -62,7 +62,7 @@ const BigPicture = ({
         return;
       }}
       ref={ref}
-      className={`${className} big-pic-flex white-preloader`}>
+      className={`${className} white-preloader`}>
       <main
         onTransitionEnd={() => {
           if (appMode === 'BIG_PIC_CLOSING') {
@@ -71,10 +71,10 @@ const BigPicture = ({
         }}
         className={`big-picture ${getVisibilityModifier(appMode)}`}>
         <nav>
-          <span className="pic-title nowrap">Filename: {selectedImage?.filename ?? false}</span>
+          <span className="nav-title nowrap">Filename: {selectedImage?.filename ?? false}</span>
           <ActionButton size={40} onClick={() => setAppMode('BIG_PIC_CLOSING')} name="close" />
         </nav>
-        <section className="selected-image-container">
+        <section className="main-content">
           {selectedImage ? (
             <React.Fragment>
               <div className="pic-container">
@@ -86,7 +86,7 @@ const BigPicture = ({
                   removeImage(index);
                 }}
                 image={selectedImage}
-                className="selected-image-details"
+                className="image-data"
               />
             </React.Fragment>
           ) : (
