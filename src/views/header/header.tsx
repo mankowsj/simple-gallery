@@ -24,7 +24,7 @@ const themeList: {label: string; value: ThemeValues}[] = [
     value: 'theme-dark'
   }
 ];
-const gradient = 'linear-gradient(180deg, rgba(235, 179, 90, 1) 0%, rgba(223, 70, 96, 1) 100%)';
+const lightThemeGradient = 'linear-gradient(180deg, rgba(235, 179, 90, 1) 0%, rgba(223, 70, 96, 1) 100%)';
 
 const Header = ({className, setTheme, setImageList}: HeaderProps) => {
   const [ctx] = useContext(FooterContext);
@@ -44,7 +44,7 @@ const Header = ({className, setTheme, setImageList}: HeaderProps) => {
               label="About page "
               name="help"
               className="control"
-              colors={['white', gradient]}
+              colors={['white', lightThemeGradient]}
             />
 
             <ActionButton
@@ -52,7 +52,7 @@ const Header = ({className, setTheme, setImageList}: HeaderProps) => {
               onClick={() => setImageList(getDefaultImageList())}
               label="Revert storage "
               name="undo"
-              colors={['white', gradient]}
+              colors={['white', lightThemeGradient]}
             />
           </nav>
         </section>
