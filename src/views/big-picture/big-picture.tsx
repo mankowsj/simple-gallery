@@ -75,6 +75,7 @@ const BigPicture = ({
         }}
         className={`big-picture ${getVisibilityModifier(isVisible)}`}>
         <nav>
+          <span className="pic-title">Filename: {selectedImage?.filename ?? false}</span>
           <ActionButton size={40} onClick={() => setVisibility(2)} name="close" />
         </nav>
         <section className="selected-image-container">
@@ -85,7 +86,6 @@ const BigPicture = ({
                 onEditModeChange={(editMode: boolean) => !editMode && focusRef()}
                 onRemoval={index => {
                   removeImage(index);
-                  // setVisibility(2);
                 }}
                 image={selectedImage}
                 className="selected-image-details"
@@ -95,7 +95,6 @@ const BigPicture = ({
             false
           )}
         </section>
-        {/* <Slider className="bottom-slider" images={imageList} selectedIndex={selectedIndex} /> */}
       </main>
     </div>
   );

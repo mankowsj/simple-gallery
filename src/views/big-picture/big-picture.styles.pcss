@@ -1,4 +1,4 @@
-@import '../../global-styles/mixins/animations.pcss';
+@import '../../global-styles/mixins/index.pcss';
 
 $nav-height: 64px;
 $perspective: perspective(50px);
@@ -19,6 +19,10 @@ $perspective: perspective(50px);
   overflow: auto;
   /* grid-template-rows: 64px auto 124px; */
   grid-template-rows: $nav-height auto 0;
+
+  .pic-title {
+    flex-grow: 1;
+  }
 
   .bottom-slider {
     padding: 20px;
@@ -41,9 +45,9 @@ $perspective: perspective(50px);
   nav {
     margin: 0 48px;
     display: flex;
-    flex-direction: row-reverse;
     color: white;
     border-bottom: 1px solid white;
+    width: calc(100% - 2 * 48px);
     font-size: 48px;
   }
 
@@ -52,7 +56,14 @@ $perspective: perspective(50px);
     flex-wrap: nowrap;
     flex-grow: 1;
     color: white;
-    padding: 16px;
+    padding: 16px 48px;
+    width: 100%;
+    overflow: hidden;
+
+    @include tablet {
+      flex-direction: column;
+      padding: 16px;
+    }
 
     img,
     .selected-image-details {
@@ -61,11 +72,18 @@ $perspective: perspective(50px);
 
     .selected-image-details {
       padding: 16px;
+      @include tablet {
+        margin-top: 16px;
+        width: 100%;
+      }
     }
 
     img {
       object-fit: contain;
       max-height: 100%;
+      @include tablet {
+        width: 100%;
+      }
     }
   }
 }

@@ -37,7 +37,7 @@ const Header = ({className, setTheme, setImageList}: HeaderProps) => {
             <span>Simple Gallery</span>
           </div>
 
-          <div className="controls vertical-fix">
+          <nav className="controls vertical-fix">
             {/* <Switch onChange={(value: string) => setTheme(value as ThemeValues)} labels={themeList} /> */}
             <ActionButton
               onClick={() => ctx?.scrollIntoView({behavior: 'smooth'})}
@@ -54,7 +54,7 @@ const Header = ({className, setTheme, setImageList}: HeaderProps) => {
               name="undo"
               colors={['white', gradient]}
             />
-          </div>
+          </nav>
         </section>
       </div>
     </header>
