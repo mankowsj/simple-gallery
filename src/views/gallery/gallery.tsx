@@ -7,17 +7,18 @@ import {StoreType} from '../../redux';
 
 type GalleryProps = {
   className?: string;
+  style?: React.CSSProperties;
   setAppMode: typeof setAppMode;
   setSelectedImage: typeof setSelectedImage;
   imageList: ReduxImage[];
 };
-const Gallery = ({className, setAppMode, imageList, setSelectedImage}: GalleryProps) => (
-  <main className={`${className} gallery`}>
+const Gallery = ({className, setAppMode, imageList, setSelectedImage, style}: GalleryProps) => (
+  <main style={style} className={`${className} gallery`}>
     {imageList.map(({filepath, filename, index}) => (
       <GridImage
         onClick={() => {
           setSelectedImage(index);
-          setAppMode('BIG_PIC_MODE');
+          setAppMode('BIG_PIC_OPENING');
         }}
         key={filename}
         className="grid-item"
@@ -28,7 +29,8 @@ const Gallery = ({className, setAppMode, imageList, setSelectedImage}: GalleryPr
   </main>
 );
 Gallery.defaultProps = {
-  className: ''
+  className: '',
+  style: {}
 };
 
 const ConnectedGallery = connect(({imageReducer}: StoreType) => ({imageList: imageReducer.imageList}), {
