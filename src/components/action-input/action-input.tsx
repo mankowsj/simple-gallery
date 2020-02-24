@@ -10,19 +10,21 @@ type ActionInputProps = {
   placeholder?: string;
   focus?: boolean;
   style?: React.CSSProperties;
+  value: string;
+  onChange: (ev: React.ChangeEvent, value: string) => void;
 };
 
 const ActionInput = ({
   className,
   label,
-  initialValue,
+  value,
   placeholder,
   onCancel,
   onSubmit,
+  onChange,
   focus,
   style
 }: ActionInputProps) => {
-  const [value, setValue] = useState(initialValue);
   const inputRef = useRef<HTMLInputElement>(null);
   useEffect(() => {
     focus && inputRef.current?.focus();
@@ -33,7 +35,7 @@ const ActionInput = ({
       {label ? <label>{label}</label> : false}
       <input
         ref={inputRef}
-        onChange={({currentTarget}) => setValue(currentTarget.value)}
+        onChange={ev => onChange(ev, ev.currentTarget.value)}
         onKeyUp={ev => {
           const {key} = ev;
           ev.stopPropagation();

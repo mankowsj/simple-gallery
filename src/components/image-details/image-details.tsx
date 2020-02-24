@@ -60,9 +60,10 @@ const getEditButtonStyle = (isVisible: boolean): React.CSSProperties =>
 const ImageDetails = ({className, image, onRemoval, setImageName, onEditModeChange}: ImageDetails) => {
   const [imageData, setImageData] = useState(getDefaultImageData());
   const [editMode, setEditMode] = useState(false);
+  const [inputValue, setInputValue] = useState('');
 
   useLayoutEffect(() => {
-    const imageData = getImageData(image).then(imageObj => {
+    getImageData(image).then(imageObj => {
       if (imageObj instanceof HTMLImageElement) {
         setImageData({
           width: String(imageObj.width),
@@ -76,6 +77,9 @@ const ImageDetails = ({className, image, onRemoval, setImageName, onEditModeChan
       }
     });
   }, [image, editMode]);
+  useLayoutEffect(() => {
+    setInputValue('');
+  }, [editMode, setInputValue]);
   const isImageOk = !isNaN(Number(imageData.width));
 
   return (
@@ -88,9 +92,12 @@ const ImageDetails = ({className, image, onRemoval, setImageName, onEditModeChan
             <React.Fragment>
               <ActionInput
                 style={getInputStyle(editMode)}
+                value={inputValue}
+                onChange={(ev, value) => setInputValue(value)}
                 className="filename-input"
                 focus={editMode}
-                placeholder={image.filename}
+                placeholder={imageData.filename}
+                initialValue={''}
                 onSubmit={(name: string) => {
                   setImageName(image.index, name);
                   setEditMode(false);
@@ -101,7 +108,7 @@ const ImageDetails = ({className, image, onRemoval, setImageName, onEditModeChan
                   onEditModeChange!(false);
                 }}
               />
-              {!editMode ? <span className="filename">{image.filename}</span> : false}
+              <span className="filename">{editMode ? '' : image.filename}</span>
             </React.Fragment>,
             <ActionButton
               style={getEditButtonStyle(!editMode && isImageOk)}
@@ -124,7 +131,11 @@ const ImageDetails = ({className, image, onRemoval, setImageName, onEditModeChan
           className="remove"
           colors={['white', '#ff4343']}
           name="delete"
-          onClick={() => onRemoval(image.index)}
+          onClick={() => {
+            setEditMode(false);
+            setImageData(getDefaultImageData(''));
+            onRemoval(image.index);
+          }}
         />
       ) : (
         false
