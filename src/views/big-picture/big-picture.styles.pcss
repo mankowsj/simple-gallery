@@ -7,6 +7,7 @@ $perspective: perspective(50px);
   z-index: 1;
   position: fixed;
   height: 100vh;
+  min-height: 400px;
   width: 100vw;
   left: 0;
   top: 0;
@@ -17,7 +18,7 @@ $perspective: perspective(50px);
   display: grid;
   overflow: auto;
   /* grid-template-rows: 64px auto 124px; */
-  grid-template-rows: $nav-height calc(100vh - $nav-height) 0;
+  grid-template-rows: $nav-height auto 0;
 
   .bottom-slider {
     padding: 20px;
