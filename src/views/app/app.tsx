@@ -18,10 +18,8 @@ const getBigPictureStyle = (isBigPictureMode: boolean) => (isBigPictureMode ? {m
 const App = ({appMode, theme}: AppProps) => {
   const isBigPictureMode = appMode === 'BIG_PIC_MODE';
   const ctx = useState(FooterContext);
-  // const Body = appMode === 'GALLERY_MODE' ? Gallery : BigPicture;
 
   return (
-    // @ts-ignore
     <FooterContext.Provider value={ctx}>
       <div className={`app ${theme} background`} style={getBigPictureStyle(isBigPictureMode)}>
         <Header />
