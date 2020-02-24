@@ -1,4 +1,5 @@
 @import '../../node_modules/normalize.css/normalize.css';
+@import './mixins/index.pcss';
 @import './utils.pcss';
 @import './light-theme.pcss';
 @import './dark-theme.pcss';
@@ -33,8 +34,13 @@ body {
 
 a,
 a:link {
+  display: inline-block;
   color: #edb872;
+  @include cubic(transform, 600ms);
 }
 a:visited {
   color: #df4860;
+}
+a:active {
+  transform: scale(1.25);
 }
