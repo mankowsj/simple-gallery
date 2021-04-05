@@ -1,10 +1,10 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import {connect} from 'react-redux';
 import {StoreType} from '@redux';
 import {setImageList} from '@redux/actions';
 import './Header.styles.pcss';
 import {ActionButton} from '../../components/ActionButton';
-import {FooterContext} from '../../utils';
+import {useFooterContext} from '../../FooterContext';
 import {getDefaultImageList} from '../../image-storage';
 
 type HeaderProps = {
@@ -12,10 +12,10 @@ type HeaderProps = {
   setImageList: typeof setImageList;
 };
 
-const lightThemeGradient = 'linear-gradient(180deg, rgba(235, 179, 90, 1) 0%, rgba(223, 70, 96, 1) 100%)';
+const LIGHT_THEME_GRADIENT = 'linear-gradient(180deg, rgba(235, 179, 90, 1) 0%, rgba(223, 70, 96, 1) 100%)';
 
 const Header = ({className = '', setImageList}: HeaderProps) => {
-  const [ctx] = useContext(FooterContext);
+  const {scrollToFooter} = useFooterContext();
   return (
     <header className={`${className} secondary-light`}>
       <div className="background-whitening">
@@ -26,11 +26,11 @@ const Header = ({className = '', setImageList}: HeaderProps) => {
 
           <nav className="controls vertical-fix">
             <ActionButton
-              onClick={() => (ctx as any)()}
+              className="control"
+              onClick={scrollToFooter}
               label="About page "
               name="help"
-              className="control"
-              colors={['white', lightThemeGradient]}
+              colors={['white', LIGHT_THEME_GRADIENT]}
             />
 
             <ActionButton
@@ -38,7 +38,7 @@ const Header = ({className = '', setImageList}: HeaderProps) => {
               onClick={() => setImageList(getDefaultImageList())}
               label="Revert storage "
               name="undo"
-              colors={['white', lightThemeGradient]}
+              colors={['white', LIGHT_THEME_GRADIENT]}
             />
           </nav>
         </section>

@@ -12,7 +12,7 @@ type ImageDetailsProps = {
   removeImage: typeof removeImage;
   setAppMode: typeof setAppMode;
   setImageName: typeof setImageName;
-  onRemoval: (index: number) => void;
+  onRemoval?: (index: number) => void;
   onEditModeChange?: (editMode: boolean) => void;
 };
 
@@ -24,7 +24,7 @@ const getImageData = (image: ReduxImage) =>
     imageObj.src = image.filepath;
   }).catch(err => ({inError: err}));
 
-const ImageDetails = ({className, image, onRemoval, setImageName, onEditModeChange}: ImageDetailsProps) => {
+const ImageDetails = ({className = '', image, onRemoval, setImageName, onEditModeChange}: ImageDetailsProps) => {
   const [imageData, setImageData] = useState(getDefaultImageData());
   const [editMode, setEditMode] = useState(false);
   const [inputValue, setInputValue] = useState('');
@@ -64,15 +64,14 @@ const ImageDetails = ({className, image, onRemoval, setImageName, onEditModeChan
                 className="filename-input"
                 focus={editMode}
                 placeholder={imageData.filename}
-                initialValue={''}
-                onSubmit={(name: string) => {
+                onSubmit={name => {
                   setImageName(image.index, name);
                   setEditMode(false);
-                  onEditModeChange!(false);
+                  onEditModeChange?.(false);
                 }}
                 onCancel={() => {
                   setEditMode(false);
-                  onEditModeChange!(false);
+                  onEditModeChange?.(false);
                 }}
               />
               <span className="filename-value">{editMode ? '' : image.filename}</span>
@@ -101,7 +100,7 @@ const ImageDetails = ({className, image, onRemoval, setImageName, onEditModeChan
           onClick={() => {
             setEditMode(false);
             setImageData(getDefaultImageData(''));
-            onRemoval(image.index);
+            onRemoval?.(image.index);
           }}
         />
       ) : (
@@ -109,11 +108,6 @@ const ImageDetails = ({className, image, onRemoval, setImageName, onEditModeChan
       )}
     </section>
   );
-};
-ImageDetails.defaultProps = {
-  className: '',
-  onRemoval: () => {},
-  onEditModeChange: () => {}
 };
 
 const ConnectedImageDetails = connect(null, {removeImage, setAppMode, setImageName})(ImageDetails);

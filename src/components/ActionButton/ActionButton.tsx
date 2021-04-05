@@ -9,7 +9,7 @@ type ActionButtonProps = ComponentProps<typeof IconButton> & {
   label?: string;
 };
 
-const getColorStyle = (colors: string[] | undefined) => (colors ? {color: colors[0], background: colors[1]} : {});
+const getColorStyle = (colors?: [string, string]) => (colors ? {color: colors[0], background: colors[1]} : {});
 
 export const ActionButton = ({colors, onClick, style, className, label, ...rest}: ActionButtonProps) => (
   <span

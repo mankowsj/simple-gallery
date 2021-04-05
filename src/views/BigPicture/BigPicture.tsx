@@ -75,7 +75,7 @@ const BigPicture = ({
           <ActionButton size={40} onClick={() => setAppMode('BIG_PIC_CLOSING')} name="close" />
         </nav>
         <section className="main-content">
-          {selectedImage ? (
+          {selectedImage && (
             <React.Fragment>
               <div className="pic-container">
                 <Pic src={selectedImage.filepath} />
@@ -89,8 +89,6 @@ const BigPicture = ({
                 className="image-data"
               />
             </React.Fragment>
-          ) : (
-            false
           )}
         </section>
       </main>

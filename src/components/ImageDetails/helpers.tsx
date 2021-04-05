@@ -20,7 +20,7 @@ const getTableRow = (desc: string, value: string | JSX.Element, button?: JSX.Ele
   <tr>
     <td>{desc}</td>
     <td>{value}</td>
-    <td>{button ?? false}</td>
+    <td>{button}</td>
   </tr>
 );
 

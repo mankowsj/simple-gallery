@@ -1,14 +1,13 @@
 import React, {useRef, useEffect} from 'react';
 import './ActionInput.styles.pcss';
 import {ActionButton} from '../ActionButton/ActionButton';
-import {redButtonBackground} from '../../utils';
+import {RED_BUTTON_BACKGROUND} from '../../utils';
 
 type ActionInputProps = {
   className?: string;
   label?: string;
   onSubmit?: (value: string) => void;
   onCancel?: (value: string) => void;
-  initialValue?: string;
   placeholder?: string;
   focus?: boolean;
   style?: React.CSSProperties;
@@ -16,11 +15,11 @@ type ActionInputProps = {
   onChange: (ev: React.ChangeEvent, value: string) => void;
 };
 
-const ActionInput = ({
-  className,
+export const ActionInput = ({
+  className = '',
   label,
   value,
-  placeholder,
+  placeholder = '',
   onCancel,
   onSubmit,
   onChange,
@@ -35,7 +34,7 @@ const ActionInput = ({
 
   return (
     <div style={style} className={`${className} action-input`}>
-      {label ? <label>{label}</label> : false}
+      {label && <label>{label}</label>}
       <input
         ref={inputRef}
         onChange={ev => onChange(ev, ev.currentTarget.value)}
@@ -44,7 +43,7 @@ const ActionInput = ({
           ev.stopPropagation();
           ev.preventDefault();
           if (key === 'Escape') {
-            onCancel && onCancel(value!);
+            onCancel?.(value!);
           } else if (key === 'Enter') {
             onSubmit!(value!);
           }
@@ -57,7 +56,7 @@ const ActionInput = ({
           onClick={() => onCancel!(value!)}
           name="close"
           className="cancel-button"
-          colors={['white', redButtonBackground]}
+          colors={['white', RED_BUTTON_BACKGROUND]}
         />
       ) : (
         false
@@ -65,12 +64,3 @@ const ActionInput = ({
     </div>
   );
 };
-ActionInput.defaultProps = {
-  style: {},
-  className: '',
-  onSubmit: () => {},
-  placeholder: '',
-  initialValue: ''
-};
-
-export {ActionInput};

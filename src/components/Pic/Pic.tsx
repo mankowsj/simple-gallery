@@ -1,47 +1,35 @@
 import React, {useState} from 'react';
 
-const altImageFilepath = 'src/assets/no-image.jpg';
+const ALT_IMAGE_FILEPATH = 'src/assets/no-image.jpg';
 
+type PicState = 'loading' | 'ready' | 'error';
 type PicProps = {
-  style: React.CSSProperties;
   src: string;
-  className: string;
+  className?: string;
+  style?: React.CSSProperties;
   onClick?: React.MouseEventHandler;
   onLoad?: () => void;
   onMouseOver?: React.MouseEventHandler;
   onMouseLeave?: React.MouseEventHandler;
 };
-const Pic = ({src, className, style, onLoad, ...rest}: PicProps) => {
-  const [error, setError] = useState(false);
-  const [ready, setReady] = useState(false);
+
+export const Pic = ({src, className, style, onLoad, ...rest}: PicProps) => {
+  const [state, setState] = useState<PicState>('loading');
 
   return (
     <React.Fragment>
       <img
         style={{minHeight: '100px', ...style}}
         className={className}
-        onLoad={() => {
-          setReady(true);
-          onLoad!();
-        }}
-        src={error ? altImageFilepath : src}
+        src={state === 'error' ? ALT_IMAGE_FILEPATH : src}
         {...rest}
-        onError={() => {
-          setReady(true);
-          setError(true);
+        onLoad={() => {
+          setState('ready');
+          onLoad?.();
         }}
+        onError={() => setState('error')}
       />
-      {ready ? false : <span className="preloader" />}
+      {state === 'loading' ? <span className="preloader" /> : false}
     </React.Fragment>
   );
 };
-Pic.defaultProps = {
-  style: {},
-  onClick: () => {},
-  onMouseOver: () => {},
-  onMouseLeave: () => {},
-  onLoad: () => {},
-  className: ''
-};
-
-export {Pic};

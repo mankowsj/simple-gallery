@@ -6,7 +6,7 @@ import {Gallery} from '../Gallery';
 import {BigPicture} from '../BigPicture';
 import {Footer} from '../Footer';
 import './App.styles.pcss';
-import {FooterContext} from '../../utils';
+import {FooterProvider} from '../../FooterContext';
 
 type AppProps = {
   appMode: StoreType['appModeReducer'];
@@ -18,17 +18,17 @@ const getBigPictureStyle = (isBigPictureMode: boolean) =>
 
 const App = ({appMode, theme}: AppProps) => {
   const shouldRenderBigPictureComonent = appMode !== 'GALLERY_MODE';
-  const ctx = useState(FooterContext);
+  const [ctx, setCtx] = useState();
 
   return (
-    <FooterContext.Provider value={ctx}>
+    <FooterProvider value={{setScrollToFooter: setCtx, scrollToFooter: ctx} as any}>
       <div className={`app ${theme} background`} style={getBigPictureStyle(appMode === 'BIG_PIC_MODE')}>
         <Header />
         <Gallery className="grow narrow" />
-        {shouldRenderBigPictureComonent ? <BigPicture /> : false}
+        {shouldRenderBigPictureComonent && <BigPicture />}
         <Footer />
       </div>
-    </FooterContext.Provider>
+    </FooterProvider>
   );
 };
 

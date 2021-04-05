@@ -4,13 +4,14 @@ import {Pic} from '../Pic';
 import {ActionButton} from '../ActionButton';
 
 type GridImageProps = {
-  className: string;
+  className?: string;
   imageName: string;
   imageSrc: string;
   onClick?: React.MouseEventHandler;
   dataId?: string;
 };
-const GridImage = ({className, imageName, imageSrc, onClick, dataId}: GridImageProps) => {
+
+export const GridImage = ({className = '', imageName, imageSrc, onClick, dataId}: GridImageProps) => {
   const [ready, setReady] = useState(false);
 
   return (
@@ -23,10 +24,3 @@ const GridImage = ({className, imageName, imageSrc, onClick, dataId}: GridImageP
     </div>
   );
 };
-GridImage.defaultProps = {
-  className: '',
-  dataId: '',
-  onClick: () => {}
-};
-
-export {GridImage};

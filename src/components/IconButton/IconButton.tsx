@@ -19,7 +19,7 @@ type IconButtonProps = {
   size?: number;
   onClick?: React.MouseEventHandler;
 };
-const getStyle = (size: number | undefined) => (size ? {width: `${size}px`, height: `${size}px`} : {});
+const getStyle = (size?: number) => (size ? {width: `${size}px`, height: `${size}px`} : {});
 const IconButton = ({name, onClick = () => {}, size}: IconButtonProps) => (
   <span
     style={getStyle(size)}
