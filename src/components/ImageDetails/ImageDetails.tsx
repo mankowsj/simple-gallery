@@ -3,8 +3,8 @@ import {connect} from 'react-redux';
 import {removeImage, setAppMode, setImageName} from '@redux/actions';
 import './ImageDetails.styles.pcss';
 import {ActionButton} from '../ActionButton';
-import {ActionInput} from '../ActionInput';
 import {getInputStyle, getEditButtonStyle, getTableRow, getDefaultImageData} from './helpers';
+import {EditInput} from '../Input';
 
 type ImageDetailsProps = {
   className?: string;
@@ -44,9 +44,7 @@ const ImageDetails = ({className = '', image, onRemoval, setImageName, onEditMod
       }
     });
   }, [image, editMode]);
-  useLayoutEffect(() => {
-    setInputValue('');
-  }, [editMode, setInputValue]);
+  useLayoutEffect(() => setInputValue(''), [editMode, setInputValue]);
   const isImageOk = !isNaN(Number(imageData.width));
 
   return (
@@ -57,15 +55,15 @@ const ImageDetails = ({className = '', image, onRemoval, setImageName, onEditMod
           {getTableRow(
             'Filename:',
             <React.Fragment>
-              <ActionInput
+              <EditInput
                 style={getInputStyle(editMode)}
                 value={inputValue}
                 onChange={(ev, value) => setInputValue(value)}
                 className="filename-input"
                 focus={editMode}
                 placeholder={imageData.filename}
-                onSubmit={name => {
-                  setImageName(image.index, name);
+                onSubmit={() => {
+                  setImageName(image.index, inputValue);
                   setEditMode(false);
                   onEditModeChange?.(false);
                 }}
