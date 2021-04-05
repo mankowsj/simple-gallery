@@ -26,7 +26,15 @@ const scrollToGridItem = (parent: HTMLElement, id: number) => {
   }
 };
 
-const Gallery = ({className, setAppMode, imageList, setSelectedImage, style, appMode, selectedIndex}: GalleryProps) => {
+const Gallery = ({
+  className = '',
+  setAppMode,
+  imageList,
+  setSelectedImage,
+  style,
+  appMode,
+  selectedIndex
+}: GalleryProps) => {
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
     if (appMode === 'BIG_PIC_CLOSING' && ref.current) {
@@ -51,10 +59,6 @@ const Gallery = ({className, setAppMode, imageList, setSelectedImage, style, app
       ))}
     </main>
   );
-};
-Gallery.defaultProps = {
-  className: '',
-  style: {}
 };
 
 const ConnectedGallery = connect(

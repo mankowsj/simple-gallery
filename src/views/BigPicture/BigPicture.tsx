@@ -42,27 +42,25 @@ const BigPicture = ({
   const focusRef = () => ref.current?.focus();
   const selectedImage = imageList.find(({index}) => index === selectedIndex);
 
+  const onKeyUpHandler = ({key}: React.KeyboardEvent) => {
+    switch (key) {
+      case 'Escape':
+        return setAppMode('BIG_PIC_CLOSING');
+      case 'ArrowRight':
+        return setSelectedImage(selectedIndex + 1);
+      case 'ArrowLeft':
+        return setSelectedImage(selectedIndex - 1);
+    }
+    return;
+  };
+
   useEffect(focusRef, [ref]);
   useEffect(() => {
     setAppMode('BIG_PIC_MODE');
   }, [setAppMode]);
 
   return (
-    <div
-      tabIndex={0}
-      onKeyUp={({key}) => {
-        switch (key) {
-          case 'Escape':
-            return setAppMode('BIG_PIC_CLOSING');
-          case 'ArrowRight':
-            return setSelectedImage(selectedIndex + 1);
-          case 'ArrowLeft':
-            return setSelectedImage(selectedIndex - 1);
-        }
-        return;
-      }}
-      ref={ref}
-      className={`${className} white-preloader`}>
+    <div tabIndex={0} onKeyUp={onKeyUpHandler} ref={ref} className={`${className} white-preloader`}>
       <main
         onTransitionEnd={() => {
           if (appMode === 'BIG_PIC_CLOSING') {
@@ -75,30 +73,23 @@ const BigPicture = ({
           <ActionButton size={40} onClick={() => setAppMode('BIG_PIC_CLOSING')} name="close" />
         </nav>
         <section className="main-content">
-          {selectedImage ? (
+          {selectedImage && (
             <React.Fragment>
               <div className="pic-container">
                 <Pic src={selectedImage.filepath} />
               </div>
               <ImageDetails
-                onEditModeChange={(editMode: boolean) => !editMode && focusRef()}
-                onRemoval={index => {
-                  removeImage(index);
-                }}
+                onEditModeChange={editMode => !editMode && focusRef()}
+                onRemoval={removeImage}
                 image={selectedImage}
                 className="image-data"
               />
             </React.Fragment>
-          ) : (
-            false
           )}
         </section>
       </main>
     </div>
   );
-};
-BigPicture.defaultProps = {
-  className: ''
 };
 
 const mapStateToProps = ({imageReducer, appModeReducer}: StoreType) => ({

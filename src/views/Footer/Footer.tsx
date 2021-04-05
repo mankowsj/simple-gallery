@@ -1,21 +1,21 @@
-import React, {useContext, useRef, useEffect, useState} from 'react';
+import React, {useRef, useEffect, useState} from 'react';
 import './Footer.styles.pcss';
-import {FooterContext} from '../../utils';
+import {useAppContext} from '../../AppContext';
 
-type FooterProps = {className: string};
-const Footer = ({className}: FooterProps) => {
+type FooterProps = {className?: string};
+
+export const Footer = ({className}: FooterProps) => {
   const ref = useRef<HTMLElement>(null);
   const [alive, setAlive] = useState(false);
-  const [, setContext] = useContext(FooterContext);
+  const {setScrollToFooter} = useAppContext();
 
   useEffect(() => {
     const scrollAndAnimate = () => {
       setAlive(!alive);
       ref.current?.scrollIntoView({behavior: 'smooth'});
     };
-    // @ts-ignore
-    setContext(() => scrollAndAnimate);
-  }, [setAlive, ref, alive, setContext]);
+    setScrollToFooter(() => scrollAndAnimate);
+  }, [setAlive, ref, alive, setScrollToFooter]);
 
   return (
     <footer onTransitionEnd={() => setAlive(false)} ref={ref} className={`secondary-dark ${alive ? 'pulse' : ''}`}>
@@ -73,8 +73,3 @@ const Footer = ({className}: FooterProps) => {
     </footer>
   );
 };
-Footer.defaultProps = {
-  className: ''
-};
-
-export {Footer};

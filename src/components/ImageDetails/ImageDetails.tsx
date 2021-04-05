@@ -3,8 +3,8 @@ import {connect} from 'react-redux';
 import {removeImage, setAppMode, setImageName} from '@redux/actions';
 import './ImageDetails.styles.pcss';
 import {ActionButton} from '../ActionButton';
-import {ActionInput} from '../ActionInput';
 import {getInputStyle, getEditButtonStyle, getTableRow, getDefaultImageData} from './helpers';
+import {EditInput} from '../Input';
 
 type ImageDetailsProps = {
   className?: string;
@@ -12,7 +12,7 @@ type ImageDetailsProps = {
   removeImage: typeof removeImage;
   setAppMode: typeof setAppMode;
   setImageName: typeof setImageName;
-  onRemoval: (index: number) => void;
+  onRemoval?: (index: number) => void;
   onEditModeChange?: (editMode: boolean) => void;
 };
 
@@ -24,7 +24,7 @@ const getImageData = (image: ReduxImage) =>
     imageObj.src = image.filepath;
   }).catch(err => ({inError: err}));
 
-const ImageDetails = ({className, image, onRemoval, setImageName, onEditModeChange}: ImageDetailsProps) => {
+const ImageDetails = ({className = '', image, onRemoval, setImageName, onEditModeChange}: ImageDetailsProps) => {
   const [imageData, setImageData] = useState(getDefaultImageData());
   const [editMode, setEditMode] = useState(false);
   const [inputValue, setInputValue] = useState('');
@@ -44,9 +44,7 @@ const ImageDetails = ({className, image, onRemoval, setImageName, onEditModeChan
       }
     });
   }, [image, editMode]);
-  useLayoutEffect(() => {
-    setInputValue('');
-  }, [editMode, setInputValue]);
+  useLayoutEffect(() => setInputValue(''), [editMode, setInputValue]);
   const isImageOk = !isNaN(Number(imageData.width));
 
   return (
@@ -57,22 +55,21 @@ const ImageDetails = ({className, image, onRemoval, setImageName, onEditModeChan
           {getTableRow(
             'Filename:',
             <React.Fragment>
-              <ActionInput
+              <EditInput
                 style={getInputStyle(editMode)}
                 value={inputValue}
                 onChange={(ev, value) => setInputValue(value)}
                 className="filename-input"
                 focus={editMode}
                 placeholder={imageData.filename}
-                initialValue={''}
-                onSubmit={(name: string) => {
-                  setImageName(image.index, name);
+                onSubmit={() => {
+                  setImageName(image.index, inputValue);
                   setEditMode(false);
-                  onEditModeChange!(false);
+                  onEditModeChange?.(false);
                 }}
                 onCancel={() => {
                   setEditMode(false);
-                  onEditModeChange!(false);
+                  onEditModeChange?.(false);
                 }}
               />
               <span className="filename-value">{editMode ? '' : image.filename}</span>
@@ -101,7 +98,7 @@ const ImageDetails = ({className, image, onRemoval, setImageName, onEditModeChan
           onClick={() => {
             setEditMode(false);
             setImageData(getDefaultImageData(''));
-            onRemoval(image.index);
+            onRemoval?.(image.index);
           }}
         />
       ) : (
@@ -109,11 +106,6 @@ const ImageDetails = ({className, image, onRemoval, setImageName, onEditModeChan
       )}
     </section>
   );
-};
-ImageDetails.defaultProps = {
-  className: '',
-  onRemoval: () => {},
-  onEditModeChange: () => {}
 };
 
 const ConnectedImageDetails = connect(null, {removeImage, setAppMode, setImageName})(ImageDetails);
