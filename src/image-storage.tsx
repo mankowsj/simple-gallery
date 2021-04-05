@@ -9,7 +9,7 @@ const defaultImageList = ['1', '2', '3', '4', '5', '6', '7', '8'].map((filename,
 }));
 const localStorageKey = 'image-list';
 
-const updateStore = (list: ReduxImage[]) => {
+const setImageList = (list: ReduxImage[]) => {
   const newValue = JSON.stringify(list);
   localStorage.setItem(localStorageKey, newValue);
   return JSON.parse(newValue);
@@ -29,7 +29,7 @@ const getImageList = (): ReduxImage[] => {
   if (storeList) {
     return storeList;
   }
-  return updateStore(defaultImageList);
+  return setImageList(defaultImageList);
 };
 
-export {updateStore, getImageList, getDefaultImageList};
+export {setImageList, getImageList, getDefaultImageList};

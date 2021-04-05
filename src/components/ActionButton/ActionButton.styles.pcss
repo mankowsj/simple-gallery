@@ -1,0 +1,41 @@
+@import '../../global-styles/mixins/index.pcss';
+
+.action-button {
+  cursor: pointer;
+  padding: var(--padding_mini) var(--common-padding);
+  color: white;
+  border-radius: 4px;
+  transform: scale(1);
+  display: inline-block;
+  position: relative;
+  @include cubic(transform);
+
+  @include mobile {
+    label {
+      display: none;
+    }
+  }
+  @include tablet {
+    label {
+      display: none;
+    }
+  }
+
+  label {
+    cursor: pointer;
+  }
+
+  &:hover {
+    transform: scale(1.5);
+    z-index: 1;
+  }
+
+  &:active {
+    z-index: 1;
+    transform: scale(var(--active_scale));
+  }
+
+  &:focus {
+    outline-color: rgba(223, 70, 96, 1);
+  }
+}

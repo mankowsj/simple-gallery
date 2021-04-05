@@ -1,4 +1,4 @@
-import {AppModeAction, PositionAction, ImageAction, ThemeAction} from './actions-names';
+import {AppModeAction, PositionAction, ImageAction, ThemeAction} from './actionNames';
 
 type ActionType<T, S> = {
   type: T;
