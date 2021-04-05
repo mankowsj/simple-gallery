@@ -1,6 +1,6 @@
-import {updateStore} from '../image-storage';
+import {setImageList} from '../image-storage';
 import {ImageActionType} from './types';
-import {ImageAction} from './actions-names';
+import {ImageAction} from './actionNames';
 
 const imageAction: ImageAction[] = ['REMOVE_IMAGE', 'SET_IMAGE_LIST', 'SET_IMAGE_NAME', 'SET_IMAGE_LIST'];
 
@@ -8,7 +8,7 @@ export const storageMiddleware = ({getState}: any) => (next: any) => (action: Im
   const result = next(action);
   if (imageAction.includes(action.type)) {
     const {imageList} = getState().imageReducer;
-    updateStore(imageList);
+    setImageList(imageList);
   }
 
   return result;

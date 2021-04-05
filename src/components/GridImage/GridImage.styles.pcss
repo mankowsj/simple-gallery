@@ -1,0 +1,59 @@
+@import '../../global-styles/mixins/index.pcss';
+
+.grid-image {
+  text-align: center;
+  transform-origin: inherit;
+  position: relative;
+  cursor: pointer;
+  @include cubic(transform);
+
+  .img-height-wrapper {
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    max-height: inherit;
+  }
+
+  .grid-image_pic {
+    max-width: 100%;
+    display: inline-block;
+    vertical-align: middle;
+    object-fit: contain;
+    max-height: inherit;
+  }
+
+  label {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: var(--background_half-transparent);
+    color: white;
+    cursor: inherit;
+    padding: var(--padding_regular);
+    width: 100%;
+  }
+
+  &:hover {
+    z-index: 1;
+    transform: perspective(100px) translateZ(10px);
+  }
+
+  .zoom-icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  label,
+  .zoom-icon {
+    visibility: hidden;
+  }
+
+  &.ready {
+    label,
+    .zoom-icon {
+      visibility: visible;
+    }
+  }
+}
