@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
 import {connect} from 'react-redux';
-import {StoreType} from '../../redux';
-import {Header} from '../header';
-import {Gallery} from '../gallery';
-import {BigPicture} from '../big-picture';
-import {Footer} from '../footer';
-import './app.styles.pcss';
+import {StoreType} from '@redux';
+import {Header} from '../Header';
+import {Gallery} from '../Gallery';
+import {BigPicture} from '../BigPicture';
+import {Footer} from '../Footer';
+import './App.styles.pcss';
 import {FooterContext} from '../../utils';
 
 type AppProps = {

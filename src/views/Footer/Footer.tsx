@@ -1,5 +1,5 @@
 import React, {useContext, useRef, useEffect, useState} from 'react';
-import './footer.styles.pcss';
+import './Footer.styles.pcss';
 import {FooterContext} from '../../utils';
 
 type FooterProps = {className: string};

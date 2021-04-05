@@ -1,12 +1,12 @@
 import React, {useLayoutEffect, useState} from 'react';
-import './image-details.styles.pcss';
-import {ActionButton} from '@components/action-button';
-import {ActionInput} from '@components/action-input';
 import {connect} from 'react-redux';
 import {removeImage, setAppMode, setImageName} from '@redux/actions';
+import './ImageDetails.styles.pcss';
+import {ActionButton} from '../ActionButton';
+import {ActionInput} from '../ActionInput';
 import {getInputStyle, getEditButtonStyle, getTableRow, getDefaultImageData} from './helpers';
 
-type ImageDetails = {
+type ImageDetailsProps = {
   className?: string;
   image: ReduxImage;
   removeImage: typeof removeImage;
@@ -24,7 +24,7 @@ const getImageData = (image: ReduxImage) =>
     imageObj.src = image.filepath;
   }).catch(err => ({inError: err}));
 
-const ImageDetails = ({className, image, onRemoval, setImageName, onEditModeChange}: ImageDetails) => {
+const ImageDetails = ({className, image, onRemoval, setImageName, onEditModeChange}: ImageDetailsProps) => {
   const [imageData, setImageData] = useState(getDefaultImageData());
   const [editMode, setEditMode] = useState(false);
   const [inputValue, setInputValue] = useState('');

@@ -1,5 +1,5 @@
 import React from 'react';
-import './icon-button.styles.pcss';
+import './IconButton.styles.pcss';
 
 const IconMap = {
   download: 'e804',
@@ -15,13 +15,12 @@ const IconMap = {
 type IconName = keyof typeof IconMap;
 
 type IconButtonProps = {
-  className?: string;
   name: IconName;
   size?: number;
   onClick?: React.MouseEventHandler;
 };
 const getStyle = (size: number | undefined) => (size ? {width: `${size}px`, height: `${size}px`} : {});
-const IconButton = ({name, onClick, size}: IconButtonProps) => (
+const IconButton = ({name, onClick = () => {}, size}: IconButtonProps) => (
   <span
     style={getStyle(size)}
     onClick={onClick}
@@ -29,9 +28,5 @@ const IconButton = ({name, onClick, size}: IconButtonProps) => (
     className="icon-button"
   />
 );
-IconButton.defaultProps = {
-  className: '',
-  onClick: () => {}
-};
 
 export {IconButton};

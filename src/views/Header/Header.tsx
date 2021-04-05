@@ -2,8 +2,8 @@ import React, {useContext} from 'react';
 import {connect} from 'react-redux';
 import {StoreType} from '@redux';
 import {setImageList} from '@redux/actions';
-import './header.styles.pcss';
-import {ActionButton} from '@components/action-button';
+import './Header.styles.pcss';
+import {ActionButton} from '../../components/ActionButton';
 import {FooterContext} from '../../utils';
 import {getDefaultImageList} from '../../image-storage';
 
@@ -14,7 +14,7 @@ type HeaderProps = {
 
 const lightThemeGradient = 'linear-gradient(180deg, rgba(235, 179, 90, 1) 0%, rgba(223, 70, 96, 1) 100%)';
 
-const Header = ({className, setImageList}: HeaderProps) => {
+const Header = ({className = '', setImageList}: HeaderProps) => {
   const [ctx] = useContext(FooterContext);
   return (
     <header className={`${className} secondary-light`}>
@@ -45,10 +45,6 @@ const Header = ({className, setImageList}: HeaderProps) => {
       </div>
     </header>
   );
-};
-
-Header.defaultProps = {
-  className: ''
 };
 
 const mapStateToProps = (state: StoreType) => ({selectedTheme: state.themeReducer});

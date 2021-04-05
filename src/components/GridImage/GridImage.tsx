@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
-import './grid-image.styles.pcss';
-import {Pic} from '@components/pic';
-import {ActionButton} from '@components/action-button';
+import './GridImage.styles.pcss';
+import {Pic} from '../Pic';
+import {ActionButton} from '../ActionButton';
 
 type GridImageProps = {
   className: string;

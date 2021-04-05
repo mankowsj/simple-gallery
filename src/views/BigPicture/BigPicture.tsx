@@ -1,11 +1,11 @@
 import React, {useEffect, useRef} from 'react';
 import {connect} from 'react-redux';
-import './big-picture.styles.pcss';
+import './BigPicture.styles.pcss';
 import {setAppMode, removeImage, setSelectedImage} from '@redux/actions';
 import {StoreType} from '@redux';
-import {ActionButton} from '@components/action-button';
-import {ImageDetails} from '@components/image-details';
-import {Pic} from '@components/pic';
+import {ActionButton} from '../../components/ActionButton';
+import {ImageDetails} from '../../components/ImageDetails';
+import {Pic} from '../../components/Pic';
 
 type BigPictureProps = {
   className?: string;

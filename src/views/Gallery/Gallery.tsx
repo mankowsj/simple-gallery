@@ -1,7 +1,7 @@
 import React, {useEffect, useRef} from 'react';
 import {connect} from 'react-redux';
-import './gallery.styles.pcss';
-import {GridImage} from '../../components/grid-image';
+import './Gallery.styles.pcss';
+import {GridImage} from '../../components/GridImage';
 import {setAppMode, setSelectedImage} from '../../redux/actions';
 import {StoreType} from '@redux';
 

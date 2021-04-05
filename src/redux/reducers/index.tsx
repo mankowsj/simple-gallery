@@ -1,5 +1,5 @@
 import {combineReducers} from 'redux';
-import {appModeReducer} from './app-mode';
+import {appModeReducer} from './appMode';
 import {imageReducer} from './images';
 import {themeReducer} from './theme';
 

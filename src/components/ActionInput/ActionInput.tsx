@@ -1,6 +1,6 @@
 import React, {useRef, useEffect} from 'react';
-import './action-input.styles.pcss';
-import {ActionButton} from '@components/action-button';
+import './ActionInput.styles.pcss';
+import {ActionButton} from '../ActionButton/ActionButton';
 import {redButtonBackground} from '../../utils';
 
 type ActionInputProps = {
