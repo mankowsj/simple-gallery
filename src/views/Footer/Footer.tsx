@@ -1,13 +1,13 @@
 import React, {useRef, useEffect, useState} from 'react';
 import './Footer.styles.pcss';
-import {useFooterContext} from '../../FooterContext';
+import {useAppContext} from '../../AppContext';
 
 type FooterProps = {className?: string};
 
-export const Footer = ({className = ''}: FooterProps) => {
+export const Footer = ({className}: FooterProps) => {
   const ref = useRef<HTMLElement>(null);
   const [alive, setAlive] = useState(false);
-  const {setScrollToFooter} = useFooterContext();
+  const {setScrollToFooter} = useAppContext();
 
   useEffect(() => {
     const scrollAndAnimate = () => {

@@ -4,7 +4,7 @@ import {StoreType} from '@redux';
 import {setImageList} from '@redux/actions';
 import './Header.styles.pcss';
 import {ActionButton} from '../../components/ActionButton';
-import {useFooterContext} from '../../FooterContext';
+import {useAppContext} from '../../AppContext';
 import {getDefaultImageList} from '../../image-storage';
 
 type HeaderProps = {
@@ -14,8 +14,8 @@ type HeaderProps = {
 
 const LIGHT_THEME_GRADIENT = 'linear-gradient(180deg, rgba(235, 179, 90, 1) 0%, rgba(223, 70, 96, 1) 100%)';
 
-const Header = ({className = '', setImageList}: HeaderProps) => {
-  const {scrollToFooter} = useFooterContext();
+const Header = ({className, setImageList}: HeaderProps) => {
+  const {scrollToFooter} = useAppContext();
   return (
     <header className={`${className} secondary-light`}>
       <div className="background-whitening">
